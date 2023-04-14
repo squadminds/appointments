@@ -1,24 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Banner from './Components/Banner';
+import Location from './Components/Location';
+import Problem from './Components/Problem';
+import BrainSpecilist from './Components/BrainSpecilist';
+import Entspecilist from './Components/EntSpecilist';
+import ProblemDrop from './Components/ProblemDrop';
+import SkinSpecilist from './Components/SkinSpecilist';
+import HeartSpecilist from './Components/Heartspecilist';
+import Doctor from './Components/Doctor';
+import Slots from './Components/Slots';
+import DateSlot from './Components/Calender';
+import Information from './Components/Information';
+import Email from './Components/Email';
+import PhoneNumber from './Components/PhoneNumber';
+import Message from './Components/Message';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<Routes>
+  <Route path='/' element={<Banner/>} />
+  <Route path='/location' element={<Location/>}/>
+  <Route path='/problem' element={<Problem/>} />
+  <Route path='/brainspecilist' element={<BrainSpecilist/>}/>
+  <Route path='/ent' element={<Entspecilist/>} />
+  <Route path='/dropdownlist' element={<ProblemDrop/>} />
+  <Route path='/skinspecilist' element={<SkinSpecilist/>} />
+  <Route path='/heartspecilist' element={<HeartSpecilist/>} />
+  <Route path='/doctor' element={<Doctor/>} />
+  <Route path='/slot' element={<Slots/>} />
+  <Route path='/calender' element={<DateSlot/>}/>
+  <Route path='/info' element={<Information/>} />
+  <Route path='/email' element={<Email/>} />
+  <Route path='/phone' element={<PhoneNumber/>} />
+  <Route path='/msg' element={<Message/>} />
+</Routes>
   );
 }
 

@@ -1,0 +1,46 @@
+.back{
+    background: #B8EBD0;
+    height: 800px;
+}
+.back .texth2{
+    margin-top: 30%;
+    margin-left: 20%;
+}
+.but, .back p{
+    margin-left: 20%;
+}
+.btn{
+    background-color: #493657 !important;
+}
+.backall{
+    background: #EADEDA;
+    height: 800px;
+}
+.lastshow{
+    margin-top: 40%;
+}
+
+.glassbut {
+	display: inline-block;
+	padding: 24px 32px;
+	border: 0;
+	text-decoration: none;
+	border-radius: 15px;
+	background-color: #c5cbd3 !important ;
+	border: 1px solid #c5cbd3 !important;
+	font-size: 14px;
+	color: black !important;
+	letter-spacing: 2px;
+	cursor: pointer;
+	text-transform: uppercase;
+  }
+ 
+/*font style */
+h1,
+h4 ,
+h3{
+  font-family: "Libre Baskerville", serif;
+}
+
+
+   
