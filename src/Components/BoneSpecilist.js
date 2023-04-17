@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import {
   MDBCol,
   MDBRow,
@@ -39,6 +41,16 @@ const BoneSpecilist = () => {
     });
     setFilteredUsers(filter);
   }, [searchValue]);
+
+  // aos
+
+  useEffect(() => {
+    Aos.init({
+      duration: 500,
+      offset: 100,
+    });
+    // AOS.refresh();
+  }, []);
   return (
     <MDBContainer fluid className="backall backall1">
       <MDBContainer>
@@ -84,41 +96,32 @@ const BoneSpecilist = () => {
         </MDBCol>
                         
               </MDBRow>
-                  </MDBCard>
-                </MDBCol>
-              ))}
             </MDBRow>
-          </MDBRow>
-      </MDBRow>
-    
-  
-        <div
-          className={"form__item button__items d-flex justify-content-between"}
-        >
-          <MDBBtn
-            type={"default"}
-            className="buttheme me-2 mt-3"
-            onClick={Back}
-          >
-            Back
-          </MDBBtn>
-          <MDBBtn
-            type={"primary"}
-            className="buttheme mt-3"
-            onClick={greetUser}
-          >
-            Next
-          </MDBBtn>
-        </div>
+
+            <div
+              className={
+                "form__item button__items d-flex justify-content-between"
+              }
+            >
+              <MDBBtn
+                type={"default"}
+                className="buttheme me-2 mt-3"
+                onClick={Back}
+              >
+                Back
+              </MDBBtn>
+              <MDBBtn
+                type={"primary"}
+                className="buttheme mt-3"
+                onClick={greetUser}
+              >
+                Next
+              </MDBBtn>
+            </div>
+          </MDBContainer>
+        </MDBContainer>
       </MDBContainer>
-    </MDBContainer>
+    </>
   );
 };
 export default BoneSpecilist;
-
-
-
-
-
-
-
