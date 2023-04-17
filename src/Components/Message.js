@@ -31,7 +31,7 @@ const Message = () => {
        <br/>
        We'll be in touch soon.
    </h3>
-                   <img src='assest/banner.png' alt='..' height="50%" width="50%"/>
+                   <img src='assest/banner.png' alt='..' className='thnkimgs'/>
             </MDBCol>
             
             

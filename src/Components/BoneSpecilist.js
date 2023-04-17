@@ -7,49 +7,38 @@ import {
   MDBInput,
   MDBIcon,
   MDBCard,
-   MDBCardBody,
-    MDBCardImage,
-    MDBCardText,
-    MDBCardTitle
+  MDBCardBody,
+  MDBCardSubTitle,
+  MDBCardImage,
+  MDBCardText,
+  MDBCardTitle,
 } from "mdb-react-ui-kit";
-import {  useNavigate } from "react-router-dom";
-import {brain } from "./Data";
+import { useNavigate } from "react-router-dom";
+import { Otolaryngologists } from "./Data";
 import _ from "lodash";
-
-const BrainSpecilist = () => {
+const BoneSpecilist = () => {
   const navigate = useNavigate();
   function greetUser() {
     navigate("/slot");
   }
-  
   function Back() {
     navigate("/problem");
   }
-
-
   //doctor api
-
   const [searchValue, setSearchValue] = React.useState("");
-  const [filteredUsers, setFilteredUsers] = React.useState(brain);
-
+  const [filteredUsers, setFilteredUsers] = React.useState(Otolaryngologists);
   const handleSearchFilter = (e) => {
     setSearchValue(e.target.value);
   };
-
   React.useEffect(() => {
-    const timeout = setTimeout(() => {
-      const filter = _.filter(brain, (user) => {
-        return _.includes(
-          _.lowerCase(JSON.stringify(_.values(user))),
-          _.lowerCase(searchValue)
-        );
-      });
-      setFilteredUsers(filter);
-    }, 500);
-    return () => clearTimeout(timeout);
+    const filter = _.filter(Otolaryngologists, (user) => {
+      return _.includes(
+        _.lowerCase(JSON.stringify(_.values(user))),
+        _.lowerCase(searchValue)
+      );
+    });
+    setFilteredUsers(filter);
   }, [searchValue]);
-
-
   return (
     <MDBContainer fluid className="backall">
       <MDBContainer>
@@ -70,12 +59,12 @@ const BrainSpecilist = () => {
                 </form>
               </div>
             </div>
-            <h3 className="text-center mx-auto">Select Brain Specialists</h3>
+            <h3 className="text-center mx-auto">Select Bone Specialists</h3>
             
             <MDBRow className="user-list">
               {filteredUsers.slice(0, 6).map((user, i) => (
-                  <MDBCol size="md-6 " className="text-center mt-3">
-                          <MDBCard onClick={greetUser} >
+                  <MDBCol size="md-6" className="text-center mt-3">
+                          <MDBCard onClick={greetUser}>
                               <MDBRow className='g-0' key={user.id}>
                     <MDBCol md='4'>
                     <MDBCardImage  alt='...' className="groupimgs"
@@ -125,5 +114,11 @@ const BrainSpecilist = () => {
     </MDBContainer>
   );
 };
+export default BoneSpecilist;
 
-export default BrainSpecilist;
+
+
+
+
+
+
