@@ -29,14 +29,14 @@ const ProblemDrop = () => {
 <MDBContainer>
     <MDBRow>
         <MDBCol>
-        <label for="" className="fw-bolder  text-danger mt-5">
+        <label for="" className="fw-bold  text-dark mt-5">
                       <h4>Describe Your Problem</h4>
                     </label>
                     <Select
-                              className="mt-5 dropset"
+                              className="mt-5 dropset fw-bold"
                 placeholder='select problem'
         options={options}
-        onChange={(value) => console.log(value)}
+        onChange={(value) => console.log(value)} 
       />
           
                     <MDBTextArea

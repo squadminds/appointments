@@ -16,6 +16,7 @@ import Email from './Components/Email';
 import PhoneNumber from './Components/PhoneNumber';
 import Message from './Components/Message';
 import BoneSpecilist from './Components/BoneSpecilist';
+import ScrollTopBottom from './Components/ScrollTopBottom';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
   <Route path='/msg' element={<Message/>} />
   <Route path='/bone' element={<BoneSpecilist/>} />
 </Routes>
+<ScrollTopBottom/>
 </>
   );
 }

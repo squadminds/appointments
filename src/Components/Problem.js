@@ -40,8 +40,9 @@ const Problem = () => {
   function Heartspecilist() {
     navigate("/heartspecilist");
   }
+  
   return (
-    <MDBContainer fluid className="backall">
+    <MDBContainer fluid className="backall backall1">
       <MDBContainer>
         <MDBRow>
           <h6 className="text-center mt-5">
@@ -70,7 +71,8 @@ const Problem = () => {
                       <MDBCardTitle>
                         <MDBIcon
                           fas
-                          icon="long-arrow-alt-right"
+                          icon="user-md"
+                          className="fw-bold fs-1"
                         />
                       </MDBCardTitle>
                     </MDBCardBody>
@@ -98,7 +100,8 @@ const Problem = () => {
                       <MDBCardTitle>
                         <MDBIcon
                           fas
-                          icon="long-arrow-alt-right"
+                          icon="user-md"
+                          className="fw-bold fs-1"
                         />
                       </MDBCardTitle>
                     </MDBCardBody>
@@ -126,7 +129,8 @@ const Problem = () => {
                       <MDBCardTitle>
                         <MDBIcon
                           fas
-                          icon="long-arrow-alt-right"
+                          icon="user-md"
+                          className="fw-bold fs-1"
                         />
                       </MDBCardTitle>
                     </MDBCardBody>
@@ -158,7 +162,8 @@ const Problem = () => {
                       <MDBCardTitle>
                         <MDBIcon
                           fas
-                          icon="long-arrow-alt-right"
+                          icon="user-md"
+                          className="fw-bold fs-1"
                         />
                       </MDBCardTitle>
                     </MDBCardBody>
@@ -184,10 +189,10 @@ const Problem = () => {
                           Ear Problem
                       </MDBCardTitle>
                       <MDBCardTitle>
-                        <MDBIcon
+                      <MDBIcon
                           fas
-                          icon="long-arrow-alt-right"
-                
+                          icon="user-md"
+                          className="fw-bold fs-1"
                         />
                       </MDBCardTitle>
                     </MDBCardBody>
@@ -216,7 +221,8 @@ const Problem = () => {
                       <MDBCardTitle>
                         <MDBIcon
                           fas
-                          icon="long-arrow-alt-right"
+                          icon="user-md"
+                          className="fw-bold fs-1"
                         />
                       </MDBCardTitle>
                     </MDBCardBody>
@@ -247,7 +253,8 @@ const Problem = () => {
                       <MDBCardTitle>
                         <MDBIcon
                           fas
-                          icon="long-arrow-alt-right"
+                          icon="user-md"
+                          className="fw-bold fs-1"
                         />
                       </MDBCardTitle>
                     </MDBCardBody>
@@ -256,7 +263,7 @@ const Problem = () => {
               </MDBCard> 
             </MDBCol>
             <MDBCol size="md-4" className="mt-3 text-center">
-            <MDBCard onClick={greetUser}>
+            <MDBCard onClick={ProblemList}>
                 <MDBRow className="g-0">
                   <MDBCol md="4">
                     <MDBCardImage
@@ -275,7 +282,8 @@ const Problem = () => {
                       <MDBCardTitle>
                         <MDBIcon
                           fas
-                          icon="long-arrow-alt-right"
+                          icon="user-md"
+                          className="fw-bold fs-1"
                         />
                       </MDBCardTitle>
                     </MDBCardBody>

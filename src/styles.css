@@ -13,12 +13,34 @@
 .but, .back p{
     margin-left: 20%;
 }
-.btn{
+.but{
+    background: #301a4b !important;
+}
+.buttheme1:hover {
+	background-color:#301a4b !important;
+    border:#301a4b !important;
+	color: white !important;
+  }
+.buttheme1{
+    display: inline-block;
+	padding: 24px 32px;
+	border: 0;
+	text-decoration: none;
+	border-radius: 15px;
+	background-color: white !important ;
+	border: 1px solid white !important;
+	font-size: 14px;
+	color: black !important;
+	letter-spacing: 2px;
+	cursor: pointer;
+	text-transform: uppercase;
+}
+.buttheme{
     background-color: #493657 !important;
 }
 .backall{
     background: #EADEDA;
-    height: 790px;
+    height: 930px;
 }
 .lastshow{
     margin-top: 40%;
@@ -38,14 +60,26 @@
 	cursor: pointer;
 	text-transform: uppercase;
   }
- 
+  .glassbut:hover {
+	background-color:white !important;
+	color: black !important;
+  }
+ .scrollbut{
+    background: #301a4b;
+    color: #fff;
+    border: 1px solid #301a4b;
+    border-radius: 10%;
+ }
 /*font style */
 h1,
 h4 ,
 h3{
   font-family: "Libre Baskerville", serif;
 }
-
+.scrollTopBottom{
+    position: fixed;
+    top: 93%;
+}
 .thnkimgs{
     height: 300px;
     width: 300px;
@@ -54,10 +88,7 @@ h3{
     height: 100%;
     width: 100%;
 }
-.scrollbut{
-    background: #301a4b;
-    color: white;
-}
+
 @media screen and (max-width: 750px) {
     .back {
         background: #B8EBD0;
@@ -67,14 +98,20 @@ h3{
         width: 100%;
         height: 450px;
     }
-    .backall{
+    .backall1{
         background: #EADEDA;
-        height: 2600px;
+        height: auto;
+    }
+    
+    .scrollTopBottom{
+        position: fixed;
+        top: 90%;
     }
     .thnkimgs{
         height: 300px;
         width: 250px;
     }
+    
   }
 
   /* @media screen  and (min-width: 600px){

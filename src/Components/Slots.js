@@ -119,7 +119,7 @@ const Slots = () => {
         </MDBCol>
 
         <MDBCol size="md-3" className="mt-5">
-          <MDBBtn className="glassbut fw-bold me-3"> Yestrday </MDBBtn>
+          <MDBBtn className="glassbut fw-bold me-3"> tomorrow </MDBBtn>
           <MDBRow>
             <MDBCol>
               <MDBBtn
@@ -190,7 +190,7 @@ const Slots = () => {
           </MDBRow>
         </MDBCol>
         <MDBCol size="md-3" className="mt-5">
-          <MDBBtn className="glassbut fw-bold me-3"> 16/04/2023 </MDBBtn>
+          <MDBBtn className="glassbut fw-bold me-3"> 19/04/2023 </MDBBtn>
           <MDBRow>
             <MDBCol>
               <MDBBtn

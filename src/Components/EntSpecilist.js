@@ -40,7 +40,7 @@ const Entspecilist = () => {
     setFilteredUsers(filter);
   }, [searchValue]);
   return (
-    <MDBContainer fluid className="backall">
+    <MDBContainer fluid className="backall backall1">
       <MDBContainer>
         <MDBRow>
           <MDBRow>
