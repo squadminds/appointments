@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import {
   MDBCol,
   MDBRow,
@@ -7,13 +9,13 @@ import {
   MDBInput,
   MDBIcon,
   MDBCard,
-   MDBCardBody,
-    MDBCardImage,
-    MDBCardText,
-    MDBCardTitle
+  MDBCardBody,
+  MDBCardImage,
+  MDBCardText,
+  MDBCardTitle,
 } from "mdb-react-ui-kit";
-import {  useNavigate } from "react-router-dom";
-import {brain } from "./Data";
+import { useNavigate } from "react-router-dom";
+import { brain } from "./Data";
 import _ from "lodash";
 
 const BrainSpecilist = () => {
@@ -21,11 +23,10 @@ const BrainSpecilist = () => {
   function greetUser() {
     navigate("/slot");
   }
-  
+
   function Back() {
     navigate("/problem");
   }
-
 
   //doctor api
 
@@ -48,8 +49,15 @@ const BrainSpecilist = () => {
     }, 500);
     return () => clearTimeout(timeout);
   }, [searchValue]);
+  // aos
 
-
+  useEffect(() => {
+    Aos.init({
+      duration: 500,
+      offset: 100,
+    });
+    Aos.refresh();
+  }, []);
   return (
     <MDBContainer fluid className="backall  backall1">
       <MDBContainer>
@@ -95,34 +103,32 @@ const BrainSpecilist = () => {
         </MDBCol>
                         
               </MDBRow>
-                  </MDBCard>
-                </MDBCol>
-              ))}
             </MDBRow>
-          </MDBRow>
-      </MDBRow>
-    
-  
-        <div
-          className={"form__item button__items d-flex justify-content-between"}
-        >
-          <MDBBtn
-            type={"default"}
-            className="buttheme me-2 mt-3"
-            onClick={Back}
-          >
-            Back
-          </MDBBtn>
-          <MDBBtn
-            type={"primary"}
-            className="buttheme mt-3"
-            onClick={greetUser}
-          >
-            Next
-          </MDBBtn>
-        </div>
+
+            <div
+              className={
+                "form__item button__items d-flex justify-content-between"
+              }
+            >
+              <MDBBtn
+                type={"default"}
+                className="buttheme me-2 mt-3"
+                onClick={Back}
+              >
+                Back
+              </MDBBtn>
+              <MDBBtn
+                type={"primary"}
+                className="buttheme mt-3"
+                onClick={greetUser}
+              >
+                Next
+              </MDBBtn>
+            </div>
+          </MDBContainer>
+        </MDBContainer>
       </MDBContainer>
-    </MDBContainer>
+    </>
   );
 };
 

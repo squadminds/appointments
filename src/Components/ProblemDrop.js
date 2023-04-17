@@ -1,11 +1,16 @@
-import React from 'react'
-import { MDBContainer, MDBRow,MDBBtn, MDBCol, MDBTextArea } from "mdb-react-ui-kit";
+import React from "react";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBBtn,
+  MDBCol,
+  MDBTextArea,
+} from "mdb-react-ui-kit";
 import Select from "react-dropdown-select";
 import { useNavigate } from "react-router-dom";
 
 const ProblemDrop = () => {
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   function greetUser() {
     navigate("/problem");
   }
@@ -13,17 +18,16 @@ const ProblemDrop = () => {
     navigate("/doctor");
   }
 
-
-    const options = [
-        { label: "Depression", value: 0 },
-      { label: "Allergies ", value: 1 },
-      { label: "Food poisoning ", value: 2 },
-      { label: "Cold and Flu", value: 3 },
-      { label: "Diabetes", value: 4 },
-      { label: "Asthma ", value: 6 },
-      { label: "Chickenpox ", value: 6},
-      { label: "Other", value: 7 },
-    ];
+  const options = [
+    { label: "Depression", value: 0 },
+    { label: "Allergies ", value: 1 },
+    { label: "Food poisoning ", value: 2 },
+    { label: "Cold and Flu", value: 3 },
+    { label: "Diabetes", value: 4 },
+    { label: "Asthma ", value: 6 },
+    { label: "Chickenpox ", value: 6 },
+    { label: "Other", value: 7 },
+  ];
   return (
     <MDBContainer fluid className='backall'>
 <MDBContainer>
@@ -73,4 +77,4 @@ const ProblemDrop = () => {
   )
 }
 
-export default ProblemDrop
+export default ProblemDrop;

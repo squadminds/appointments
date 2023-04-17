@@ -1,18 +1,20 @@
 .back {
-	background: #B8EBD0;
-	height: 730px;
+  background: #b8ebd0;
+  height: 550px;
 }
-.bannerimgs{
-    width: 100%;
-    height: 730px;
+.bannerimgs {
+  width: 100%;
+  height: 660px;
 }
-.back .texth2{
-    margin-top: 30%;
-    margin-left: 20%;
+.back .texth2 {
+  margin-top: 30%;
+  margin-left: 20%;
 }
-.but, .back p{
-    margin-left: 20%;
+.but,
+.back p {
+  margin-left: 20%;
 }
+<<<<<<< HEAD
 .but{
     background: #301a4b !important;
 }
@@ -41,12 +43,21 @@
 .backall{
     background: #EADEDA;
     height: 930px;
+=======
+.btn {
+  background-color: #493657 !important;
 }
-.lastshow{
-    margin-top: 40%;
+.backall {
+  background: #eadeda;
+  height: 660px;
+>>>>>>> added animations
+}
+.lastshow {
+  margin-top: 40%;
 }
 
 .glassbut {
+<<<<<<< HEAD
 	display: inline-block;
 	padding: 24px 32px;
 	border: 0;
@@ -70,12 +81,29 @@
     border: 1px solid #301a4b;
     border-radius: 10%;
  }
+=======
+  display: inline-block;
+  padding: 24px 32px;
+  border: 0;
+  text-decoration: none;
+  border-radius: 15px;
+  background-color: #c5cbd3 !important ;
+  border: 1px solid #c5cbd3 !important;
+  font-size: 14px;
+  color: black !important;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+>>>>>>> added animations
 /*font style */
 h1,
-h4 ,
-h3{
+h4,
+h3 {
   font-family: "Libre Baskerville", serif;
 }
+<<<<<<< HEAD
 .scrollTopBottom{
     position: fixed;
     top: 93%;
@@ -83,11 +111,18 @@ h3{
 .thnkimgs{
     height: 300px;
     width: 300px;
+=======
+
+.thnkimgs {
+  height: 300px;
+  width: 300px;
+>>>>>>> added animations
 }
-.groupimgs{
-    height: 100%;
-    width: 100%;
+.groupimgs {
+  height: 100%;
+  width: 100%;
 }
+<<<<<<< HEAD
 
 @media screen and (max-width: 750px) {
     .back {
@@ -112,9 +147,32 @@ h3{
         width: 250px;
     }
     
+=======
+.scrollbut {
+  background: #301a4b;
+  color: white;
+}
+@media screen and (max-width: 750px) {
+  .back {
+    background: #b8ebd0;
+    height: 460px;
   }
+  .bannerimgs {
+    width: 100%;
+    height: 450px;
+  }
+  .backall {
+    background: #eadeda;
+    height: 2600px;
+  }
+  .thnkimgs {
+    height: 300px;
+    width: 250px;
+>>>>>>> added animations
+  }
+}
 
-  /* @media screen  and (min-width: 600px){
+/* @media screen  and (min-width: 600px){
 	.back {
         background: #B8EBD0;
         height: 410px;
@@ -128,11 +186,3 @@ h3{
         height: 450px;
     }
   } */
-
-
-
-
-
-
-  
-   

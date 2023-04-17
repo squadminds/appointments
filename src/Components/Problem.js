@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import {
   MDBCol,
   MDBRow,
@@ -285,35 +287,47 @@ const Problem = () => {
                           icon="user-md"
                           className="fw-bold fs-1"
                         />
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard> 
-            </MDBCol>
-         
-             </MDBRow>
-        </MDBRow>
-        <div
-          className={"form__item button__items d-flex justify-content-between"}
-        >
-          <MDBBtn
-            type={"default"}
-            className="buttheme me-2 mt-3"
-            onClick={Back}
-          >
-            Back
-          </MDBBtn>
-          <MDBBtn
-            type={"primary"}
-            className="buttheme mt-3"
-            onClick={greetUser}
-          >
-            Next
-          </MDBBtn>
-        </div>
+                      </MDBCol>
+                      <MDBCol md="8">
+                        <MDBCardBody>
+                          <MDBCardTitle className="fw-bold">
+                            {" "}
+                            Other Problem
+                          </MDBCardTitle>
+                          <MDBCardTitle>
+                            <MDBIcon fas icon="long-arrow-alt-right" />
+                          </MDBCardTitle>
+                        </MDBCardBody>
+                      </MDBCol>
+                    </MDBRow>
+                  </MDBCard>
+                </MDBCol>
+              </MDBRow>
+            </MDBRow>
+            <div
+              className={
+                "form__item button__items d-flex justify-content-between"
+              }
+            >
+              <MDBBtn
+                type={"default"}
+                className="buttheme me-2 mt-3"
+                onClick={Back}
+              >
+                Back
+              </MDBBtn>
+              <MDBBtn
+                type={"primary"}
+                className="buttheme mt-3"
+                onClick={greetUser}
+              >
+                Next
+              </MDBBtn>
+            </div>
+          </MDBContainer>
+        </MDBContainer>
       </MDBContainer>
-    </MDBContainer>
+    </>
   );
 };
 

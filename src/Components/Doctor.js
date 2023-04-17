@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import {
   MDBCol,
   MDBRow,
@@ -39,12 +41,23 @@ const Doctor = () => {
     });
     setFilteredUsers(filter);
   }, [searchValue]);
+
+  // aos
+
+  useEffect(() => {
+    Aos.init({
+      duration: 500,
+      offset: 100,
+    });
+    Aos.refresh();
+  }, []);
+
   return (
     <MDBContainer fluid className="backall backall1">
       <MDBContainer>
         <MDBRow>
           <MDBRow>
-            <div className="d-flex flex-row-reverse mt-5">
+            <div className="d-flex flex-row-reverse mt-4">
               <div className="searchbar">
                 <form className="d-flex input-group w-auto">
                   <MDBInput
@@ -59,39 +72,43 @@ const Doctor = () => {
                 </form>
               </div>
             </div>
-            <h3 className="text-center mx-auto">Select  Specialists According Yor Problem</h3>
-            
+            <h3 className="text-center mx-auto">
+              Select Specialists According Yor Problem
+            </h3>
+
             <MDBRow className="user-list">
               {filteredUsers.slice(0, 6).map((user, i) => (
-                  <MDBCol size="md-6" className="text-center mt-3">
-                          <MDBCard onClick={greetUser}>
-                              <MDBRow className='g-0' key={user.id}>
-                    <MDBCol md='4'>
-                    <MDBCardImage  alt='...' className="groupimgs"
+                <MDBCol size="md-6" className="text-center mt-3">
+                  <MDBCard onClick={greetUser}>
+                    <MDBRow className="g-0" key={user.id}>
+                      <MDBCol md="4">
+                        <MDBCardImage
+                          alt="..."
+                          className="groupimgs"
                           src={user.img}
                         />
-                        </MDBCol>
-                        <MDBCol md='8'>
-          <MDBCardBody>
-                        <MDBCardTitle className="fw-bold">{user.specilist}</MDBCardTitle>
-                        <hr className="w-50" style={{ marginLeft: "25%" }} />
-                        <MDBCardText>Name: {user.firstName}</MDBCardText>
-                        <MDBCardText>
-                          {" "}
+                      </MDBCol>
+                      <MDBCol md="8">
+                        <MDBCardBody>
+                          <MDBCardTitle className="fw-bold">
+                            {user.specilist}
+                          </MDBCardTitle>
+                          <hr className="w-50" style={{ marginLeft: "25%" }} />
+                          <MDBCardText>Name: {user.firstName}</MDBCardText>
+                          <MDBCardText>
+                            {" "}
                             Skill: {user.qualification}
-                        </MDBCardText>
-          </MDBCardBody>
-        </MDBCol>
-                        
-              </MDBRow>
+                          </MDBCardText>
+                        </MDBCardBody>
+                      </MDBCol>
+                    </MDBRow>
                   </MDBCard>
                 </MDBCol>
               ))}
             </MDBRow>
           </MDBRow>
-      </MDBRow>
-    
-  
+        </MDBRow>
+
         <div
           className={"form__item button__items d-flex justify-content-between"}
         >
@@ -115,10 +132,3 @@ const Doctor = () => {
   );
 };
 export default Doctor;
-
-
-
-
-
-
-
