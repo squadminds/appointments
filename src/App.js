@@ -15,9 +15,11 @@ import Information from './Components/Information';
 import Email from './Components/Email';
 import PhoneNumber from './Components/PhoneNumber';
 import Message from './Components/Message';
+import BoneSpecilist from './Components/BoneSpecilist';
 
 function App() {
   return (
+    <>
 <Routes>
   <Route path='/' element={<Banner/>} />
   <Route path='/location' element={<Location/>}/>
@@ -34,7 +36,9 @@ function App() {
   <Route path='/email' element={<Email/>} />
   <Route path='/phone' element={<PhoneNumber/>} />
   <Route path='/msg' element={<Message/>} />
+  <Route path='/bone' element={<BoneSpecilist/>} />
 </Routes>
+</>
   );
 }
 

@@ -1,35 +1,91 @@
 export const users = [
+  {
+    id: 88,
+    img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+    specilist:"Dentist",
+    firstName: "Dr. Alice",
+    qualification:"BDS",
+    helpline_number: "+91 95 9090 8080",
+       },
+  {
+    id: 91,
+    img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+    specilist:"Cardiology",
+    firstName: "Assia",
+    qualification:"Cardiology",
+    helpline_number: "+91 95 9090 8080",
+  },
+  {
+    id: 90,
+    img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+    specilist:"General Surgeon",
+    firstName: "Abas",
+    qualification:"MBBS, MCh Paediatric surgery",
+    helpline_number: "+91 95 9090 8080",
+  },
+  {
+    id: 89,
+    img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+    specilist:"SURGICAL GASTRO",
+    firstName: "Mimisha",
+    qualification:"MBBS",
+    helpline_number: "+91 95 9090 8080",
+  },
+  {
+    id: 92,
+    img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+    specilist:"Pediatrician",
+    firstName: "test1",
+    qualification:"BDS",
+    helpline_number: "+91 95 9090 8080",
+    },
     {
+      id: 90,
+      img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+      specilist:"Neurology",
+      firstName: "test2",
+      qualification:"M.Ch",
+      helpline_number: "+91 95 9090 8080",
+      },
+      {
         id: 88,
         img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
         specilist:"Dentist",
         firstName: "Dr. Alice",
-        
+        qualification:"BDS",
+        helpline_number: "+91 95 9090 8080",
            },
       {
         id: 91,
         img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
         specilist:"Cardiology",
         firstName: "Assia",
-        },
+        qualification:"Cardiology",
+        helpline_number: "+91 95 9090 8080",
+      },
       {
         id: 90,
         img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
         specilist:"General Surgeon",
         firstName: "Abas",
-        },
+        qualification:"MBBS,MCh Paediatric surgery",
+        helpline_number: "+91 95 9090 8080",
+      },
       {
         id: 89,
         img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
         specilist:"SURGICAL GASTRO",
         firstName: "Mimisha",
-        },
+        qualification:"MBBS",
+        helpline_number: "+91 95 9090 8080",
+      },
       {
         id: 92,
         img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
         specilist:"Pediatrician",
         firstName: "test1",
-        
+        qualification:"BDS",
+        helpline_number: "+91 95 9090 8080",
         },
         {
           id: 90,
@@ -40,45 +96,10 @@ export const users = [
           street_address: "1234/56, 9th Cross", 
           street_address1 :"J P Nagar 3 Phase",
           helpline_number: "+91 95 9090 8080",
-          },
-          {
-            id: 88,
-            img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-            specilist:"Dentist",
-            firstName: "Dr. Alice",
-               },
-          {
-            id: 91,
-            img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-            specilist:"Cardiology",
-            firstName: "Assia",
-            },
-          {
-            id: 90,
-            img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-            specilist:"General Surgeon",
-            firstName: "Abas",
-           },
-          {
-            id: 89,
-            img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-            specilist:"SURGICAL GASTRO",
-            firstName: "Mimisha",
-            },
-          {
-            id: 92,
-            img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-            specilist:"Pediatrician",
-            firstName: "test1",
-            },
-            {
-              id: 90,
-              img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-              specilist:"Neurology",
-              firstName: "test2",
-              }
-    
-  ];
+          }
+
+
+];
   export const brain = [
     {
       id: 1,
