@@ -1,19 +1,15 @@
-import React,{ useRef, useEffect } from 'react'
-import "../styles.css"
-import { useNavigate } from 'react-router-dom'
 import { MDBCol, MDBContainer, MDBInput, MDBRow,MDBBtn } from 'mdb-react-ui-kit'
 import { useFormik } from "formik";
-const Email = () => {
-    
-    const navigate = useNavigate();
-  function greetUser() {
-    navigate("/phone");
-  }
+import React,{ useRef, useEffect } from 'react'
+import "../styles.css"
+// import ItemForm from "./ItemForm";
 
-  function Back() {
-    navigate("/info");
-  }
+const Contact = ({ setForm, formData, navigation }) => {
+  const {  email } = formData;
 
+  const { previous, next } = navigation;
+
+  //autofocus
   const EmailInput = useRef(null);
 
   useEffect(() => {
@@ -40,23 +36,23 @@ const formik = useFormik({
     },
   });
 
+
+
   return (
     <MDBContainer fluid className='backall '>
        <MDBRow>
        <form onSubmit={formik.handleSubmit}>
         <MDBContainer>
-          <MDBRow>
-            <h3 className='mt-5 text-dark d-flex justify-content-center'>The Assessment of our partner doctors relies on complete accuracy<br/> and honesty in your answers to the Questions below.</h3>
+          <MDBRow className='mt-5'>
 
             <MDBCol className='mt-5 text-dark d-flex justify-content-center'>
-            <h2> And what's your email address?</h2>
+            <h2 className='mt-5'> And what's your email address?</h2>
             </MDBCol>
           </MDBRow>
           <MDBRow className='d-flex justify-content-center'>
             <MDBCol size="md-6" className='mt-3 text-dark'>
               <MDBInput className='w-100 ' label="fill your email" ref={EmailInput} name="email"
-   value={formik.values.email}
-   onChange={formik.handleChange}
+   value={email} onChange={setForm}
    onBlur={formik.handleBlur}
  />
  <div>
@@ -73,17 +69,17 @@ const formik = useFormik({
                       "form__item button__items d-flex justify-content-between"
                     }
                   >
-                    <MDBBtn
+                    {/* <MDBBtn
                       type={"default"}
                       className="buttheme me-2 mt-3"
                       onClick={Back}
                     >
                       Back
-                    </MDBBtn>
+                    </MDBBtn> */}
                     <MDBBtn
                       type={"primary"}
                       className="buttheme mt-3"
-                      onClick={greetUser}
+                      onClick={next}
                     >
                       Next
                     </MDBBtn>
@@ -94,7 +90,8 @@ const formik = useFormik({
         </form>
        </MDBRow>
     </MDBContainer>
-  )
-}
+        
+  );
+};
 
-export default Email
+export default Contact;

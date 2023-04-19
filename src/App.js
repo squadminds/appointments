@@ -11,12 +11,9 @@ import HeartSpecilist from './Components/Heartspecilist';
 import Doctor from './Components/Doctor';
 import Slots from './Components/Slots';
 import DateSlot from './Components/Calender';
-import Information from './Components/Information';
-import Email from './Components/Email';
-import PhoneNumber from './Components/PhoneNumber';
-import Message from './Components/Message';
 import BoneSpecilist from './Components/BoneSpecilist';
 import ScrollTopBottom from './Components/ScrollTopBottom';
+import MultiStepForm from './Multistep.js/MultiStepForm';
 
 function App() {
   return (
@@ -33,10 +30,7 @@ function App() {
   <Route path='/doctor' element={<Doctor/>} />
   <Route path='/slot' element={<Slots/>} />
   <Route path='/calender' element={<DateSlot/>}/>
-  <Route path='/info' element={<Information/>} />
-  <Route path='/email' element={<Email/>} />
-  <Route path='/phone' element={<PhoneNumber/>} />
-  <Route path='/msg' element={<Message/>} />
+  <Route path='/info' element={ <MultiStepForm/>} />
   <Route path='/bone' element={<BoneSpecilist/>} />
 </Routes>
 <ScrollTopBottom/>
