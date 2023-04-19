@@ -55,272 +55,273 @@ const Slots = () => {
 
   return (
     <>
-      <MDBContainer
+      {/* <MDBContainer
         fluid
         className="backall"
         data-aos="fade-up"
         data-aos-offset="0"
       >
-        {" "}
-        <MDBContainer fluid className="backall">
-          <MDBContainer>
-            <MDBRow>
-              <h3 className="text-center mt-5">Select Time & Date </h3>
-              <MDBCol size="md-3 " className="mt-5">
-                <MDBBtn className="glassbut fw-bold me-3"> today </MDBBtn>
-                <MDBRow>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      09:00Am - 10:00Am
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      {" "}
-                      10:00Am - 11:00Am
-                    </MDBBtn>
-                  </MDBCol>
+        {" "} */}
+      <MDBContainer fluid className="backall">
+        <MDBContainer>
+          <MDBRow className="" data-aos="fade-up" data-aos-offset="0"   data-aos-duration="2000">
+            <h3 className="text-center mt-4">Select Time & Date </h3>
+            {/* <hr/> */}
+            <MDBCol size="md-3 " className="mt-5">
+              <MDBBtn className="glassbut fw-bold me-3"> today </MDBBtn>
+              <MDBRow>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    09:00Am - 10:00Am
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    {" "}
+                    10:00Am - 11:00Am
+                  </MDBBtn>
+                </MDBCol>
 
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      11:00Am - 12:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      12:00Pm - 01:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      01:00Pm - 02:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      02:00Pm - 03:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      03:00Pm - 04:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      04:00Pm - 05:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCol>
-
-        <MDBCol size="md-3" className="mt-5">
-          <MDBBtn className="glassbut fw-bold me-3"> tomorrow </MDBBtn>
-          <MDBRow>
-            <MDBCol>
-              <MDBBtn
-                className="me-5 mt-3 buttheme1 fw-bold"
-                onClick={greetUser}
-              >
-                09:00Am - 10:00Am
-              </MDBBtn>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    11:00Am - 12:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    12:00Pm - 01:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    01:00Pm - 02:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    02:00Pm - 03:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    03:00Pm - 04:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    04:00Pm - 05:00Pm
+                  </MDBBtn>
+                </MDBCol>
+              </MDBRow>
             </MDBCol>
-            <MDBCol>
-              <MDBBtn
-                className="me-5 mt-3 buttheme1 fw-bold"
-                onClick={greetUser}
-              >
+
+            <MDBCol size="md-3" className="mt-5">
+              <MDBBtn className="glassbut fw-bold me-3"> tomorrow </MDBBtn>
+              <MDBRow>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    09:00Am - 10:00Am
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    {" "}
+                    10:00Am - 11:00Am
+                  </MDBBtn>
+                </MDBCol>
+
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    11:00Am - 12:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    12:00Pm - 01:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    01:00Pm - 02:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    02:00Pm - 03:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    03:00Pm - 04:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    04:00Pm - 05:00Pm
+                  </MDBBtn>
+                </MDBCol>
+              </MDBRow>
+            </MDBCol>
+            <MDBCol size="md-3" className="mt-5">
+              <MDBBtn className="glassbut fw-bold me-3"> 19/04/2023 </MDBBtn>
+              <MDBRow>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    09:00Am - 10:00Am
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    {" "}
+                    10:00Am - 11:00Am
+                  </MDBBtn>
+                </MDBCol>
+
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    11:00Am - 12:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    12:00Pm - 01:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    01:00Pm - 02:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    02:00Pm - 03:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    03:00Pm - 04:00Pm
+                  </MDBBtn>
+                </MDBCol>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={greetUser}
+                  >
+                    04:00Pm - 05:00Pm
+                  </MDBBtn>
+                </MDBCol>
+              </MDBRow>
+            </MDBCol>
+            <MDBCol size="md-3" className="mt-5">
+              <MDBBtn className="glassbut fw-bold me-3" onClick={ProblemList}>
                 {" "}
-                10:00Am - 11:00Am
+                Select Other...{" "}
               </MDBBtn>
-            </MDBCol>
-
-            <MDBCol>
-              <MDBBtn
-                className="me-5 mt-3 buttheme1 fw-bold"
-                onClick={greetUser}
-              >
-                11:00Am - 12:00Pm
-              </MDBBtn>
-            </MDBCol>
-            <MDBCol>
-              <MDBBtn
-                className="me-5 mt-3 buttheme1 fw-bold"
-                onClick={greetUser}
-              >
-                12:00Pm - 01:00Pm
-              </MDBBtn>
-            </MDBCol>
-            <MDBCol>
-              <MDBBtn
-                className="me-5 mt-3 buttheme1 fw-bold"
-                onClick={greetUser}
-              >
-                01:00Pm - 02:00Pm
-              </MDBBtn>
-            </MDBCol>
-            <MDBCol>
-              <MDBBtn
-                className="me-5 mt-3 buttheme1 fw-bold"
-                onClick={greetUser}
-              >
-                02:00Pm - 03:00Pm
-              </MDBBtn>
-            </MDBCol>
-            <MDBCol>
-              <MDBBtn
-                className="me-5 mt-3 buttheme1 fw-bold"
-                onClick={greetUser}
-              >
-                03:00Pm - 04:00Pm
-              </MDBBtn>
-            </MDBCol>
-            <MDBCol>
-              <MDBBtn
-                className="me-5 mt-3 buttheme1 fw-bold"
-                onClick={greetUser}
-              >
-                04:00Pm - 05:00Pm
-              </MDBBtn>
+              <MDBRow>
+                <MDBCol>
+                  <MDBBtn
+                    className="me-5 mt-3 buttheme1 fw-bold"
+                    onClick={ProblemList}
+                  >
+                    Next Date select
+                  </MDBBtn>
+                </MDBCol>
+              </MDBRow>
             </MDBCol>
           </MDBRow>
-        </MDBCol>
-        <MDBCol size="md-3" className="mt-5">
-          <MDBBtn className="glassbut fw-bold me-3"> 19/04/2023 </MDBBtn>
-          <MDBRow>
-            <MDBCol>
-              <MDBBtn
-                className="me-5 mt-3 buttheme1 fw-bold"
-                onClick={greetUser}
-              >
-                09:00Am - 10:00Am
-              </MDBBtn>
-            </MDBCol>
-            <MDBCol>
-              <MDBBtn
-                className="me-5 mt-3 buttheme1 fw-bold"
-                onClick={greetUser}
-              >
-                {" "}
-                10:00Am - 11:00Am
-              </MDBBtn>
-            </MDBCol>
-
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      11:00Am - 12:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      12:00Pm - 01:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      01:00Pm - 02:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      02:00Pm - 03:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      03:00Pm - 04:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={greetUser}
-                    >
-                      04:00Pm - 05:00Pm
-                    </MDBBtn>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCol>
-              <MDBCol size="md-3" className="mt-5">
-                <MDBBtn className="glassbut fw-bold me-3" onClick={ProblemList}>
-                  {" "}
-                  Select Other...{" "}
-                </MDBBtn>
-                <MDBRow>
-                  <MDBCol>
-                    <MDBBtn
-                      className="me-5 mt-3 buttheme1 fw-bold"
-                      onClick={ProblemList}
-                    >
-                      Next Date select
-                    </MDBBtn>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCol>
-            </MDBRow>
-            <MDBRow></MDBRow>
-            <div
-              className={
-                "form__item button__items d-flex justify-content-between"
-              }
+          {/* <MDBRow></MDBRow> */}
+          <div
+            className={
+              "form__item button__items d-flex justify-content-between"
+            }
+          >
+            <MDBBtn
+              type={"default"}
+              className="buttheme me-2 mt-3"
+              onClick={Back}
             >
-              <MDBBtn
-                type={"default"}
-                className="buttheme me-2 mt-3"
-                onClick={Back}
-              >
-                Back
-              </MDBBtn>
-              <MDBBtn
-                type={"primary"}
-                className="buttheme mt-3"
-                onClick={greetUser}
-              >
-                Next
-              </MDBBtn>
-            </div>
-          </MDBContainer>
+              Back
+            </MDBBtn>
+            <MDBBtn
+              type={"primary"}
+              className="buttheme mt-3"
+              onClick={greetUser}
+            >
+              Next
+            </MDBBtn>
+          </div>
         </MDBContainer>
       </MDBContainer>
+      {/* </MDBContainer> */}
     </>
   );
 };

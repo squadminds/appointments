@@ -8,23 +8,18 @@ import { NavLink } from "react-router-dom";
 const Banner = () => {
   // aos
 
-  useEffect(() => {
-    Aos.init({
-      duration: 500,
-      offset: 100,
-    });
-    Aos.refresh();
-  }, []);
+  // useEffect(() => {
+  //   Aos.init({
+  //     duration: 500,
+  //     offset: 100,
+  //   });
+  //   Aos.refresh();
+  // }, []);
 
   return (
     <MDBContainer fluid>
       <MDBRow>
-        <MDBCol
-          size="md-6"
-          className="backall back"
-          data-aos="fade-up"
-          data-aos-offset="0"
-        >
+        <MDBCol size="md-6" className="backall back">
           <h2 className=" text-dark fw-bold texth2">
             Complete this form to
             <br />
@@ -38,7 +33,11 @@ const Banner = () => {
           </h2>
           <p className="text-dark">Description (optional)</p>
 
-          <MDBBtn className="fw-bold but">
+          <MDBBtn
+            className="fw-bold but "
+            // data-aos="fade-up"
+            // data-aos-offset="0"
+          >
             <NavLink to="/location" className="text-light">
               Schedule
             </NavLink>
