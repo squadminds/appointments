@@ -1,7 +1,10 @@
+<<<<<<< Updated upstream
 import React, { useRef, useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
+=======
+>>>>>>> Stashed changes
 import {
   MDBCol,
   MDBContainer,
@@ -9,7 +12,11 @@ import {
   MDBRow,
   MDBBtn,
 } from "mdb-react-ui-kit";
+<<<<<<< Updated upstream
 
+=======
+import React, { useRef, useEffect } from "react";
+>>>>>>> Stashed changes
 import "../styles.css";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +33,10 @@ const Location = () => {
 
   //autofocus
   const Input = useRef(null);
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
   useEffect(() => {
     if (Input.current) {
       Input.current.focus();
