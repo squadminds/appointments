@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {
   MDBContainer,
   MDBRow,
@@ -10,6 +10,7 @@ import Select from "react-dropdown-select";
 import { useNavigate } from "react-router-dom";
 
 const ProblemDrop = () => {
+  const [state, setState] = useState();
   const navigate = useNavigate();
   function greetUser() {
     navigate("/problem");
@@ -28,53 +29,60 @@ const ProblemDrop = () => {
     { label: "Chickenpox ", value: 6 },
     { label: "Other", value: 7 },
   ];
+
+  const changeValue = (e) => {
+    if (e.key === "Enter") {
+      setState(e.target.value);
+      ProblemList();
+    }
+  };
+
   return (
-    <MDBContainer fluid className='backall'>
-<MDBContainer>
-    <MDBRow>
-        <MDBCol>
-        <label for="" className="fw-bold  text-dark mt-5">
-                      <h4>Describe Your Problem</h4>
-                    </label>
-                    <Select
-                              className="mt-5 dropset fw-bold"
-                placeholder='select problem'
-        options={options}
-        onChange={(value) => console.log(value)} 
-      />
-          
-                    <MDBTextArea
-                      id="form7"
-                      className="md-textarea form-control mt-5"
-                      rows="6"
-                      cols="600"
-                    ></MDBTextArea> 
-                  
-        </MDBCol>
-    </MDBRow>
-    <div
-                    className={
-                      "form__item button__items d-flex justify-content-between"
-                    }
-                  >
-                    <MDBBtn
-                      type={"default"}
-                      className="buttheme me-2 mt-3"
-                      onClick={greetUser}
-                    >
-                      Back
-                    </MDBBtn>
-                    <MDBBtn
-                      type={"primary"}
-                      className="buttheme mt-3"
-                      onClick={ProblemList}
-                    >
-                      Next
-                    </MDBBtn>
-                  </div>
-</MDBContainer>
-</MDBContainer>
-  )
-}
+    <MDBContainer fluid className="backall">
+      <MDBContainer>
+        <MDBRow>
+          <MDBCol>
+            <label for="" className="fw-bold  text-dark mt-5">
+              <h4>Describe Your Problem</h4>
+            </label>
+            <Select
+              className="mt-5 dropset fw-bold"
+              placeholder="select problem"
+              options={options}
+              onChange={(value) => console.log(value)}
+              onKeyPress={changeValue}
+            />
+
+            <MDBTextArea
+              id="form7"
+              className="md-textarea form-control mt-5"
+              rows="6"
+              cols="600"
+              onKeyPress={changeValue}
+            ></MDBTextArea>
+          </MDBCol>
+        </MDBRow>
+        <div
+          className={"form__item button__items d-flex justify-content-between"}
+        >
+          <MDBBtn
+            type={"default"}
+            className="buttheme me-2 mt-3"
+            onClick={greetUser}
+          >
+            Back
+          </MDBBtn>
+          <MDBBtn
+            type={"primary"}
+            className="buttheme mt-3"
+            onClick={ProblemList}
+          >
+            Next
+          </MDBBtn>
+        </div>
+      </MDBContainer>
+    </MDBContainer>
+  );
+};
 
 export default ProblemDrop;

@@ -55,61 +55,56 @@ const Doctor = () => {
   return (
     <MDBContainer fluid className="backall backall1">
       <MDBContainer>
-        <MDBRow>
-          <MDBRow>
-            <div className="d-flex flex-row-reverse mt-4">
-              <div className="searchbar">
-                <form className="d-flex input-group w-auto">
-                  <MDBInput
-                    type="search"
-                    label="Search doctor..."
-                    value={searchValue}
-                    onChange={handleSearchFilter}
-                  />
-                  <MDBBtn className="buttheme">
-                    <MDBIcon fas icon="search" />
-                  </MDBBtn>
-                </form>
-              </div>
+        <MDBRow className=" " data-aos="fade-up" data-aos-offset="0">
+          <div className="d-flex flex-row-reverse mt-2">
+            <div className="searchbar">
+              <form className="d-flex input-group w-auto">
+                <MDBInput
+                  type="search"
+                  label="Search doctor..."
+                  value={searchValue}
+                  onChange={handleSearchFilter}
+                />
+                <MDBBtn className="buttheme">
+                  <MDBIcon fas icon="search" />
+                </MDBBtn>
+              </form>
             </div>
-            <h3 className="text-center mx-auto">
-              Select Specialists According Yor Problem
-            </h3>
+          </div>
+          <h3 className="text-center mx-auto">
+            Select Specialists According Yor Problem
+          </h3>
 
-            <MDBRow className="user-list">
-              {filteredUsers.slice(0, 6).map((user, i) => (
-                <MDBCol size="md-6" className="text-center mt-3">
-                  <MDBCard onClick={greetUser}>
-                    <MDBRow className="g-0" key={user.id}>
-                      <MDBCol md="4">
-                        <MDBCardImage
-                          alt="..."
-                          className="groupimgs"
-                          src={user.img}
-                        />
-                      </MDBCol>
-                      <MDBCol md="8">
-                        <MDBCardBody>
-                          <MDBCardTitle className="fw-bold">
-                            {user.specilist}
-                          </MDBCardTitle>
-                          <hr className="w-50" style={{ marginLeft: "25%" }} />
-                          <MDBCardText>Name: {user.firstName}</MDBCardText>
-                          <MDBCardText>
-                            {" "}
-                            Skill: {user.qualification}
-                          </MDBCardText>
-                        </MDBCardBody>
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBCard>
-                </MDBCol>
-              ))}
-            </MDBRow>
+          <MDBRow className="user-list">
+            {filteredUsers.slice(0, 6).map((user, i) => (
+              <MDBCol size="md-6" className="text-center mt-3" key={i}>
+                <MDBCard onClick={greetUser}>
+                  <MDBRow className="g-0" key={user.id}>
+                    <MDBCol md="4">
+                      <MDBCardImage
+                        alt="..."
+                        className="groupimgs"
+                        src={user.img}
+                      />
+                    </MDBCol>
+                    <MDBCol md="8">
+                      <MDBCardBody>
+                        <MDBCardTitle className="fw-bold">
+                          {user.specilist}
+                        </MDBCardTitle>
+                        <hr className="w-50" style={{ marginLeft: "25%" }} />
+                        <MDBCardText>Name: {user.firstName}</MDBCardText>
+                        <MDBCardText> Skill: {user.qualification}</MDBCardText>
+                      </MDBCardBody>
+                    </MDBCol>
+                  </MDBRow>
+                </MDBCard>
+              </MDBCol>
+            ))}
           </MDBRow>
         </MDBRow>
 
-        <div
+        {/* <div
           className={"form__item button__items d-flex justify-content-between"}
         >
           <MDBBtn
@@ -126,7 +121,7 @@ const Doctor = () => {
           >
             Next
           </MDBBtn>
-        </div>
+        </div> */}
       </MDBContainer>
     </MDBContainer>
   );
