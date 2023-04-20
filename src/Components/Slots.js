@@ -1,4 +1,4 @@
-import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
+import { MDBCol, MDBContainer, MDBRow, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
 import React, { useState, useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -211,7 +211,7 @@ const Slots = () => {
               </MDBRow>
             </MDBCol>
             <MDBCol size="md-3" className="mt-5">
-              <MDBBtn className="glassbut fw-bold me-3"> 19/04/2023 </MDBBtn>
+              <MDBBtn className="glassbut fw-bold me-3"> 22/04/2023 </MDBBtn>
               <MDBRow>
                 <MDBCol>
                   <MDBBtn
@@ -299,27 +299,34 @@ const Slots = () => {
             </MDBCol>
           </MDBRow>
           {/* <MDBRow></MDBRow> */}
-          <div
-            className={
-              "form__item button__items d-flex justify-content-between"
-            }
-          >
-            <MDBBtn
-              type={"default"}
-              className="buttheme me-2 mt-3"
-              onClick={Back}
-            >
-              Back
-            </MDBBtn>
-            <MDBBtn
-              type={"primary"}
-              className="buttheme mt-3"
-              onClick={greetUser}
-            >
-              Next
-            </MDBBtn>
-          </div>
+          
         </MDBContainer>
+        <MDBRow className="d-flex flex-row-reverse" style={{background:"#eadeda"}}>
+                <MDBCol size={6}>
+                  <div
+                    className={
+                      "form__item button__items d-flex flex-row-reverse"
+                    }
+                  >
+                    <MDBBtn
+                      type={"primary"}
+                      className="buttheme mt-5"
+                    onClick={greetUser} 
+                      >
+<MDBIcon fas icon="angle-right" className="fs-2" />
+                    </MDBBtn>
+                    <MDBBtn
+                      type={"default"}
+                      className="buttheme me-2 mt-5"
+                      onClick={Back}
+                    >
+<MDBIcon fas icon="angle-left" className="fs-2" />
+
+                    </MDBBtn>
+                   
+                  </div>
+                </MDBCol>
+              </MDBRow>
       </MDBContainer>
       {/* </MDBContainer> */}
     </>
