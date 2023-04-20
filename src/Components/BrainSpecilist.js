@@ -103,25 +103,33 @@ const BrainSpecilist = () => {
           </MDBRow>
         </MDBRow>
 
-        <div
-          className={"form__item button__items d-flex justify-content-between"}
-        >
-          <MDBBtn
-            type={"default"}
-            className="buttheme me-2 mt-3"
-            onClick={Back}
-          >
-            Back
-          </MDBBtn>
-          <MDBBtn
-            type={"primary"}
-            className="buttheme mt-3"
-            onClick={greetUser}
-          >
-            Next
-          </MDBBtn>
-        </div>
       </MDBContainer>
+        <MDBRow className="d-flex flex-row-reverse" style={{background:"#eadeda"}}>
+                <MDBCol size={6}>
+                  <div
+                    className={
+                      "form__item button__items d-flex flex-row-reverse"
+                    }
+                  >
+                    <MDBBtn
+                      type={"primary"}
+                      className="buttheme mt-5"
+                      onClick={greetUser}
+                    >
+<MDBIcon fas icon="angle-right" className="fs-2" />
+                    </MDBBtn>
+                    <MDBBtn
+                      type={"default"}
+                      className="buttheme me-2 mt-5"
+                      onClick={Back}
+                    >
+<MDBIcon fas icon="angle-left" className="fs-2" />
+
+                    </MDBBtn>
+                   
+                  </div>
+                </MDBCol>
+              </MDBRow>
     </MDBContainer>
   );
 };

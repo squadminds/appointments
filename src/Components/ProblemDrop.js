@@ -5,6 +5,7 @@ import {
   MDBBtn,
   MDBCol,
   MDBTextArea,
+  MDBIcon,
 } from "mdb-react-ui-kit";
 import Select from "react-dropdown-select";
 import { useNavigate } from "react-router-dom";
@@ -62,25 +63,34 @@ const ProblemDrop = () => {
             ></MDBTextArea>
           </MDBCol>
         </MDBRow>
-        <div
-          className={"form__item button__items d-flex justify-content-between"}
-        >
-          <MDBBtn
-            type={"default"}
-            className="buttheme me-2 mt-3"
-            onClick={greetUser}
-          >
-            Back
-          </MDBBtn>
-          <MDBBtn
-            type={"primary"}
-            className="buttheme mt-3"
-            onClick={ProblemList}
-          >
-            Next
-          </MDBBtn>
-        </div>
+        
       </MDBContainer>
+      <MDBRow className="d-flex flex-row-reverse" style={{background:"#eadeda"}}>
+                <MDBCol size={6}>
+                  <div
+                    className={
+                      "form__item button__items d-flex flex-row-reverse"
+                    }
+                  >
+                    <MDBBtn
+                      type={"primary"}
+                      className="buttheme mt-5"
+                    onClick={ProblemList}
+                      >
+<MDBIcon fas icon="angle-right" className="fs-2" />
+                    </MDBBtn>
+                    <MDBBtn
+                      type={"default"}
+                      className="buttheme me-2 mt-5"
+                      onClick={greetUser} 
+                    >
+<MDBIcon fas icon="angle-left" className="fs-2" />
+
+                    </MDBBtn>
+                   
+                  </div>
+                </MDBCol>
+              </MDBRow>
     </MDBContainer>
   );
 };

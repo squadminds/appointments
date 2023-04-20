@@ -4,7 +4,7 @@
 }
 .bannerimgs {
   width: 100%;
-  height: 660px;
+  height: 730px;
   /* border: 2px solid red; */
 }
 .back .texth2 {
@@ -42,7 +42,7 @@
 }
 .backall {
   background: #eadeda;
-  height: 660px;
+  height: 730px;
 }
 .lastshow {
   margin-top: 40%;
@@ -71,6 +71,11 @@
   color: #fff;
   border: 1px solid #301a4b;
   border-radius: 10%;
+}
+
+.butfixed{
+    position: fixed;
+    margin-top: 20%;
 }
 /*font style */
 h1,

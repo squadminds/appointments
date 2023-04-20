@@ -40,9 +40,9 @@ const MultiStepForm = ({ images }) => {
     case "names":
       return <Names {...props} />;
     case "address":
-    return <Location {...props}/>;
-    case "contact":
       return <Contact {...props} />;
+      case "contact":
+      return <Location {...props}/>;
     case "review":
       return <Review {...props} />;
     case "submit":

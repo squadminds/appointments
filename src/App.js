@@ -12,7 +12,6 @@ import Doctor from "./Components/Doctor";
 import Slots from "./Components/Slots";
 import DateSlot from "./Components/Calender";
 import BoneSpecilist from "./Components/BoneSpecilist";
-import ScrollTopBottom from "./Components/ScrollTopBottom";
 import MultiStepForm from "./Multistep.js/MultiStepForm";
 
 function App() {
@@ -33,7 +32,7 @@ function App() {
         <Route path="/info" element={<MultiStepForm />} />
         <Route path="/bone" element={<BoneSpecilist />} />
       </Routes>
-      <ScrollTopBottom />
+
     </>
   );
 }
