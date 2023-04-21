@@ -14,19 +14,19 @@ const steps = [
   { id: "address" },
   { id: "contact" },
   { id: "review" },
-  { id: "submit" }
+  { id: "submit" },
 ];
 
 const defaultData = {
   firstName: "",
-//   lastName: "Doe",
-//   nickName: "Jan",
+  //   lastName: "Doe",
+  //   nickName: "Jan",
   address: " ",
-//   city: "",
-//   state: "",
-//   zip: "",
+  //   city: "",
+  //   state: "",
+  //   zip: "",
   email: "",
-  phone: ""
+  phone: "",
 };
 
 const MultiStepForm = ({ images }) => {
@@ -41,8 +41,8 @@ const MultiStepForm = ({ images }) => {
       return <Names {...props} />;
     case "address":
       return <Contact {...props} />;
-      case "contact":
-      return <Location {...props}/>;
+    case "contact":
+      return <Location {...props} />;
     case "review":
       return <Review {...props} />;
     case "submit":

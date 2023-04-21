@@ -42,6 +42,7 @@ const HeartSpecilist = () => {
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       const filter = _.filter(cardiologist, (user) => {
+        // localStorage.setItem('Specilist', JSON.stringify(user));
         return _.includes(
           _.lowerCase(JSON.stringify(_.values(user))),
           _.lowerCase(searchValue)
@@ -69,7 +70,7 @@ const HeartSpecilist = () => {
         <MDBRow data-aos="fade-up" data-aos-offset="0">
           <div className="d-flex flex-row-reverse mt-2">
             <div className="searchbar">
-              <form className="d-flex input-group w-auto">
+              <form className="d-flex input-group w-auto mt-5">
                 <MDBInput
                   type="search"
                   label="Search doctor..."
@@ -82,7 +83,7 @@ const HeartSpecilist = () => {
               </form>
             </div>
           </div>
-          <h3 className="text-center mx-auto">Select Heart Specialists</h3>
+          {/* <h3 className="text-center mx-auto">Select Heart Specialists</h3> */}
 
           <MDBRow className="user-list">
             {filteredUsers.slice(0, 6).map((user, i) => (
@@ -102,7 +103,13 @@ const HeartSpecilist = () => {
                           {user.specilist}
                         </MDBCardTitle>
                         <hr className="w-50" style={{ marginLeft: "25%" }} />
-                        <MDBCardText>Name: {user.firstName}</MDBCardText>
+                        <MDBCardText>
+                          Name: {user.firstName}{" "}
+                          {localStorage.setItem(
+                            "Specilist",
+                            JSON.stringify(user.firstName)
+                          )}
+                        </MDBCardText>
                         <MDBCardText> Skill: {user.qualification}</MDBCardText>
                       </MDBCardBody>
                     </MDBCol>
@@ -113,34 +120,30 @@ const HeartSpecilist = () => {
           </MDBRow>
           {/* </MDBRow> */}
         </MDBRow>
-
       </MDBContainer>
-      <MDBRow className="d-flex flex-row-reverse" style={{background:"#eadeda"}}>
-                <MDBCol size={6}>
-                  <div
-                    className={
-                      "form__item button__items d-flex flex-row-reverse"
-                    }
-                  >
-                    <MDBBtn
-                      type={"primary"}
-                      className="buttheme mt-5"
-                      onClick={greetUser}
-                    >
-<MDBIcon fas icon="angle-right" className="fs-2" />
-                    </MDBBtn>
-                    <MDBBtn
-                      type={"default"}
-                      className="buttheme me-2 mt-5"
-                      onClick={Back}
-                    >
-<MDBIcon fas icon="angle-left" className="fs-2" />
-
-                    </MDBBtn>
-                   
-                  </div>
-                </MDBCol>
-              </MDBRow>
+      {/* <MDBRow
+        className="d-flex flex-row-reverse"
+        style={{ background: "#eadeda" }}
+      >
+        <MDBCol size={6}>
+          <div className={"form__item button__items d-flex flex-row-reverse"}>
+            <MDBBtn
+              type={"primary"}
+              className="buttheme mt-5"
+              onClick={greetUser}
+            >
+              <MDBIcon fas icon="angle-right" className="fs-2" />
+            </MDBBtn>
+            <MDBBtn
+              type={"default"}
+              className="buttheme me-2 mt-5"
+              onClick={Back}
+            >
+              <MDBIcon fas icon="angle-left" className="fs-2" />
+            </MDBBtn>
+          </div>
+        </MDBCol>
+      </MDBRow> */}
     </MDBContainer>
   );
 };

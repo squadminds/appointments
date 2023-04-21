@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   MDBContainer,
   MDBRow,
@@ -10,6 +10,15 @@ import {
 import Select from "react-dropdown-select";
 import { useNavigate } from "react-router-dom";
 
+function useLocalStorage(key) {
+  const [state, setState] = useState(localStorage.getItem(key));
+  function setStorage(item) {
+    localStorage.setItem(key, item);
+    setState(item);
+  }
+  return [state, setStorage];
+}
+const SELECT_VALUE_KEY = "otherProblem";
 const ProblemDrop = () => {
   const [state, setState] = useState();
   const navigate = useNavigate();
@@ -31,12 +40,27 @@ const ProblemDrop = () => {
     { label: "Other", value: 7 },
   ];
 
+  const [input, setInput] = useState("");
+  const [item, setItem] = useLocalStorage("details");
   const changeValue = (e) => {
     if (e.key === "Enter") {
       setState(e.target.value);
       ProblemList();
+      setItem(input);
     }
   };
+  const [selected, setSelected] = React.useState([]);
+  const handleChange = (s) => {
+    localStorage.setItem(SELECT_VALUE_KEY, JSON.stringify(s));
+    setSelected(s);
+  };
+
+  React.useEffect(() => {
+    const lastSelected = JSON.parse(
+      localStorage.getItem(SELECT_VALUE_KEY) ?? "[]"
+    );
+    setSelected(lastSelected);
+  }, []);
 
   return (
     <MDBContainer fluid className="backall">
@@ -49,9 +73,12 @@ const ProblemDrop = () => {
             <Select
               className="mt-5 dropset fw-bold"
               placeholder="select problem"
-              options={options}
-              onChange={(value) => console.log(value)}
+              // options={options}
+              // onChange={(value) => console.log(value)}
               onKeyPress={changeValue}
+              value={selected}
+              onChange={handleChange}
+              options={options}
             />
 
             <MDBTextArea
@@ -60,37 +87,34 @@ const ProblemDrop = () => {
               rows="6"
               cols="600"
               onKeyPress={changeValue}
+              onInput={(e) => setInput(e.target.value)}
             ></MDBTextArea>
           </MDBCol>
         </MDBRow>
-        
       </MDBContainer>
-      <MDBRow className="d-flex flex-row-reverse" style={{background:"#eadeda"}}>
-                <MDBCol size={6}>
-                  <div
-                    className={
-                      "form__item button__items d-flex flex-row-reverse"
-                    }
-                  >
-                    <MDBBtn
-                      type={"primary"}
-                      className="buttheme mt-5"
-                    onClick={ProblemList}
-                      >
-<MDBIcon fas icon="angle-right" className="fs-2" />
-                    </MDBBtn>
-                    <MDBBtn
-                      type={"default"}
-                      className="buttheme me-2 mt-5"
-                      onClick={greetUser} 
-                    >
-<MDBIcon fas icon="angle-left" className="fs-2" />
-
-                    </MDBBtn>
-                   
-                  </div>
-                </MDBCol>
-              </MDBRow>
+      <MDBRow
+        className="d-flex flex-row-reverse"
+        style={{ background: "#eadeda" }}
+      >
+        <MDBCol size={6}>
+          <div className={"form__item button__items d-flex flex-row-reverse"}>
+            <MDBBtn
+              type={"primary"}
+              className="buttheme mt-5"
+              onClick={ProblemList}
+            >
+              <MDBIcon fas icon="angle-right" className="fs-2" />
+            </MDBBtn>
+            <MDBBtn
+              type={"default"}
+              className="buttheme me-2 mt-5"
+              onClick={greetUser}
+            >
+              <MDBIcon fas icon="angle-left" className="fs-2" />
+            </MDBBtn>
+          </div>
+        </MDBCol>
+      </MDBRow>
     </MDBContainer>
   );
 };

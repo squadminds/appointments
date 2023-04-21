@@ -4,7 +4,7 @@ import {
   MDBInput,
   MDBRow,
   MDBBtn,
-  MDBIcon
+  MDBIcon,
 } from "mdb-react-ui-kit";
 import React, { useRef, useEffect, useState } from "react";
 import "../styles.css";
@@ -15,7 +15,6 @@ import "../styles.css";
 import { useNavigate } from "react-router-dom";
 
 //value get set localstorage
-
 
 function useLocalStorage(key) {
   const [state, setState] = useState(localStorage.getItem(key));
@@ -28,7 +27,7 @@ function useLocalStorage(key) {
 const Names = ({ setForm, formData, navigation }) => {
   const [state, setState] = useState();
   const { name } = formData;
-  const { next,prev } = navigation;
+  const { next, prev } = navigation;
   //autofocus
   const Input = useRef(null);
   useEffect(() => {
@@ -64,10 +63,11 @@ const Names = ({ setForm, formData, navigation }) => {
   const changeValue = (e) => {
     if (e.key === "Enter") {
       setState(e.target.value);
-      if(e.target.value.length > 0){
-          next()
-        setItem(input)
-      }}
+      if (e.target.value.length > 0) {
+        next();
+        setItem(input);
+      }
+    }
   };
 
   const navigate = useNavigate();
@@ -78,6 +78,18 @@ const Names = ({ setForm, formData, navigation }) => {
 
   const [input, setInput] = useState("");
   const [item, setItem] = useLocalStorage("myKey");
+
+  //disable able button
+  const [isValid, setValid] = useState(false);
+
+  const [location, setLocatoin] = useState("");
+  const validate = () => {
+    return location.length;
+  };
+  useEffect(() => {
+    const isValid = validate();
+    setValid(isValid);
+  }, [location]);
 
   return (
     <MDBContainer fluid className="backall ">
@@ -94,7 +106,12 @@ const Names = ({ setForm, formData, navigation }) => {
                 <h3 className="mt-5"> Great, can we get your full name?</h3>
               </MDBCol>
               <MDBRow className="d-flex justify-content-center ">
-                <MDBCol size="md-6" className="mt-3 text-dark">
+                <MDBCol
+                  size="md-6"
+                  className="mt-3 text-dark"
+                  value={location}
+                  onChange={(e) => setLocatoin(e.target.value)}
+                >
                   <MDBInput
                     className="w-100 "
                     label="fill your name"
@@ -105,7 +122,6 @@ const Names = ({ setForm, formData, navigation }) => {
                     onChange={setForm}
                     onKeyPress={changeValue}
                     onInput={(e) => setInput(e.target.value)}
-                   
                   />
                   <div>
                     {formik.touched.name && formik.errors.name ? (
@@ -143,33 +159,31 @@ const Names = ({ setForm, formData, navigation }) => {
         </form>
       </MDBRow>
       <MDBContainer fluid className="butfixed">
-      <MDBRow className="d-flex flex-row-reverse" style={{background:"#eadeda"}}>
-                <MDBCol size={6}>
-                  <div
-                    className={
-                      "form__item button__items d-flex flex-row-reverse"
-                    }
-                  >
-                    <MDBBtn
-                      type={"primary"}
-                      className="buttheme mt-5"
-                      onClick={next}
-                      >
-<MDBIcon fas icon="angle-right" className="fs-2" />
-                    </MDBBtn>
-                    <MDBBtn
-                      type={"default"}
-                      className="buttheme me-2 mt-5"
-                      onClick={greetUser}
-                    >
-<MDBIcon fas icon="angle-left" className="fs-2" />
-
-                    </MDBBtn>
-                   
-                  </div>
-                </MDBCol>
-              </MDBRow>
-              </MDBContainer>
+        <MDBRow
+          className="d-flex flex-row-reverse"
+          style={{ background: "#eadeda" }}
+        >
+          <MDBCol size={6}>
+            <div className={"form__item button__items d-flex flex-row-reverse"}>
+              <MDBBtn
+                type={"primary"}
+                className="buttheme mt-5"
+                onClick={next}
+                disabled={!isValid}
+              >
+                <MDBIcon fas icon="angle-right" className="fs-2" />
+              </MDBBtn>
+              <MDBBtn
+                type={"default"}
+                className="buttheme me-2 mt-5"
+                onClick={greetUser}
+              >
+                <MDBIcon fas icon="angle-left" className="fs-2" />
+              </MDBBtn>
+            </div>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
     </MDBContainer>
   );
 };
