@@ -290,7 +290,7 @@ export const brain = [
     helpline_number: "+91 98 2341 5860",
   },
   {
-    id: 16,
+    id: 17,
     img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
     specilist: "Neurologist",
     firstName: "Dr Sushil Kumar Rahi",
@@ -298,7 +298,7 @@ export const brain = [
     helpline_number: "+91 98 2562 5260",
   },
   {
-    id: 16,
+    id: 18,
     img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
     specilist: "Neurologist",
     firstName: "Dr. Sumeet Singh",

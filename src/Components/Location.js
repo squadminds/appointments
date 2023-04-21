@@ -14,7 +14,35 @@ import "../styles.css";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 
+//value get set localstorage
+
+function useLocalStorage(key) {
+  const [state, setState] = useState(localStorage.getItem(key));
+  function setStorage(item) {
+    localStorage.setItem(key, item);
+    setState(item);
+  }
+  return [state, setStorage];
+}
+
 const Location = () => {
+  //disable able button
+  const [isValid, setValid] = useState(false);
+  
+  
+  const [location, setLocatoin] = useState("");
+  const validate = () => {
+    return location.length ;
+  };
+  useEffect(() => {
+    const isValid = validate();
+    setValid(isValid);
+  }, [location]);
+  
+  //localstorage value
+
+  const [input, setInput] = useState("");
+  const [item, setItem] = useLocalStorage("location");
   const [state, setState] = useState();
   const navigate = useNavigate();
   function greetUser() {
@@ -33,6 +61,7 @@ const Location = () => {
     }
   }, []);
 
+  
   // validate
   const formik = useFormik({
     initialValues: {
@@ -63,19 +92,24 @@ const Location = () => {
   const changeValue = (e) => {
     if (e.key === "Enter") {
       setState(e.target.value);
-      if(e.target.value.length > 0){
-          greetUser()
-      }}
+      if (e.target.value.length > 0) {
+        greetUser();
+        setItem(input);
+      }
+    }
   };
   return (
     <>
-
       <MDBContainer fluid className="backall">
         <MDBRow>
           <form onSubmit={formik.handleSubmit}>
             <MDBContainer>
-              <MDBRow className="mt-5 " data-aos="fade-up" data-aos-offset="0"   data-aos-duration="2000">
-              
+              <MDBRow
+                className="mt-5 "
+                data-aos="fade-up"
+                data-aos-offset="0"
+                data-aos-duration="2000"
+              >
                 <MDBCol size={12} className="mt-5">
                   <h4 className="mt-5 text-dark d-flex justify-content-center">
                     Fill Your Location
@@ -87,16 +121,19 @@ const Location = () => {
                   </h3>
                 </MDBCol>
                 <MDBRow className="d-flex justify-content-center">
-                  <MDBCol size={6} className="mt-3 text-dark   ">
+                  <MDBCol size="md-6" className="mt-3 text-dark   ">
                     <MDBInput
                       className="w-200"
                       label="fill your location"
                       ref={Input}
                       name="location"
-                      value={formik.values.location}
-                      onChange={formik.handleChange}
+                      // value={formik.values.location}
+                      // onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       onKeyPress={changeValue}
+                      onInput={(e) => setInput(e.target.value)}
+                      value={location}
+                      onChange={(e) => setLocatoin(e.target.value)}
                     />
                     <br />
                     <div>
@@ -109,42 +146,36 @@ const Location = () => {
                   </MDBCol>
                 </MDBRow>
               </MDBRow>
-
-             </MDBContainer>
+            </MDBContainer>
           </form>
         </MDBRow>
-<MDBContainer className="butfixed" fluid>
-<MDBRow className="d-flex flex-row-reverse">
-                <MDBCol size={6}>
-                  <div
-                    className={
-                      "form__item button__items d-flex flex-row-reverse"
-                    }
-                  >
-                    <MDBBtn
-                      type={"primary"}
-                      className="buttheme mt-5"
-                      onClick={greetUser}
-                      onKeyPress={changeValue}
-                    >
-<MDBIcon fas icon="angle-right" className="fs-2" />
-                    </MDBBtn>
-                    <MDBBtn
-                      type={"default"}
-                      className="buttheme me-2 mt-5"
-                      onClick={Back}
-                    >
-<MDBIcon fas icon="angle-left" className="fs-2" />
-
-                    </MDBBtn>
-                   
-                  </div>
-                </MDBCol>
-              </MDBRow>
-</MDBContainer>
+        <MDBContainer className="butfixed" fluid>
+          <MDBRow className="d-flex flex-row-reverse">
+            <MDBCol size={6}>
+              <div
+                className={"form__item button__items d-flex flex-row-reverse"}
+              >
+                <MDBBtn
+                  type={"primary"}
+                  className="buttheme mt-5"
+                  onClick={greetUser}
+                  onKeyPress={changeValue}
+                  disabled={!isValid}
+                >
+                  <MDBIcon fas icon="angle-right" className="fs-2" />
+                </MDBBtn>
+                <MDBBtn
+                  type={"default"}
+                  className="buttheme me-2 mt-5"
+                  onClick={Back}
+                >
+                  <MDBIcon fas icon="angle-left" className="fs-2" />
+                </MDBBtn>
+              </div>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
       </MDBContainer>
- 
-             
     </>
   );
 };

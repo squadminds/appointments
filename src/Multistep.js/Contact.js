@@ -12,7 +12,6 @@ import { useFormik } from "formik";
 import React, { useRef, useEffect, useState } from "react";
 import "../styles.css";
 
-
 //localstorage data get set
 
 function useLocalStorage(key) {
@@ -60,18 +59,30 @@ const Contact = ({ setForm, formData, navigation }) => {
     Aos.refresh();
   }, []);
   // keypress
-      const changeValue = (e) => {
-        if (e.key === "Enter") {
-          setState(e.target.value);
-          if(e.target.value.length > 0){
-              // greetUser()
-              next()
-          }}
-      };
-      //value get set localstorage
+  const changeValue = (e) => {
+    if (e.key === "Enter") {
+      setState(e.target.value);
+      if (e.target.value.length > 0) {
+        // greetUser()
+        next();
+      }
+    }
+  };
+  //value get set localstorage
 
-  const [input, setInput] = useState("");
   const [item, setItem] = useLocalStorage("myKey");
+
+  //disable able button
+  const [isValid, setValid] = useState(false);
+
+  const [location, setLocatoin] = useState("");
+  const validate = () => {
+    return location.length;
+  };
+  useEffect(() => {
+    const isValid = validate();
+    setValid(isValid);
+  }, [location]);
 
   return (
     <MDBContainer fluid className="backall ">
@@ -85,10 +96,15 @@ const Contact = ({ setForm, formData, navigation }) => {
               data-aos-duration="2000"
             >
               <MDBCol className="mt-5 text-dark d-flex justify-content-center">
-                <h2 className="mt-5"> And what's {item}  email address?</h2>
+                <h2 className="mt-5"> What's your email, {item}? *</h2>
               </MDBCol>
               <MDBRow className="d-flex justify-content-center  ">
-                <MDBCol size="md-6" className="mt-3 text-dark">
+                <MDBCol
+                  size="md-6"
+                  className="mt-3 text-dark"
+                  value={location}
+                  onChange={(e) => setLocatoin(e.target.value)}
+                >
                   <MDBInput
                     className="w-100 "
                     label="fill your email"
@@ -135,38 +151,27 @@ const Contact = ({ setForm, formData, navigation }) => {
         </form>
       </MDBRow>
       <MDBContainer fluid className="butfixed">
-      <MDBRow className="d-flex flex-row-reverse" style={{background:"#eadeda"}}>
-                <MDBCol size={6}>
-                  <div
-                    className={
-                      "form__item button__items d-flex flex-row-reverse"
-                    }
-                  >
-                    <MDBBtn
-                      type={"primary"}
-                      className="buttheme mt-5"
-                      onClick={next}
-                      >
-<MDBIcon fas icon="angle-right" className="fs-2" />
-                    </MDBBtn>
-                    <MDBBtn
-                      type={"default"}
-                      className="buttheme me-2 mt-5"
-                      onClick={previous}
-                    >
-<MDBIcon fas icon="angle-left" className="fs-2" />
-
-                    </MDBBtn>
-                   
-                  </div>
-                </MDBCol>
-              </MDBRow>
-              </MDBContainer>
+        <MDBRow
+          className="d-flex flex-row-reverse"
+          style={{ background: "#eadeda" }}
+        >
+          <MDBCol size={6}>
+            <div className={"form__item button__items d-flex flex-row-reverse"}>
+              <MDBBtn type={"primary"} className="buttheme mt-5" onClick={next} disabled={!isValid}>
+                <MDBIcon fas icon="angle-right" className="fs-2" />
+              </MDBBtn>
+              <MDBBtn
+                type={"default"}
+                className="buttheme me-2 mt-5"
+                onClick={previous}
+              >
+                <MDBIcon fas icon="angle-left" className="fs-2" />
+              </MDBBtn>
+            </div>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
     </MDBContainer>
   );
 };
 export default Contact;
-
-
-
-

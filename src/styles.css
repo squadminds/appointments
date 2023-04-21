@@ -121,17 +121,20 @@ h3 {
   }
 }
 
-/* @media screen  and (min-width: 600px){
+@media screen  and (min-width: 600px){
 	.back {
         background: #B8EBD0;
         height: 410px;
     }
-    .bannerimgs{
-        width: 100%;
-        height: 410px;
-    }
     .backall{
         background: #EADEDA;
-        height: 450px;
+        height: 730px;
     }
-  } */
+    .backall1{
+      height: 900px;
+    }
+    .groupimgs {
+      height: 150px;
+      width: 100%;
+    }
+  }

@@ -41,6 +41,7 @@ const SkinSpecilist = () => {
   React.useEffect(() => {
     const timeout = setTimeout(() => {
       const filter = _.filter(Dermatologist, (user) => {
+        // localStorage.setItem('Specilist', JSON.stringify(user));
         return _.includes(
           _.lowerCase(JSON.stringify(_.values(user))),
           _.lowerCase(searchValue)
@@ -68,7 +69,7 @@ const SkinSpecilist = () => {
         <MDBRow data-aos="fade-up" data-aos-offset="0">
           <div className="d-flex flex-row-reverse mt-2">
             <div className="searchbar">
-              <form className="d-flex input-group w-auto">
+              <form className="d-flex input-group w-auto mt-5">
                 <MDBInput
                   type="search"
                   label="Search doctor..."
@@ -81,7 +82,7 @@ const SkinSpecilist = () => {
               </form>
             </div>
           </div>
-          <h3 className="text-center mx-auto">Select Skin Specialists</h3>
+          {/* <h3 className="text-center mx-auto">Select Skin Specialists</h3> */}
 
           <MDBRow className="user-list">
             {filteredUsers.slice(0, 6).map((user, i) => (
@@ -101,7 +102,13 @@ const SkinSpecilist = () => {
                           {user.specilist}
                         </MDBCardTitle>
                         <hr className="w-50" style={{ marginLeft: "25%" }} />
-                        <MDBCardText>Name: {user.firstName}</MDBCardText>
+                        <MDBCardText>
+                          Name: {user.firstName}{" "}
+                          {localStorage.setItem(
+                            "Specilist",
+                            JSON.stringify(user.firstName)
+                          )}
+                        </MDBCardText>
                         <MDBCardText> Skill: {user.qualification}</MDBCardText>
                       </MDBCardBody>
                     </MDBCol>

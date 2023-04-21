@@ -52,12 +52,23 @@ const Phone = ({ setForm, formData, navigation }) => {
   const changeValue = (e) => {
     if (e.key === "Enter") {
       setState(e.target.value);
-      if(e.target.value.length > 0){
-          next()
-      }}
+      if (e.target.value.length > 0) {
+        next();
+      }
+    }
   };
-  
 
+  //disable able button
+  const [isValid, setValid] = useState(false);
+
+  const [location, setLocatoin] = useState("");
+  const validate = () => {
+    return location.length;
+  };
+  useEffect(() => {
+    const isValid = validate();
+    setValid(isValid);
+  }, [location]);
 
   return (
     <MDBContainer fluid className="backall ">
@@ -77,7 +88,12 @@ const Phone = ({ setForm, formData, navigation }) => {
                 </h3>
               </MDBCol>
               <MDBRow className="d-flex justify-content-center">
-                <MDBCol size="md-6" className="mt-3 text-dark">
+                <MDBCol
+                  size="md-6"
+                  className="mt-3 text-dark"
+                  value={location}
+                  onChange={(e) => setLocatoin(e.target.value)}
+                >
                   <MDBInput
                     className="w-100 "
                     label="fill your conatct"
@@ -94,40 +110,37 @@ const Phone = ({ setForm, formData, navigation }) => {
                     ) : null}
                   </div>
                 </MDBCol>
-                
               </MDBRow>
             </MDBRow>
           </MDBContainer>
         </form>
       </MDBRow>
       <MDBContainer fluid className="butfixed">
-      <MDBRow className="d-flex flex-row-reverse" style={{background:"#eadeda"}}>
-                <MDBCol size={6}>
-                  <div
-                    className={
-                      "form__item button__items d-flex flex-row-reverse"
-                    }
-                  >
-                    <MDBBtn
-                      type={"primary"}
-                      className="buttheme mt-5"
-                      onClick={next}
-                      >
-<MDBIcon fas icon="angle-right" className="fs-2" />
-                    </MDBBtn>
-                    <MDBBtn
-                      type={"default"}
-                      className="buttheme me-2 mt-5"
-                      onClick={previous}
-                    >
-<MDBIcon fas icon="angle-left" className="fs-2" />
-
-                    </MDBBtn>
-                   
-                  </div>
-                </MDBCol>
-              </MDBRow>
-              </MDBContainer>
+        <MDBRow
+          className="d-flex flex-row-reverse"
+          style={{ background: "#eadeda" }}
+        >
+          <MDBCol size={6}>
+            <div className={"form__item button__items d-flex flex-row-reverse"}>
+              <MDBBtn
+                type={"primary"}
+                className="buttheme mt-5"
+                onClick={next}
+                disabled={!isValid}
+              >
+                <MDBIcon fas icon="angle-right" className="fs-2" />
+              </MDBBtn>
+              <MDBBtn
+                type={"default"}
+                className="buttheme me-2 mt-5"
+                onClick={previous}
+              >
+                <MDBIcon fas icon="angle-left" className="fs-2" />
+              </MDBBtn>
+            </div>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
     </MDBContainer>
   );
 };
