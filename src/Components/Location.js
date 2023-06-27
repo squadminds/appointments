@@ -1,85 +1,80 @@
-import React, { useRef, useEffect, useState } from "react";
-import Aos from "aos";
-import "aos/dist/aos.css";
-
-import {
-  MDBCol,
-  MDBContainer,
-  MDBInput,
-  MDBRow,
-  MDBBtn,
-  MDBIcon,
-} from "mdb-react-ui-kit";
-import "../styles.css";
+import { MDBCol, MDBContainer, MDBInput, MDBRow,MDBBtn } from 'mdb-react-ui-kit'
+import React,{ useRef, useEffect, useCallback ,useState,KeyboardEvent, useMemo} from 'react'
+import "../styles.css"
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
-
-//value get set localstorage
-
-function useLocalStorage(key) {
-  const [state, setState] = useState(localStorage.getItem(key));
-  function setStorage(item) {
-    localStorage.setItem(key, item);
-    setState(item);
-  }
-  return [state, setStorage];
-}
-
+import { useNavigate,useLocation } from 'react-router-dom'
+import {useSelector,useDispatch} from "react-redux";
+import { modalShow} from "../redux/HealthSlice";
+import data from "./contents/CountryCodes.json"
+import ToggleModal from './modal';
+import {collection, addDoc,getDocs,query,where, updateDoc,doc,getDoc} from "firebase/firestore";
+import {db} from "../firebase/firebase";
+import { selectedCountry,matchedCountry} from './Calls';
+import { CallMe } from './Calls';
 const Location = () => {
-  //disable able button
-  const [isValid, setValid] = useState(false);
-  
-  
-  const [location, setLocatoin] = useState("");
-  const validate = () => {
-    return location.length ;
-  };
-  useEffect(() => {
-    const isValid = validate();
-    setValid(isValid);
-  }, [location]);
-  
-  //localstorage value
+  const [country,setCountry]=useState("");
 
-  const [input, setInput] = useState("");
-  const [item, setItem] = useLocalStorage("location");
-  const [state, setState] = useState();
   const navigate = useNavigate();
-  function greetUser() {
-    navigate("/problem");
-  }
+  const location = useLocation();
+  
 
-  function Back() {
+  const dispatch=useDispatch()
+
+const handleNavigate=async ()=>{
+  selectedCountry(country)
+
+   navigate("/problem",{state:location.state})
+}
+  const greetUser = async () => {
+
+    const isCountry=await matchedCountry(country)
+    console.log("this is",isCountry)
+if(isCountry){
+navigate("/problem")
+selectedCountry(country)
+}else{
+  dispatch(modalShow("Error Location"))
+}
+ 
+
+}
+   const  Back=()=> {
     navigate("/");
   }
 
   //autofocus
-  const Input = useRef(null);
-  useEffect(() => {
-    if (Input.current) {
-      Input.current.focus();
-    }
-  }, []);
+ 
+const formik = useFormik({
+  initialValues: {
+    location: "",
+ 
+  },
+  onSubmit: (values) => {
+    const str=values.location.charAt(0).toUpperCase() + values.location.slice(1)
+    setCountry(str)
+  },
+  validate: (values) => {
+    let errors = {};
+    if (values.location!=="") errors.location = "Location is required";
+    else if (!/^[a-zA-Z\s]+$/.test(data.location))
+      errors.location = "Location should only contain alphabets and spaces";
+      const str=values.location.charAt(0).toUpperCase() + values.location.slice(1)
+    setCountry(str)
+
+      return errors;
+    
+
+  },
+});
+
+useEffect(() => {
+  window.addEventListener("keypress", (e) => {
+    if (e.key === "Enter" ) {
+greetUser()
 
   
-  // validate
-  const formik = useFormik({
-    initialValues: {
-      location: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-    validate: (values) => {
-      let errors = {};
-      if (!values.location) errors.location = "Location is required";
-      else if (!/^[a-zA-Z\s]+$/.test(values.location))
-        errors.location = "Location should only contain alphabets and spaces";
-      return errors;
-    },
-  });
-
-  // aos
+  }})
+}, [country]);
 
   useEffect(() => {
     Aos.init({
@@ -99,21 +94,14 @@ const Location = () => {
     }
   };
   return (
-    <>
-      <MDBContainer fluid className="backall">
-        <MDBRow>
-          <form onSubmit={formik.handleSubmit}>
-            <MDBContainer>
-              <MDBRow
-                className="mt-5 "
-                data-aos="fade-up"
-                data-aos-offset="0"
-                data-aos-duration="2000"
-              >
-                <MDBCol size={12} className="mt-5">
-                  <h4 className="mt-5 text-dark d-flex justify-content-center">
-                    Fill Your Location
-                  </h4>
+  
+    <MDBContainer fluid className='backall' >
+      <ToggleModal/>
+      <MDBRow>
+       <form onSubmit={formik.handleSubmit}> 
+      <MDBContainer>
+          <MDBRow>
+            <h3 className='mt-5 text-dark d-flex justify-content-center'>The Assessment of our partner doctors relies on complete accuracy<br/> and honesty in your answers to the Questions below.</h3>
 
                   <h3 className="d-flex justify-content-center">
                     {" "}
@@ -174,10 +162,51 @@ const Location = () => {
               </div>
             </MDBCol>
           </MDBRow>
+          <MDBRow className='d-flex justify-content-center'>
+            <MDBCol size="md-6" className='mt-3 text-dark'>
+              <MDBInput className='w-100 ' type="text" label="fill your location" name="location"
+   value={formik.values.location}
+   onChange={formik.handleChange}
+   onBlur={formik.handleBlur}
+ />
+
+            </MDBCol>
+          </MDBRow>    
+<MDBRow className='d-flex justify-content-center'>
+  <MDBCol size={6}>
+  <div
+                    className={
+                      "form__item button__items d-flex justify-content-between"
+                    }
+                  >
+                    <MDBBtn
+                      type={"primary"}
+                      className="buttheme me-2 mt-3 NePreBtn"
+                      onClick={Back}
+                    >
+                      Back
+                    </MDBBtn>
+                  
+                 
+              
+                    <MDBBtn
+                      type={"primary"}
+                      className="buttheme mt-3 NePreBtn"
+                      onClick={()=>greetUser()}
+                  
+                    >
+                      Next
+                    </MDBBtn>
+                  </div>
+      </MDBCol>
+    </MDBRow>
+
+
         </MDBContainer>
-      </MDBContainer>
-    </>
-  );
-};
+        </form>
+       </MDBRow> 
+    </MDBContainer>
+  )
+}
 
 export default Location;
