@@ -3,19 +3,27 @@ import { MDBCol, MDBContainer, MDBInput, MDBRow,MDBBtn } from 'mdb-react-ui-kit'
 import React from 'react'
 import "../styles.css"
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { InfoName,InfoPhone,InfoEmail } from '../redux/HealthSlice'
 
 const Message = () => {
   const navigate = useNavigate();
+  const dispatch=useDispatch()
+const {Name,Phone,Email}=useSelector((state)=>state.HealthReducer)
   function greetUser() {
-    navigate("/");
+navigate("/formReview")
   }
 
   function Back() {
-    navigate("/phone");
+    navigate("/info");
+    dispatch(InfoName(Name))
+    dispatch(InfoPhone(Phone))
+    dispatch(InfoEmail(Email))
   }
 
   return (
     <MDBContainer fluid className='backall'>
+   
        <MDBRow>
         <MDBContainer>
           <MDBRow>
@@ -55,8 +63,9 @@ const Message = () => {
                       className="buttheme mt-3"
                       onClick={greetUser}
                     >
-                      Next
+                    View Recipt
                     </MDBBtn>
+                   
                   </div>
   </MDBCol>
 </MDBRow>
