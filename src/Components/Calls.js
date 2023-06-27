@@ -2,17 +2,12 @@ import { db } from "../firebase/firebase";
 import {
   collection,
   addDoc,
-  getDocs,
-  query,
-  where,
   doc,
   getDoc,
-  updateDoc,
   setDoc,
-  UpdateData
-} from "firebase/firestore";
-import ToggleModal from "./modal";
+  updateDoc,
 
+} from "firebase/firestore";
 var location = "";
 const currentDate = new Date();
 const day = currentDate.getDate();
@@ -20,19 +15,36 @@ const month = currentDate.getMonth();
 const year = currentDate.getFullYear();
 const hr = currentDate.getHours();
 const minute = currentDate.getMinutes();
-
-export const addSpectlist = async () => {
-  try {
-  } catch (e) {}
-};
+const slat=doc(db,"healthcare","appointment")
+console.log("this is it",slat)
+// schedule appointment -------------------
 export const ScheduleAppointment = async (date) => {
-  try {
-    await setDoc(doc(db, "healthcare", "appointment"), {
+   try {
+   const schedule= await setDoc(doc(db, "healthcare","appointment"), {
       appointment: date,
+
     });
+    
   } catch (e) {
-    console.log("object");
+    console.log("object",e);
   }
+};
+// selected country for teatment------------------
+export const matchedCountry = async (country) => {
+  try {
+    const documentRef = doc(db, "countrylist","7vESrZclpTOJIJWsJAQj");
+    const documentSnapshot = await getDoc(documentRef);
+    if (documentSnapshot.exists()) {
+      const documentData = documentSnapshot.data().country;
+      const isPresent = documentData.find((doc) => doc.name === country);
+
+      if (isPresent) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  } catch (e) {}
 };
 export const selectedCountry = async (country) => {
   try {
@@ -43,6 +55,7 @@ export const selectedCountry = async (country) => {
     console.log(e);
   }
 };
+//selected disease----------------------------------------
 export const SelectedDisease = async (e) => {
   try {
     await updateDoc(doc(db, "healthcare", "appointment"), {
@@ -50,17 +63,23 @@ export const SelectedDisease = async (e) => {
     });
   } catch (e) {}
 };
+export const getDisease = async () => {
+  try {
+    const querySnapshot = await getDoc(doc(db, "healthcare", "appointment"));
+    if (querySnapshot.exists) {
+      return querySnapshot.data().Disease;
+    }
+  } catch (e) {
+    console.log("object", e);
+  }
+};
+//selected doctors------------------------------------------------
 
 export const selectedSpecalist = async (user) => {
-
- 
- 
  const id=await  defaultTimeSlot();
-  if(id){
+ const val=await setSpecalist(user,id)
+return id;
 
-await setSpecalist(user,id)
-  }
- 
 };
 
 const defaultTimeSlot = async () => {
@@ -113,30 +132,34 @@ return slotRef.id
     console.log("this is that", e);
   }
 };
+export const timeSlot=async (id)=>{
 
+  try{
+const slotRef=await getDoc(doc(db,"healthcare",id))
+if(slotRef.exists){
+var dateSlots=slotRef.data().slot;
+
+}
+return dateSlots
+  }catch(e){
+    console.log("object")
+  }
+}
 
 const setSpecalist = async (user,id) => {
 
-  try {
-const data=await updateDoc(doc(db, "healthcare", "appointment"), {
+try {
+await updateDoc(doc(db, "healthcare", "appointment"), {
       Doctor: user.firstName,
       specalist: user.specilist,
       id: user.id,
       img: user.img,
       qualification: user.qualification,
-      helpline_number: user.helpline_number,
-  
-      
-
-    });
-   await data.updateDoc({
-        refernceField:id
-    }).then(() => {
-        console.log('Reference set successfully.');
-      })
-      .catch((error) => {
-        console.error('Error setting reference:', error);
-      });
+      helpline_number: user.helpline_number
+ });
+ const DocumentRef=doc(db,"healthcare", id);
+ const document=doc(db,"healthcare","appointment")
+await updateDoc(document, { ref:DocumentRef})
 
   } catch (e) {
     console.log("object", e);
@@ -144,16 +167,7 @@ const data=await updateDoc(doc(db, "healthcare", "appointment"), {
 
 };
 //get apis
-export const getDisease = async () => {
-  try {
-    const querySnapshot = await getDoc(doc(db, "healthcare", "appointment"));
-    if (querySnapshot.exists) {
-      return querySnapshot.data().Disease;
-    }
-  } catch (e) {
-    console.log("object", e);
-  }
-};
+
 
 export const getSpecalist = async () => {
   try {
@@ -166,21 +180,11 @@ export const getSpecalist = async () => {
   }
 };
 
-export const matchedCountry = async (country) => {
-  try {
-    const documentRef = doc(db, "healthcare", "countrylist");
-    const documentSnapshot = await getDoc(documentRef);
-    if (documentSnapshot.exists()) {
-      const documentData = documentSnapshot.data().user;
-      const isPresent = documentData.find((doc) => doc.name === country);
+const selectedDate=async()=>{
+  try{
+await setDoc(doc(db,"healthcare","appoinment"))
+  }catch(e){
+    console.log("object",e)
+  }
 
-      if (isPresent) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  } catch (e) {}
-};
-
-
+}

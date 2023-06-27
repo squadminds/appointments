@@ -17,6 +17,7 @@ const Location = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
+const data=collection(db,"healthcare","appointment")
 
   const dispatch=useDispatch()
 

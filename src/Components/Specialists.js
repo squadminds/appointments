@@ -38,9 +38,10 @@ const [Selected,setSelected]=useState()
   const location=useLocation()
   const currentIndex = useRef(0);
   const lastIndex = useRef(4);
-  const handleActive = (user) => {
-selectedSpecalist(user)
-navigate("/slot",{state:location.state});
+  const handleActive =async (user) => {
+const value=await selectedSpecalist(user)
+console.log("this is ",value)
+navigate("/slot",{state:value});
   };
 
   const  greetUser=async()=> {
