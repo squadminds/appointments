@@ -76,25 +76,7 @@ greetUser()
   }})
 }, [country]);
 
-  useEffect(() => {
-    Aos.init({
-      duration: 500,
-      offset: 100,
-    });
-    Aos.refresh();
-  }, []);
-
-  const changeValue = (e) => {
-    if (e.key === "Enter") {
-      setState(e.target.value);
-      if (e.target.value.length > 0) {
-        greetUser();
-        setItem(input);
-      }
-    }
-  };
   return (
-  
     <MDBContainer fluid className='backall' >
       <ToggleModal/>
       <MDBRow>
@@ -103,63 +85,9 @@ greetUser()
           <MDBRow>
             <h3 className='mt-5 text-dark d-flex justify-content-center'>The Assessment of our partner doctors relies on complete accuracy<br/> and honesty in your answers to the Questions below.</h3>
 
-                  <h3 className="d-flex justify-content-center">
-                    {" "}
-                    What is the name of your country of residence?
-                  </h3>
-                </MDBCol>
-                <MDBRow className="d-flex justify-content-center">
-                  <MDBCol size="md-6" className="mt-3 text-dark   ">
-                    <MDBInput
-                      className="w-200"
-                      label="fill your location"
-                      ref={Input}
-                      name="location"
-                      // value={formik.values.location}
-                      // onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      onKeyPress={changeValue}
-                      onInput={(e) => setInput(e.target.value)}
-                      value={location}
-                      onChange={(e) => setLocatoin(e.target.value)}
-                    />
-                    <br />
-                    <div>
-                      {formik.touched.location && formik.errors.location ? (
-                        <div className="text-danger">
-                          {formik.errors.location}
-                        </div>
-                      ) : null}
-                    </div>
-                  </MDBCol>
-                </MDBRow>
-              </MDBRow>
-            </MDBContainer>
-          </form>
-        </MDBRow>
-        <MDBContainer className="butfixed" fluid>
-          <MDBRow className="d-flex flex-row-reverse">
-            <MDBCol size={6}>
-              <div
-                className={"form__item button__items d-flex flex-row-reverse"}
-              >
-                <MDBBtn
-                  type={"primary"}
-                  className="buttheme mt-5"
-                  onClick={greetUser}
-                  onKeyPress={changeValue}
-                  disabled={!isValid}
-                >
-                  <MDBIcon fas icon="angle-right" className="fs-2" />
-                </MDBBtn>
-                <MDBBtn
-                  type={"default"}
-                  className="buttheme me-2 mt-5"
-                  onClick={Back}
-                >
-                  <MDBIcon fas icon="angle-left" className="fs-2" />
-                </MDBBtn>
-              </div>
+            <h4 className='mt-5 text-dark d-flex justify-content-center'>Fill Your Location</h4>
+            <MDBCol className='mt-5 text-dark d-flex justify-content-center'>
+            <h2>  What is the name of your country of residence?</h2>
             </MDBCol>
           </MDBRow>
           <MDBRow className='d-flex justify-content-center'>
@@ -209,4 +137,4 @@ greetUser()
   )
 }
 
-export default Location;
+export default Location
