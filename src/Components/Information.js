@@ -15,6 +15,8 @@ import {
   InfoEmail,
   modalShow,
 } from "../redux/HealthSlice";
+import { collection, doc, updateDoc, addDoc, setDoc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 import { useSelector, useDispatch } from "react-redux";
 import ToggleModal from "./modal";
 
@@ -22,64 +24,72 @@ const Information = () => {
   const navigate = useNavigate();
   const [details, setDetails] = useState({ name: "", email: "", phone: "" });
   const [error, setError] = useState("");
-  const [condition,setCondition]=useState(1)
+  const [condition, setCondition] = useState(1);
   const dispatch = useDispatch();
   const { Name, Phone, Email } = useSelector((state) => state.HealthReducer);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\+?\d{1,3}?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
-  function greetUser() {
-    if (condition===1) {
+  const greetUser = async () => {
+    if (condition === 1) {
       if (details.name !== "") {
-        dispatch(InfoName(details.name));
         setError("");
-        setCondition(2)
-        dispatch(modalShow(""))
+        setCondition(2);
+        dispatch(modalShow(""));
       } else if (details.name === "") {
         setError("Name Is Required");
-        dispatch(modalShow("Name Is Required"))
-      } }else if (condition===2) {
-        if (emailRegex.test(details.email) === false) {
-          dispatch(modalShow("Invalid Email Address"))
-          setError("Invalid Email Address");
-         
-        } else if (details.email === "") {
-          dispatch(modalShow(" Email is Required"))
-          setError("Email Is Required");
-
-        } else if (emailRegex.test(details.email) === true) {
-          dispatch(InfoEmail(details.email));
-          dispatch(modalShow(""))
-          setCondition(3)
-        }
-      } else if (condition===3) {
-        if (phoneRegex.test(details.phone) === false) {
-          dispatch(modalShow("Phone number must be 10 digits with country code"))
-          setError("Phone number must be 10 digits with country code");
-        } else if (details.phone === "") {
-          dispatch(modalShow("Phone Number Is Required"))
-          setError("Phone Number Is Required");
-        } else if (phoneRegex.test(details.phone) === true) {
-          dispatch(InfoPhone(details.phone));
-          dispatch(modalShow(""))
-          setError("");
-          navigate("/msg")
-        }
+        dispatch(modalShow("Name Is Required"));
       }
-    
-  }
+    } else if (condition === 2) {
+      if (emailRegex.test(details.email) === false) {
+        dispatch(modalShow("Invalid Email Address"));
+        setError("Invalid Email Address");
+      } else if (details.email === "") {
+        dispatch(modalShow(" Email is Required"));
+        setError("Email Is Required");
+      } else if (emailRegex.test(details.email) === true) {
+        dispatch(modalShow(""));
+        setCondition(3);
+      }
+    } else if (condition === 3) {
+      if (phoneRegex.test(details.phone) === false) {
+        dispatch(modalShow("Phone number must be 10 digits with country code"));
+        setError("Phone number must be 10 digits with country code");
+      } else if (details.phone === "") {
+        dispatch(modalShow("Phone Number Is Required"));
+        setError("Phone Number Is Required");
+      } else if (phoneRegex.test(details.phone) === true) {
+        try {
+          const user = await addDoc(collection(db, "users"), {
+            Patient_Name: details.name,
+            Patient_Mail: details.email,
+            Patient_Phone: details.phone,
+          });
+          if (user) {
+            const ref = localStorage.getItem("reference");
+            updateDoc(doc(db, "Appointment", ref), {
+              user: doc(db, "users", user.id),
+            });
+          }
+        } catch (e) {
+          console.log("object");
+        }
+        dispatch(modalShow(""));
+        setError("");
 
+        navigate("/msg");
+      }
+    }
+  };
 
   function Back() {
-   if(condition===3)
-    {
-
-setCondition(2) 
-   }
-else if(condition===2){
-  setCondition(1)
-}else if(condition===1){
-    navigate("/slot");
-  }}
+    if (condition === 3) {
+      setCondition(2);
+    } else if (condition === 2) {
+      setCondition(1);
+    } else if (condition === 1) {
+      navigate("/slot");
+    }
+  }
   const handleChange = (e) => {
     if (e.target.name === "name") {
       setDetails({ ...details, name: e.target.value });
@@ -106,9 +116,9 @@ else if(condition===2){
   useEffect(() => {
     console.log("object", details);
   }, [details]);
-  useEffect(()=>{
-setDetails({...details,name:Name,phone:Phone,email:Email})
-  },[])
+  useEffect(() => {
+    setDetails({ ...details, name: Name, phone: Phone, email: Email });
+  }, []);
   return (
     <>
       <MDBContainer fluid className="backall ">
@@ -123,21 +133,32 @@ setDetails({...details,name:Name,phone:Phone,email:Email})
               </h3>
 
               <MDBCol className="mt-5 text-dark d-flex justify-content-center">
-                <h2> {condition===1?"Great, can we get your full name?":condition===2?`Welcome  ${details.name} Please Provide Your Email`:"Your question here. Recall information with @"}</h2>
+                <h2>
+                  {" "}
+                  {condition === 1
+                    ? "Great, can we get your full name?"
+                    : condition === 2
+                    ? `Welcome  ${details.name} Please Provide Your Email`
+                    : "Your question here. Recall information with @"}
+                </h2>
               </MDBCol>
             </MDBRow>
             <MDBRow className="d-flex justify-content-center ">
-              <MDBCol size="md-6" className="mt-3 text-dark justify-content-around">
-              
-                { condition===1  && <MDBInput
+              <MDBCol
+                size="md-6"
+                className="mt-3 text-dark justify-content-around"
+              >
+                {condition === 1 && (
+                  <MDBInput
                     className="w-100 "
                     label="fill your name"
                     ref={Input}
                     value={details.name}
                     name={"name"}
                     onChange={(e) => handleChange(e)}
-                  />}
-              {condition===2 && 
+                  />
+                )}
+                {condition === 2 && (
                   <>
                     <MDBInput
                       className="w-100 "
@@ -147,9 +168,9 @@ setDetails({...details,name:Name,phone:Phone,email:Email})
                       name={"email"}
                       onChange={(e) => handleChange(e)}
                     />
-                  </>}
-                  {condition===3 &&
-             
+                  </>
+                )}
+                {condition === 3 && (
                   <MDBInput
                     className="w-100 "
                     label="fill your contact"
@@ -158,9 +179,8 @@ setDetails({...details,name:Name,phone:Phone,email:Email})
                     name={"phone"}
                     onChange={(e) => handleChange(e)}
                   />
-            }
-                
-             
+                )}
+
                 <span style={{ color: "red" }}>{error}</span>
               </MDBCol>
             </MDBRow>

@@ -4,15 +4,23 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import "../styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import {db} from "../firebase/firebase"
-import {collection, addDoc,getDocs,query,where,doc,getDoc,updateDoc} from "firebase/firestore";
-import { ScheduleAppointment } from "./Calls";
-
+import { db } from "../firebase/firebase";
+import {
+  collection,
+  setDoc,
+  addDoc,
+  getDocs,
+  query,
+  where,
+  doc,
+  getDoc,
+  updateDoc,
+} from "firebase/firestore";
 const Banner = () => {
   const [state, setState] = useState();
   const navigate = useNavigate();
   const date = new Date();
-  // aos
+
   useEffect(() => {
     Aos.init({
       duration: 500,
@@ -20,15 +28,19 @@ const Banner = () => {
     });
   }, []);
   // onkeypress
-  const  greetUser=async()=> {
-const value=await ScheduleAppointment(date)
-    navigate("/location", { state:value });
-  }
+  const greetUser = async () => {
+    try {
+      const ref = await addDoc(collection(db, "Appointment"),{});
+      localStorage.setItem("reference", ref.id);
+    } catch (e) {}
+
+    navigate("/problem");
+  };
+
   const changeValue = (e) => {
     if (e.key === "Enter") {
       setState(e.target.value);
       greetUser();
-      
     }
   };
   useEffect(() => {
@@ -36,11 +48,12 @@ const value=await ScheduleAppointment(date)
       if (e.key === "Enter") {
         setState(e.target.value);
         greetUser();
-        // navigate("/location");
       }
-      // console.log(e.key)
     });
   }, []);
+  useEffect(()=>{
+localStorage.clear()
+  })
   return (
     <MDBContainer fluid>
       <MDBRow onKeyPress={changeValue}>
@@ -54,7 +67,6 @@ const value=await ScheduleAppointment(date)
             Complete this form to
             <br />
             <span className="text-dark fw-bold">
-             
               book an <br />
               appointment
             </span>
@@ -71,19 +83,31 @@ const value=await ScheduleAppointment(date)
           </p>
           <MDBBtn
             className="fw-bold but NePreBtn "
-            onClick={()=>greetUser()}
-            // data-aos="fade-up" data-aos-offset="2"   data-aos-duration="2000"
+            onClick={() => greetUser()}
+          
           >
             <NavLink
-              to="/location"
+              to="/problem"
               className="text-light NePreBtn"
               onKeyPress={changeValue}
-       
             >
               Schedule
             </NavLink>
+          
+            
           </MDBBtn>
+          {/* <MDBBtn 
+           className="fw-bold but NePreBtn ">
+          <NavLink
+              to="/Check"
+              className="text-light NePreBtn"
+            
+            >
+             Check Status
+            </NavLink>
+            </MDBBtn> */}
         </MDBCol>
+
         <MDBCol size="md-6">
           <img
             src="https://img.freepik.com/free-photo/interior-view-operating-room_1170-2255.jpg?w=2000"

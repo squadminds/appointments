@@ -2,15 +2,17 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyB2mrTMaAUGTapUK_uxfn9GY8Pobk8soaE",
-  authDomain: "health-app-f44f3.firebaseapp.com",
-  projectId: "health-app-f44f3",
-  storageBucket: "health-app-f44f3.appspot.com",
-  messagingSenderId: "919496557348",
-  appId: "1:919496557348:web:67160ea325ce8b22cc29b1",
-  measurementId: "G-P9H08T7YK6"
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBFsQ1rEw7k3yvtAejODOgkzFlZiAOk3bM",
+    authDomain: "healthcare-349da.firebaseapp.com",
+    projectId: "healthcare-349da",
+    storageBucket: "healthcare-349da.appspot.com",
+    messagingSenderId: "730513019025",
+    appId: "1:730513019025:web:0a938a3e4f27639c37af30",
+    measurementId: "G-LGFTRFVCJ7"
   };
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect,useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   MDBCol,
   MDBRow,
@@ -7,49 +7,85 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardImage,
-  MDBCardTitle
+  MDBCardTitle,
 } from "mdb-react-ui-kit";
-import { useNavigate,useLocation } from "react-router-dom";
-import {useDispatch } from "react-redux";
-import { modalShow} from "../redux/HealthSlice";
+import { useNavigate } from "react-router-dom";
 import ToggleModal from "./modal";
-import { getDisease, SelectedDisease } from "./Calls"; 
+import {
+  collection,
+  doc,
+  getDocs,
+  updateDoc,
+  getDoc,
+} from "firebase/firestore";
+import { db } from "../firebase/firebase";
+import { useDispatch } from "react-redux";
+import { modalShow } from "../redux/HealthSlice";
 const Problem = () => {
-  const [state, setState] = useState();
   const navigate = useNavigate();
-  const [disease,setDisease]=useState()
-  const location=useLocation()
-  const dispatch=useDispatch()
-  // Access the value of the "id" parameter
+  const dispatch = useDispatch();
+  const [disease, setDisease] = useState();
+  const [active, setActive] = useState();
 
-const handleBack=()=>{
-  navigate("/location")
+  const handleBack = () => {
+    navigate("/");
+  };
+  const handleNext = async (e) => {
+    try {
+      const ref = localStorage.getItem("reference");
+      await updateDoc(doc(db, "Appointment", ref), {
+        Disease: doc(db, "DiseaseList", e),
+      });
+    } catch (e) {}
+    navigate("/location");
+  };
+  const handleNextPage = async () => {
+    if (active) {
+      navigate("/location");
+    } else {
+      dispatch(modalShow("Disease"));
+    }
+  };
 
-}
-const handleNext= async(e)=>{
-await SelectedDisease(e)
-navigate("/doctor")
+  const activeFunction = async () => {};
+  const fetchDiseaselist = async () => {
+    try {
+      const DiseaseList = await getDocs(collection(db, "DiseaseList"));
+      if (!DiseaseList.empty) {
+        const data = DiseaseList.docs.map((doc) => {
+          return { id: doc.id, data: doc.data() };
+        });
+        setDisease(data);
+      }
+    } catch (e) {
+      console.log("object", e);
+    }
+  };
+  const callingDisease = async () => {
+    const ref = localStorage.getItem("reference");
 
-}
-const handleNextPage=async()=>{
-const v=await getDisease()
+    if(ref){
+    const value = await getDoc(doc(db, "Appointment", ref));
+    if (value.exists) {
+ 
+      const val = value.data()?.Disease;
+      if (val) {
+        const dat = await getDoc(doc(db, val.path));
 
-if(v){
-  navigate("/doctor",{state:location.state})
-}else{
-  dispatch(modalShow("Disease"))
-}
-
-}
-const activeFunction=async()=>{
-  const v=await getDisease()
-  console.log(v)
-  setDisease(v)
-}
-
-useEffect(()=>{
-activeFunction()
-},[])
+        if (!dat.empty) {
+          setActive(dat.data()?.disease);
+        }
+      }}
+    }
+  };
+  useEffect(() => {
+    if (!disease) {
+      fetchDiseaselist();
+    }
+  }, [disease]);
+  useEffect(() => {
+    callingDisease();
+  },[]);
   return (
     <MDBContainer fluid className="backall backall1">
       <MDBContainer>
@@ -58,213 +94,43 @@ activeFunction()
           data-aos="fade-up"
           data-aos-offset="0"
           data-aos-duration="1000"
+          sx={{ display: "flex", flexDirection: "row" }}
         >
-          {/* <h5 className="text-center mt-5">
-            TO BEGIN, PLEASE SELECT THE IMAGE THAT BEST DESCRIBES YOUR HEALTH
-            PROBLEM.
-          </h5> */}
-
           <h3 className="text-center mt-5">Select Problem</h3>
-          <MDBRow>
-            <MDBCol size="md-4" className="mt-3 text-center ">
-              <MDBCard  onClick={(e)=>handleNext("Neurologist",e)}>
-                <MDBRow className={disease==="Neurologist"?`g-0 active`:"g-0"}>
-                  <MDBCol md="4">
-                    <MDBCardImage
-                      src="https://img.freepik.com/premium-vector/neurosurgeon-neurologist-examine-brain-doctor-pointing-medical-signboard-board-with-human-brain-physician-scientist-teaching-about-alzheimer-dementia-disease-mental-neurology-sickness_458444-222.jpg?w=2000"
-                      alt="..."
-                      height="100px"
-                      width="100px"
-                    />
+
+          <MDBRow size="lg-4" className="flex  justify-content-between">
+            {disease &&
+              disease?.map((val) => {
+                return (
+                  <MDBCol size="md-4" className="mt-3 text-center">
+                    <MDBCard onClick={() => handleNext(val.id)}>
+                      <MDBRow
+                        className={
+                          active === val.data.disease ? `g-0 active` : "g-0"
+                        }
+                      >
+                        <MDBCol md="4">
+                          <MDBCardImage
+                            src="https://img.freepik.com/premium-vector/neurosurgeon-neurologist-examine-brain-doctor-pointing-medical-signboard-board-with-human-brain-physician-scientist-teaching-about-alzheimer-dementia-disease-mental-neurology-sickness_458444-222.jpg?w=2000"
+                            alt="..."
+                            height="100px"
+                            width="100px"
+                          />
+                        </MDBCol>
+                        <MDBCol md="8">
+                          <MDBCardBody>
+                            <MDBCardTitle className="fw-bold  mt-3">
+                              {val.data.disease}
+                            </MDBCardTitle>
+                            <MDBCardTitle></MDBCardTitle>
+                          </MDBCardBody>
+                        </MDBCol>
+                      </MDBRow>
+                    </MDBCard>
                   </MDBCol>
-                  <MDBCol md="8">
-                    <MDBCardBody>
-                      <MDBCardTitle className="fw-bold  mt-3">
-                        Brain Problem
-                      </MDBCardTitle>
-                      <MDBCardTitle>
-                      
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard>
-            </MDBCol>
-            <MDBCol size="md-4" className="mt-3 text-center">
-              <MDBCard onClick={()=>handleNext("ENT")}>
-                <MDBRow className={disease==="ENT"?"g-0 active":"g-0"}>
-                  <MDBCol md="4">
-                    <MDBCardImage
-                      src="https://thumbs.dreamstime.com/b/otolaryngology-icon-set-flat-style-doctor-treating-ear-throat-nose-ent-collection-design-elements-isolated-white-background-102443270.jpg"
-                      alt="..."
-                      height="100px"
-                      width="100px"
-                    />
-                  </MDBCol>
-                  <MDBCol md="8">
-                    <MDBCardBody>
-                      <MDBCardTitle className="fw-bold mt-3">                      
-                        ENT Problem
-                      </MDBCardTitle>
-                      <MDBCardTitle>
-                      
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard>
-            </MDBCol>
-            <MDBCol size="md-4" className="mt-3 text-center nepre">
-            <MDBCard onClick={()=>handleNext("Dermatologist")}>
-                <MDBRow className={disease==="Dermatologist"?"g-0 active":"g-0"}>
-                  <MDBCol md="4">
-                    <MDBCardImage
-                      src="https://img.freepik.com/free-vector/cosmetologist-concept-skin-care-treatment-young-woman-treating-skin-cosmetic-procedure-problematic-skin-beauty-plastic-treatment-isolated-vector-illustration_613284-3213.jpg"
-                      alt="..."
-                      height="100px"
-                      width="100px"
-                    />
-                  </MDBCol>
-                  <MDBCol md="8">
-                    <MDBCardBody>
-                      <MDBCardTitle className="fw-bold mt-3">
-                          Skin Problem
-                      </MDBCardTitle>
-                      <MDBCardTitle>
-                      
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard>
-            </MDBCol>
-            
+                );
+              })}
           </MDBRow>
-          <MDBRow>
-          <MDBCol size="md-4" className="mt-3 text-center">
-            <MDBCard onClick={()=>handleNext("cardiologist")}>
-                <MDBRow className={disease==="cardiologist"?"g-0 active":"g-0"}>
-                  <MDBCol md="4">
-                    <MDBCardImage
-                      src="https://static.vecteezy.com/system/resources/thumbnails/005/661/856/small/cardiologists-doctor-pointing-at-heart-diagram-free-vector.jpg"
-                      alt="..."
-                      height="100px"
-                      width="100px"
-                    />
-                  </MDBCol>
-                  <MDBCol md="8">
-                    <MDBCardBody>
-                      <MDBCardTitle className="fw-bold mt-3">
-                          Heart Problem
-                      </MDBCardTitle>
-                      <MDBCardTitle>
-                      
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard>
-            </MDBCol>
-            <MDBCol size="md-4" className="mt-3 text-center">
-            <MDBCard onClick={()=>handleNext("Otolaryngologists")}>
-                <MDBRow className={disease==="Otolaryngologists"?"g-0 active":"g-0"}>
-                  <MDBCol md="4">
-                    <MDBCardImage
-                      src="https://img.freepik.com/free-vector/tiny-doctors-treating-examining-patients-ear-using-otology-tool-carrying-bottles-blisters-with-pills-vector-illustration-otolaryngology-health-care-hearing-loss-concept_74855-13256.jpg"
-                      alt="..."
-                      height="100px"
-                      width="100px"
-                    />
-                  </MDBCol>
-                  <MDBCol md="8">
-                    <MDBCardBody>
-                      <MDBCardTitle className="fw-bold mt-3">
-                          Ear Problem
-                      </MDBCardTitle>
-                      <MDBCardTitle>
-                        
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard>
-            </MDBCol>
-            <MDBCol size="md-4" className="mt-3 text-center">
-            <MDBCard onClick={()=>handleNext("orthopedic")}>
-                <MDBRow className={disease==="orthopedic"?"g-0 active":"g-0"}>
-                  <MDBCol md="4">
-                    <MDBCardImage
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOWomseA6RiIP70GFCOKvcfIE6gn_l6D00DA&usqp=CAU"
-                      alt="..."
-                      height="100px"
-                      width="100px"
-                    />
-                  </MDBCol>
-                  <MDBCol md="8">
-                    <MDBCardBody>
-                      <MDBCardTitle className="fw-bold mt-3">
-                          Bone Problem
-                      </MDBCardTitle>
-                      <MDBCardTitle>
-                      
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard>
-            </MDBCol>
-             </MDBRow>
-             <MDBRow>
-             <MDBCol size="md-4" className="mt-3 text-center">
-            <MDBCard onClick={()=>handleNext("Psychiatrist")}>
-                <MDBRow className={disease==="Psychiatrist"?"g-0 active":"g-0"}>
-                  <MDBCol md="4">
-                    <MDBCardImage
-                      src="https://img.freepik.com/free-vector/trance-effect-woman-during-session-hypnosis-therapy-isolated-flat-vector-illustration-abstract-psychedelic-whirlpool-chatelaine-watch-altered-state-mind-unconsciousness-concept_74855-10179.jpg?w=360"
-                      alt="..."
-                      height="100px"
-                      width="100px"
-                    />
-                  </MDBCol>
-                  <MDBCol md="8">
-                    <MDBCardBody>
-                      <MDBCardTitle className="fw-bold mt-3">
-                          Depression
-                      </MDBCardTitle>
-                      <MDBCardTitle>
-                      
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard> 
-            </MDBCol>
-            <MDBCol size="md-4" className="mt-3 text-center">
-            <MDBCard onClick={()=>handleNext("users")}>
-                <MDBRow className={disease==="users"?"g-0 active":"g-0"}>
-                  <MDBCol md="4">
-                    <MDBCardImage
-                      src="https://static.vecteezy.com/system/resources/previews/004/578/683/original/a-patient-consults-a-doctor-and-nurse-free-vector.jpg"
-                      alt="..."
-                      height="100px"
-                      width="100px"
-                    />
-                  </MDBCol>
-                  <MDBCol md="8">
-                    <MDBCardBody>
-                      <MDBCardTitle className="fw-bold mt-3">
-                          Other Problem
-                      </MDBCardTitle>
-                      <MDBCardTitle>
-                      
-                      </MDBCardTitle>
-                    </MDBCardBody>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCard> 
-            </MDBCol>
-         
-             </MDBRow>
         </MDBRow>
         <div
           className={"form__item button__items d-flex justify-content-between"}
@@ -272,20 +138,20 @@ activeFunction()
           <MDBBtn
             type={"default"}
             className="buttheme me-2 mt-3 NePreBtn"
-            onClick={()=>handleBack()}
+            onClick={() => handleBack()}
           >
             Back
           </MDBBtn>
           <MDBBtn
             type={"primary"}
             className="buttheme mt-3 NePreBtn"
-            onClick={()=>handleNextPage()}
+            onClick={() => handleNextPage()}
           >
             Next
           </MDBBtn>
         </div>
       </MDBContainer>
-      <ToggleModal/>
+      <ToggleModal />
     </MDBContainer>
   );
 };

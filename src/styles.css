@@ -21,7 +21,10 @@
     background: #EADEDA;
     height: 790px;
 }
-
+.backaslot{
+    background: #EADEDA;
+    height: auto;
+}
 .lastshow {
     margin-top: 40%;
 }
@@ -142,8 +145,20 @@ color:black !important;
     background-color: #493657 !important;
     color:white !important;
 }
-@media print {
-    .print-button{
-      display: none;
+
+
+
+  
+  /* Hide the print button when printing */
+  
+  
+  @media print {
+    .printButton {
+      display:none !important;
+      
     }
+  }
+
+  .pagination:hover{
+    cursor: pointer;
   }
