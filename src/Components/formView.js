@@ -11,6 +11,7 @@ function FormView() {
   const [doctor, setDoctor] = useState();
   const [day, setDay] = useState("");
   const [date, setDate] = useState("");
+  const [user,setUser]=useState("")
   const handlePrint = (e) => {
     window.print();
   };
@@ -26,6 +27,8 @@ function FormView() {
             if (result.exists) {
               if (result.data().firstName) {
                 setDoctor(result.data().firstName);
+              }else if(result.data().Patient_Name){
+setUser(result.data().Patient_Name)
               }
             }
           } else if (element === "date") {
@@ -61,9 +64,9 @@ function FormView() {
               className="mt-5  d-flex justify-content-center"
               style={{ color: "brown" }}
             >
-              Appointment Confirmation Status
+              Appointment Confirmation letter
             </h1>
-            <h3>Patient Name:{}</h3>
+            <h3>Patient Name:<span style={{color:"blue"}}>{user}</span></h3>
             <h3 className="mt-5 text-dark d-flex justify-content-center">
               Your Appointment Has Been Fixed with &nbsp;
               <span style={{ color: "Red" }}>{doctor} </span> &nbsp; on &nbsp;{" "}
