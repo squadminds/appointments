@@ -26,7 +26,7 @@ function App() {
         <Route path="/msg" element={<Message />} />
         <Route path="/formReview" element={<FormView />} />
       </Routes>
-      
+ 
     </div>
   );
 }

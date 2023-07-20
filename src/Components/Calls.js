@@ -13,7 +13,7 @@ import {
 // selected country for teatment------------------
 export const matchedCountry = async (country) => {
   try {
-    const q = query(collection(db, "countries"), where("name", "==", country));
+    const q = query(collection(db, "Location"),where("location", "==", country));
     const count = await getDocs(q);
 
     if (!count.empty) {
@@ -36,7 +36,7 @@ export const selectedCountry = async (country) => {
   console.log("object", country);
   try {
     const countryRef = await addDoc(
-      collection(db, "Appoitment", localStorage.getItem("refernce")),
+      collection(db, "Appoitment", localStorage.getItem("reference")),
       {
         Location: country,
       }
@@ -48,7 +48,7 @@ export const selectedCountry = async (country) => {
 export const setSpecalist = async (user) => {
   try {
     const ref = localStorage.getItem("reference");
-    const DocumentRef = doc(db, "DoctorsList", user.id);
+    const DocumentRef = doc(db, "DoctorList", user.id);
     const document = doc(db, "Appointment", ref);
     await updateDoc(document, { doctor: DocumentRef });
   } catch (e) {

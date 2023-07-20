@@ -68,7 +68,7 @@ function FormView() {
               Appointment Confirmation letter
             </h1>
           
-            <h3>Patient Name:<span style={{color:"blue"}}>{user}</span></h3>
+            <h3 className="mx-5">Patient Name:<span style={{color:"blue"}}>{user}</span></h3>
             <h3 className="mt-5 text-dark d-flex justify-content-center">
               Your Appointment Has Been Fixed with &nbsp;
               <span style={{ color: "Red" }}>{doctor} </span> &nbsp; on &nbsp;{" "}

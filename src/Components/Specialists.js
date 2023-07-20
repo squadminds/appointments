@@ -21,8 +21,8 @@ import {
   MDBCardTitle,
 } from "mdb-react-ui-kit";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { modalShow, selectedDoc } from "../redux/HealthSlice";
+import { useDispatch } from "react-redux";
+import { modalShow } from "../redux/HealthSlice";
 import ToggleModal from "./modal";
 import { db } from "../firebase/firebase";
 import {
@@ -89,24 +89,27 @@ const [lastIndex,setLastIndex]=useState(4)
     const ref = localStorage.getItem("reference");
     try {
       const value = await getDoc(doc(db, "Appointment", ref));
-
       if (value.exists) {
-        const val = value.data().Disease;
-        const data = await getDoc(doc(db, val.path));
+        const disease = value.data().Disease;
+        const Location=value.data().Location;
+        const Diseasedata = await getDoc(doc(db, disease.path));
+        const Locationdata = await getDoc(doc(db, Location.path));
 
-        if (data.exists) {
-          const Disease = data.data().disease;
-
+        if (Diseasedata.exists  && Locationdata.exists) {
+          const Disease = Diseasedata.data().disease;
+          const Location=Locationdata.data().location;
+          
           if (Disease !== "Multispecalist") {
-            console.log("object", Disease);
             const q = query(
-              collection(db, "DoctorsList"),
-              where("specilist", "==", Disease)
+              collection(db, "DoctorList"),
+              where("specilist", "==", Disease),where("Location","==",Location)
             );
             const doctors = await getDocs(q);
+            console.log('here',doctors);
 
             const dat = [];
             doctors.forEach((doc) => {
+            
               dat.push({ id: doc.id, doctor: doc.data() });
             });
             if (dat) {
@@ -114,7 +117,7 @@ const [lastIndex,setLastIndex]=useState(4)
               setUser(dat)
             }
           } else {
-            const doctors = await getDocs(collection(db, "DoctorsList"));
+            const doctors = await getDocs(collection(db, "DoctorList"),where("location","===",Location));
             const dat = [];
             if (!doctors.empty) {
               doctors.forEach((doc) => {
@@ -242,6 +245,9 @@ console.log("object",val))
                           </MDBCardText>
                           <MDBCardText>
                             Contact: {user.doctor.helpline_number}
+                          </MDBCardText>
+                          <MDBCardText>
+                            Location: {user.doctor.Location}
                           </MDBCardText>
                         </MDBCardBody>
                       </MDBCol>

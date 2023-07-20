@@ -15,7 +15,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { modalShow } from "../redux/HealthSlice";
 import data from "./contents/CountryCodes.json";
 import ToggleModal from "./modal";
-import { selectedCountry, matchedCountry, fetchDoctorList } from "./Calls";
+import {  matchedCountry } from "./Calls";
 const Location = () => {
   const [country, setCountry] = useState("");
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ const Location = () => {
               </h3>
 
               <h4 className="mt-5 text-dark d-flex justify-content-center">
-                Fill Your Location
+           Currently,We have available doctors  in India,Isreal,America,Enlgand
               </h4>
               <MDBCol className="mt-5 text-dark d-flex justify-content-center">
                 <h2> What is the name of your country of residence?</h2>
