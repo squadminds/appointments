@@ -28,7 +28,7 @@ function FormView() {
               if (result.data().firstName) {
                 setDoctor(result.data().firstName);
               }else if(result.data().Patient_Name){
-setUser(result.data().Patient_Name)
+        setUser(result.data().Patient_Name)
               }
             }
           } else if (element === "date") {
@@ -60,12 +60,14 @@ setUser(result.data().Patient_Name)
       <MDBContainer fluid className="backall">
         <>
           <MDBRow>
+           
             <h1
               className="mt-5  d-flex justify-content-center"
-              style={{ color: "brown" }}
+              style={{ color: "brown"  }}
             >
               Appointment Confirmation letter
             </h1>
+          
             <h3>Patient Name:<span style={{color:"blue"}}>{user}</span></h3>
             <h3 className="mt-5 text-dark d-flex justify-content-center">
               Your Appointment Has Been Fixed with &nbsp;
@@ -83,7 +85,7 @@ setUser(result.data().Patient_Name)
               </span>
             </h3>
             <h3 className="mt-5 text-dark d-flex justify-content-center">
-              Your Appointment ID is &nbsp;{" "}
+              Your Appointment ID is &nbsp;
               <span style={{ color: "red" }}>
                 {localStorage.getItem("reference")}
               </span>

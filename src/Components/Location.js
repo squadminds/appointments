@@ -6,12 +6,8 @@ import {
   MDBBtn,
 } from "mdb-react-ui-kit";
 import React, {
-
-  useEffect,
-
-  useState,
- 
-} from "react";
+useEffect,useState,
+ } from "react";
 import "../styles.css";
 import { useFormik } from "formik";
 import { useNavigate, useLocation } from "react-router-dom";
