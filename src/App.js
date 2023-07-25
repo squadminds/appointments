@@ -10,7 +10,8 @@ import Message from "./Components/Message";
 import Timeslots from "./Components/timeslots";
 import ErrorPage from "./Components/ErrorPage";
 import FormView from "./Components/formView";
-
+import FirebaseCall from "./Components/firebaseCall";
+import SubmitPage from "./Components/SubmitPage";
 
 function App() {
   return (
@@ -25,8 +26,8 @@ function App() {
         <Route path="*" element={<ErrorPage />} />
         <Route path="/msg" element={<Message />} />
         <Route path="/formReview" element={<FormView />} />
+        <Route path="/Submit" element={<SubmitPage />} />
       </Routes>
- 
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
 import { BsPrinterFill } from "react-icons/bs";
 import { useSelector } from "react-redux";
 
-import { getDoc, doc } from "firebase/firestore";
+import { getDoc, doc, addDoc, collection ,setDoc,updateDoc} from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 function FormView() {
@@ -16,9 +16,10 @@ function FormView() {
     window.print();
   };
   const fetchAppointmentLetter = async () => {
-    const ref = localStorage.getItem("reference");
+   const ref=localStorage.getItem("reference")
+ 
     try {
-      let details = await getDoc(doc(db, "Appointment", ref));
+      let details = await getDoc(doc(db, "Appointment",ref));
       if (details.exists) {
         const data = details.data();
         Object.keys(data).map(async (element) => {
@@ -33,7 +34,7 @@ function FormView() {
             }
           } else if (element === "date") {
             setDate(data[element]);
-          } else if (element === "day") {
+          } else if (element === "Slot") {
             setDay(data[element]);
           }
         });
@@ -41,8 +42,11 @@ function FormView() {
     } catch (e) {}
   };
 
+ 
+
+
   useEffect(() => {
-    fetchAppointmentLetter();
+ fetchAppointmentLetter();
   }, []);
 
   useEffect(() => {

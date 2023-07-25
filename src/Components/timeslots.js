@@ -41,76 +41,68 @@ function Timeslots() {
 
   const show = useSelector((state) => state.HealthReducer.showSlot);
   const currentDate = new Date();
+  const [array1, setArray1] = useState();
   const dispatch = useDispatch();
   const currentIndex = useRef(0);
   const lastIndex = useRef(5);
-  const [selectedSlot, setSelectedSlot] = useState();
+
   const [dates, setDates] = useState();
   const navigate = useNavigate();
+  const [previousDates, setPreviousDates] = useState([]);
   const Disease = useSelector((state) => state.HealthReducer.DiseaseType);
-
   const fetchDoctor = async () => {
-    //need to fix else quota reach limited
-    // try {
-    //   let currentDoctor = await getDoc(
-    //     doc(db, "Appointment", localStorage.getItem("reference"))
-    //   );
-    //   if (currentDoctor.exists) {
-    //     const q = query(
-    //       collection(db, "Appointment"),
-    //       where("doctor", "==", doc(db, currentDoctor.data().doctor.path))
-    //     );
-    //     const dat = await getDocs(q);
-    //     let references = [];
-    //     dat.forEach((doc) => {
-    //       references.push(doc.id);
-    //     });
-    //     if (references) {
-    //    references.forEach(async (val) => {
-    //        const data=await getDoc(doc(db, "Appointment", val));
-    //         if (data.exists) {
-    //          var filteredDate = dates?.map((val) => {
-    //             if (val.day === data.data().date) {
-    //               return {
-    //                 day: data.data().date,
-    //                 Slots: val.Slots?.filter(
-    //                   (v) => v.startTime + "-" + v.endTime !== data.data().day
-    //                 ),
-    //               };
-    //             } else {
-    //               return val;
-    //             }
-
-    //           });
-
-            
-    //         }
-    //         setDates(filteredDate)
-    //       })
-    //     console.log("object",dat)
-    //     }
-    //   }
-    // } catch (e) {
-    //   console.log("object", e);
-    // }
-  };
-  const greetUser = async (e) => {
-    const date = e.target.id;
-    const TimeSlot = e.target.innerText;
-    localStorage.setItem("time", TimeSlot);
-    localStorage.setItem("date", date);
     try {
-      const ref = localStorage.getItem("reference");
-      await updateDoc(doc(db, "Appointment", ref), {
-        date: date,
-        day: TimeSlot,
-      });
+      let currentDoctor = await getDoc(
+        doc(db, "Temp", localStorage.getItem("reference"))
+      );
+      if (currentDoctor.exists) {
+        const q = query(
+          collection(db, "Appointment"),
+          where("doctor", "==", doc(db, currentDoctor.data().doctor.path))
+        );
+
+        const querySnapshot = await getDocs(q);
+        const data = [];
+        querySnapshot.docs.map((val) => {
+          if (data.some((item) => item["date"] === val.data().date)) {
+            const ind = data.findIndex(
+              (item) => item["date"] === val.data().date,
+              data
+            );
+
+            data[ind].Slots.push(val.data().Slot);
+          } else {
+            data.push({ date: val.data().date, Slots: [val.data().Slot] });
+          }
+        });
+        setPreviousDates(data);
+      }
     } catch (e) {
       console.log("object", e);
     }
 
-    dispatch(BookAppointment({ date, TimeSlot }));
-    navigate("/info");
+    dateSlot();
+  };
+  const greetUser = async (e) => {
+    const date = e.target.id;
+    const TimeSlot = e.target.innerText;
+    console.log("object",date,TimeSlot)
+  localStorage.setItem("date",date)
+  localStorage.setItem("time",TimeSlot)
+    if (TimeSlot !== "NOT-AVAILABLE") {
+      try {
+        const ref = localStorage.getItem("reference");
+        await updateDoc(doc(db, "Temp", ref), {
+          date: date,
+          Slot: TimeSlot,
+        });
+      } catch (e) {
+        console.log("object", e);
+      }
+
+      dispatch(BookAppointment({ date, TimeSlot }));
+      navigate("/info");
+    }
   };
 
   const handleBack = () => {
@@ -142,7 +134,7 @@ function Timeslots() {
       let futureDate = new Date(currentDate);
       futureDate.setDate(currentDate.getDate() + i);
       datesSelected.push({
-        day: `${futureDate.getDate()}-${futureDate.getMonth()}-${futureDate.getFullYear()}`,
+        date: `${futureDate.getDate()}-${futureDate.getMonth()}-${futureDate.getFullYear()}`,
         Slots: "",
       });
       i++;
@@ -150,7 +142,7 @@ function Timeslots() {
 
     if (datesSelected.length > 8) {
       const ref = localStorage.getItem("reference");
-      const value = await getDoc(doc(db, "Appointment", ref));
+      const value = await getDoc(doc(db, "Temp", ref));
       if (value.exists) {
         const val = value.data().doctor;
 
@@ -175,6 +167,7 @@ function Timeslots() {
               hour: "2-digit",
               minute: "2-digit",
             });
+
             daySlots.push({
               startTime: slotStartTime,
               endTime: slotEndTime,
@@ -182,24 +175,58 @@ function Timeslots() {
           }
         }
         if (daySlots.length > 2) {
-          const select = datesSelected?.map((val) => {
+          const value = datesSelected.map((val) => {
             return Object.assign({}, val, {
-              day: val.day,
               Slots: daySlots,
             });
           });
-          setDates(select);
+          if (value) {
+            filterSlots(value);
+          }
         }
       }
     }
   };
 
-  useEffect(() => {
-    dateSlot();
-  }, []);
+  const filterSlots = (value) => {
+    const array2SlotsMap = {};
+    previousDates.forEach((item) => {
+      array2SlotsMap[item.date] = item.Slots;
+    });
+
+    const filteredArray1 = value.map((item) => {
+      if (array2SlotsMap.hasOwnProperty(item.date)) {
+        return Object.assign({}, item, {
+          date: item.date,
+          Slots: item.Slots.map((slot) => {
+            if (
+              array2SlotsMap[item.date].every(
+                (slot2) => `${slot.startTime}-${slot.endTime}` === slot2
+              )
+            ) {
+              return Object.assign({}, slot, {
+                startTime: "Not",
+                endTime: "Available",
+              });
+            } else {
+              return slot;
+            }
+          }),
+        });
+      } else {
+        return Object.assign({}, item, {
+          date: item.date,
+          Slots: item.Slots,
+        });
+      }
+    });
+    setDates(filteredArray1);
+  };
+
   useEffect(() => {
     fetchDoctor();
-  }, [dates]);
+  }, []);
+
   return (
     <MDBContainer fluid className="backaslot">
       <ToggleModal />
@@ -219,40 +246,44 @@ function Timeslots() {
               </MDBBtn>
             </MDBCol>
           )}
-          {dates?.slice(currentIndex.current, lastIndex.current)
-            .map((val, ind) => {
+          {dates
+            ?.slice(currentIndex.current, lastIndex.current)
+            ?.map((val, ind) => {
               return (
                 <MDBCol size={"md-2"} className="mt-5">
                   <MDBBtn
-                    name={val.day}
+                    name={val.date}
                     className={
-                      localStorage.getItem("date") === val.day
+                      localStorage.getItem("date") === val.date
                         ? "glassbut activeDay fw-bold me-3"
                         : "glassbut Day fw-bold me-3"
                     }
                   >
-                    {val.day}
+                    {val.date}
                   </MDBBtn>
 
-                  {val &&
-                    val.Slots?.map((item, i) => {
-                      return (
-                        <MDBBtn
-                          id={val.day}
-                          className={
-                            localStorage.getItem("date") === val.day &&
-                            localStorage.getItem("time") ===
-                              `${item.startTime}-${item.endTime}`
-                              ? "me-5 activeSlot mt-3 fw-bold"
-                              : "me-5 timeSlot mt-3 fw-bold"
-                          }
-                          onClick={(e) => greetUser(e)}
-                        >
-                          {" "}
-                          {`${item.startTime}-${item.endTime}`}
-                        </MDBBtn>
-                      );
-                    })}
+                  {val.Slots?.map((item, i) => {
+                  
+                    return (
+                      <MDBBtn
+                        id={val.date}
+                        className={
+                          localStorage.getItem("date") === val.date &&
+                          localStorage.getItem("time") ===
+                            `${item.startTime}-${item.endTime}`
+                            ? "me-3 activeSlot mt-3 fw-bold"
+                            : `${item.startTime}-${item.endTime}` ===
+                              "Not-Available"
+                            ? "me-3 notAvaialble mt-3 fw-bold"
+                            : "me-3 timeSlot mt-3 fw-bold"
+                        }
+                        onClick={(e) => greetUser(e)}
+                      >
+                        {" "}
+                        {`${val.Slots[i].startTime}-${val.Slots[i].endTime}`}
+                      </MDBBtn>
+                    );
+                  })}
                   <MDBRow></MDBRow>
                 </MDBCol>
               );

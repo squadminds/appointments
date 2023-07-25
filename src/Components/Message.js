@@ -5,30 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 const Message = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [appointment, setAppointment] = useState({
-    Patient: "",
-    country: "",
-    Date: "",
-    Slot: "",
-    Doctor: "",
-    Disease: "",
-    Id: "",
-    Date: "",
-    Disease: "",
-    Slot: "",
-  });
+
 
   function greetUser() {
     navigate("/formReview");
   }
 
-  function Back() {
-    navigate("/info");
-  }
-  useEffect(() => {
-    console.log("this is i", appointment);
-  }, [appointment]);
 
   return (
     <MDBContainer fluid className="backall">
@@ -58,13 +40,6 @@ const Message = () => {
                   "form__item button__items d-flex justify-content-between"
                 }
               >
-                <MDBBtn
-                  type={"default"}
-                  className="buttheme me-2 mt-3"
-                  onClick={Back}
-                >
-                  Back
-                </MDBBtn>
                 <MDBBtn
                   type={"primary"}
                   className="buttheme mt-3"

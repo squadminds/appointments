@@ -15,6 +15,7 @@ import {
   doc,
   getDoc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 const Banner = () => {
   const [state, setState] = useState();
@@ -30,7 +31,7 @@ const Banner = () => {
   // onkeypress
   const greetUser = async () => {
     try {
-      const ref = await addDoc(collection(db, "Appointment"),{});
+      const ref = await addDoc(collection(db, "Temp"), {});
       localStorage.setItem("reference", ref.id);
     } catch (e) {}
 
@@ -51,9 +52,16 @@ const Banner = () => {
       }
     });
   }, []);
-  useEffect(()=>{
-localStorage.clear()
-  })
+  const deleteTemp = async () => {
+    try {
+      const docRef = await getDocs(collection(db, "Temp"));
+
+      docRef.forEach(async (doc) => await deleteDoc(doc.ref));
+    } catch (e) {}
+  };
+  useEffect(() => {
+    deleteTemp();
+  }, []);
   return (
     <MDBContainer fluid>
       <MDBRow onKeyPress={changeValue}>
@@ -81,11 +89,7 @@ localStorage.clear()
           >
             Description (optional)
           </p>
-          <MDBBtn
-            className="fw-bold but NePreBtn "
-            onClick={() => greetUser()}
-          
-          >
+          <MDBBtn className="fw-bold but NePreBtn " onClick={() => greetUser()}>
             <NavLink
               to="/problem"
               className="text-light NePreBtn"
@@ -93,19 +97,7 @@ localStorage.clear()
             >
               Schedule
             </NavLink>
-          
-            
           </MDBBtn>
-          {/* <MDBBtn 
-           className="fw-bold but NePreBtn ">
-          <NavLink
-              to="/Check"
-              className="text-light NePreBtn"
-            
-            >
-             Check Status
-            </NavLink>
-            </MDBBtn> */}
         </MDBCol>
 
         <MDBCol size="md-6">

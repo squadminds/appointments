@@ -12,7 +12,7 @@ export const users = [
     img:"https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
     specilist:"cardiologist",
     firstName: "Assia",
-    qualification:"Cardiology",
+    qualification:"Cardiologist",
     helpline_number: "+91 95 9090 8080",
     Duration:45,
     Location:"America"

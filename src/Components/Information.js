@@ -66,7 +66,7 @@ const Information = () => {
           });
           if (user) {
             const ref = localStorage.getItem("reference");
-            updateDoc(doc(db, "Appointment", ref), {
+            updateDoc(doc(db, "Temp", ref), {
               user: doc(db, "users", user.id),
             });
           }
@@ -76,7 +76,7 @@ const Information = () => {
         dispatch(modalShow(""));
         setError("");
 
-        navigate("/msg");
+        navigate("/Submit");
       }
     }
   };
@@ -112,10 +112,6 @@ const Information = () => {
     }
   }, []);
 
-  // validate
-  useEffect(() => {
-    console.log("object", details);
-  }, [details]);
   useEffect(() => {
     setDetails({ ...details, name: Name, phone: Phone, email: Email });
   }, []);

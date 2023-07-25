@@ -33,7 +33,7 @@ const Problem = () => {
   const handleNext = async (e) => {
     try {
       const ref = localStorage.getItem("reference");
-      await updateDoc(doc(db, "Appointment", ref), {
+      await updateDoc(doc(db, "Temp", ref), {
         Disease: doc(db, "DiseaseList", e),
       });
     } catch (e) {}
@@ -46,7 +46,6 @@ const Problem = () => {
       dispatch(modalShow("Disease"));
     }
   };
-
   const activeFunction = async () => {};
   const fetchDiseaselist = async () => {
     try {
@@ -55,6 +54,7 @@ const Problem = () => {
         const data = DiseaseList.docs.map((doc) => {
           return { id: doc.id, data: doc.data() };
         });
+
         setDisease(data);
       }
     } catch (e) {
@@ -64,18 +64,18 @@ const Problem = () => {
   const callingDisease = async () => {
     const ref = localStorage.getItem("reference");
 
-    if(ref){
-    const value = await getDoc(doc(db, "Appointment", ref));
-    if (value.exists) {
- 
-      const val = value.data()?.Disease;
-      if (val) {
-        const dat = await getDoc(doc(db, val.path));
+    if (ref) {
+      const value = await getDoc(doc(db, "Temp", ref));
+      if (value.exists) {
+        const val = value.data()?.Disease;
+        if (val) {
+          const dat = await getDoc(doc(db, val.path));
 
-        if (!dat.empty) {
-          setActive(dat.data()?.disease);
+          if (!dat.empty) {
+            setActive(dat.data()?.name);
+          }
         }
-      }}
+      }
     }
   };
   useEffect(() => {
@@ -85,7 +85,7 @@ const Problem = () => {
   }, [disease]);
   useEffect(() => {
     callingDisease();
-  },[]);
+  }, []);
   return (
     <MDBContainer fluid className="backall backall1">
       <MDBContainer>
@@ -106,7 +106,7 @@ const Problem = () => {
                     <MDBCard onClick={() => handleNext(val.id)}>
                       <MDBRow
                         className={
-                          active === val.data.disease ? `g-0 active` : "g-0"
+                          active === val.data.name ? `g-0 active` : "g-0"
                         }
                       >
                         <MDBCol md="4">
@@ -120,7 +120,7 @@ const Problem = () => {
                         <MDBCol md="8">
                           <MDBCardBody>
                             <MDBCardTitle className="fw-bold  mt-3">
-                              {val.data.disease}
+                              {val.data.name}
                             </MDBCardTitle>
                             <MDBCardTitle></MDBCardTitle>
                           </MDBCardBody>

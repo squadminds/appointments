@@ -113,7 +113,7 @@ color:white;
 }
 .activeSlot{
     
-  
+ 
     background-color:red !important;
     color:white;
 
@@ -137,11 +137,18 @@ color:black !important;
 
 }
 .activeSlot{
+    width:150px;
 background-color: white !important;
+color:black !important;
+}
+.notAvaialble{
+    width:150px;
+    background-color:white !important;
 color:black !important;
 }
 .timeSlot
 {
+    width:150px;
     background-color: #493657 !important;
     color:white !important;
 }

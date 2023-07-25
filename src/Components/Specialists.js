@@ -5,7 +5,11 @@ import React, {
   useRef,
   useMemo,
 } from "react";
-import { MDBPagination, MDBPaginationItem, MDBPaginationLink } from 'mdb-react-ui-kit';
+import {
+  MDBPagination,
+  MDBPaginationItem,
+  MDBPaginationLink,
+} from "mdb-react-ui-kit";
 import {
   MDBCol,
   MDBRow,
@@ -36,20 +40,16 @@ import {
   query,
 } from "firebase/firestore";
 
-import {  setSpecalist } from "./Calls";
+import { setSpecalist } from "./Calls";
 const Doctor = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [active, setActive] = useState();
-  const [Selected, setSelected] = useState();
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchValue, setSearchValue] = React.useState("");
   const [user, setUser] = useState([]);
-  const location = useLocation();
-const [currentIndex,setCurrentIndex]=useState(0)
-const [lastIndex,setLastIndex]=useState(4)
-  const [totalIndex,setTotalIndex]=useState()
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [lastIndex, setLastIndex] = useState(4);
   const today = new Date();
   const currentDate = today.getDate();
 
@@ -73,51 +73,54 @@ const [lastIndex,setLastIndex]=useState(4)
   const handleSearchFilter = (e) => {
     const query = e.target.value;
 
-    console.log("object",e.target.value)
+    console.log("object", e.target.value);
     setSearchQuery(query);
     if (query) {
-   const newFilter=   filteredUsers?.filter((val, i) => {
+      const newFilter = filteredUsers.filter((val, i) => {
         return val.doctor.firstName.toLowerCase().includes(query.toLowerCase());
       });
-      setFilteredUsers(newFilter)
+      setFilteredUsers(newFilter);
     } else {
-      setFilteredUsers(user)
+      setFilteredUsers(user);
     }
   };
 
   const fetchDoctorList = async () => {
     const ref = localStorage.getItem("reference");
     try {
-      const value = await getDoc(doc(db, "Appointment", ref));
+      const value = await getDoc(doc(db, "Temp", ref));
       if (value.exists) {
         const disease = value.data().Disease;
-        const Location=value.data().Location;
+        const Location = value.data().Location;
         const Diseasedata = await getDoc(doc(db, disease.path));
         const Locationdata = await getDoc(doc(db, Location.path));
 
-        if (Diseasedata.exists  && Locationdata.exists) {
-          const Disease = Diseasedata.data().disease;
-          const Location=Locationdata.data().location;
-          
+        if (Diseasedata.exists && Locationdata.exists) {
+          const Disease = Diseasedata.data().name;
+          const Location = Locationdata.data().name;
+
           if (Disease !== "Multispecalist") {
             const q = query(
               collection(db, "DoctorList"),
-              where("specilist", "==", Disease),where("Location","==",Location)
+              where("specilist", "==", Disease),
+              where("Location", "==", Location)
             );
             const doctors = await getDocs(q);
-            console.log('here',doctors);
+           
 
             const dat = [];
             doctors.forEach((doc) => {
-            
               dat.push({ id: doc.id, doctor: doc.data() });
             });
             if (dat) {
               setFilteredUsers(dat);
-              setUser(dat)
+              setUser(dat);
             }
           } else {
-            const doctors = await getDocs(collection(db, "DoctorList"),where("location","===",Location));
+            const doctors = await getDocs(
+              collection(db, "DoctorList"),
+              where("Location", "===", Location)
+            );
             const dat = [];
             if (!doctors.empty) {
               doctors.forEach((doc) => {
@@ -125,17 +128,20 @@ const [lastIndex,setLastIndex]=useState(4)
               });
             }
             setFilteredUsers(dat);
-            setUser(dat)
+            setUser(dat);
           }
         }
       }
     } catch (e) {
-      console.log("object", e);
+     
+    }
+    if(filteredUsers){
+      callingDoctor()
     }
   };
   const callingDoctor = async () => {
     const ref = localStorage.getItem("reference");
-    const value = await getDoc(doc(db, "Appointment", ref));
+    const value = await getDoc(doc(db, "Temp", ref));
     if (value.exists) {
       const val = value.data().doctor;
       if (val) {
@@ -146,41 +152,30 @@ const [lastIndex,setLastIndex]=useState(4)
       }
     }
   };
-const handlePrevious=()=>{
-  if(currentIndex>0){
-  const cindex=currentIndex-4
-   setCurrentIndex(cindex)
-    const lIndex=lastIndex-4;
-    setLastIndex(lIndex)
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      const cindex = currentIndex - 4;
+      setCurrentIndex(cindex);
+      const lIndex = lastIndex - 4;
+      setLastIndex(lIndex);
     }
-}
-const handleNext=()=>{
-  console.log("u click me")
-  if(currentIndex>0){
-    const cindex=currentIndex+4
-     setCurrentIndex(cindex)
-      const lIndex=lastIndex+4;
-      setLastIndex(lIndex)
-      }
-}
-
-
+  };
+  const handleNext = () => {
+    console.log("u click me");
+    if (currentIndex > 0) {
+      const cindex = currentIndex + 4;
+      setCurrentIndex(cindex);
+      const lIndex = lastIndex + 4;
+      setLastIndex(lIndex);
+    }
+  };
 
   useEffect(() => {
     fetchDoctorList();
   }, []);
 
-  useEffect(() => {
-    callingDoctor();
-  }, []);
-  useEffect(()=>{
-    setTotalIndex(filteredUsers.length)
-  })
-  useEffect(()=>{
-filteredUsers.map((val)=>
-console.log("object",val))
-  },[filteredUsers])
- 
+
+
   return (
     <MDBContainer fluid className="backall">
       <MDBContainer>
@@ -206,7 +201,7 @@ console.log("object",val))
             </h3>
 
             <MDBRow className="user-list">
-              {filteredUsers?.slice(currentIndex,lastIndex).map((user, i) => (
+              {filteredUsers?.slice(currentIndex, lastIndex).map((user, i) => (
                 <MDBCol size="md-6" className="text-center mt-3 ">
                   <MDBCard>
                     <MDBRow
@@ -258,29 +253,58 @@ console.log("object",val))
             </MDBRow>
           </MDBRow>
         </MDBRow>
-        <MDBRow  className="d-flex justify-content-center" style={{ marginTop: "32px" }}>
-
-   
-     
-      <MDBPagination className='mb-0 d-flex justify-content-center'>
-        <MDBPaginationItem>
-          <MDBPaginationLink  className="pagination" onClick={handlePrevious}>Previous</MDBPaginationLink>
-        </MDBPaginationItem>
-        <MDBPaginationItem>
-          <MDBPaginationLink className="pagination" onClick={()=>{setCurrentIndex(0);setLastIndex(4)}}>1</MDBPaginationLink>
-        </MDBPaginationItem>
-        <MDBPaginationItem>
-          <MDBPaginationLink  className="pagination" onClick={()=>{setCurrentIndex(4);setLastIndex(8)}}>2</MDBPaginationLink>
-        </MDBPaginationItem>
-        <MDBPaginationItem>
-          <MDBPaginationLink className="pagination" onClick={()=>{setCurrentIndex(8);setLastIndex(12)}}>3</MDBPaginationLink>
-        </MDBPaginationItem>
-        <MDBPaginationItem>
-          <MDBPaginationLink className="pagination" onClick={handleNext}>Next</MDBPaginationLink>
-        </MDBPaginationItem>
-      </MDBPagination>
-
-
+        <MDBRow
+          className="d-flex justify-content-center"
+          style={{ marginTop: "32px" }}
+        >
+          <MDBPagination className="mb-0 d-flex justify-content-center">
+            <MDBPaginationItem>
+              <MDBPaginationLink
+                className="pagination"
+                onClick={handlePrevious}
+              >
+                Previous
+              </MDBPaginationLink>
+            </MDBPaginationItem>
+            <MDBPaginationItem>
+              <MDBPaginationLink
+                className="pagination"
+                onClick={() => {
+                  setCurrentIndex(0);
+                  setLastIndex(4);
+                }}
+              >
+                1
+              </MDBPaginationLink>
+            </MDBPaginationItem>
+            <MDBPaginationItem>
+              <MDBPaginationLink
+                className="pagination"
+                onClick={() => {
+                  setCurrentIndex(4);
+                  setLastIndex(8);
+                }}
+              >
+                2
+              </MDBPaginationLink>
+            </MDBPaginationItem>
+            <MDBPaginationItem>
+              <MDBPaginationLink
+                className="pagination"
+                onClick={() => {
+                  setCurrentIndex(8);
+                  setLastIndex(12);
+                }}
+              >
+                3
+              </MDBPaginationLink>
+            </MDBPaginationItem>
+            <MDBPaginationItem>
+              <MDBPaginationLink className="pagination" onClick={handleNext}>
+                Next
+              </MDBPaginationLink>
+            </MDBPaginationItem>
+          </MDBPagination>
         </MDBRow>
         <div
           className={"form__item button__items d-flex justify-content-between"}
