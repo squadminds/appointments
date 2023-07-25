@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  useRef,
-  useMemo,
-} from "react";
+import React, { useEffect, useState } from "react";
 import {
   MDBPagination,
   MDBPaginationItem,
@@ -19,23 +13,20 @@ import {
   MDBIcon,
   MDBCard,
   MDBCardBody,
-  MDBCardSubTitle,
   MDBCardImage,
   MDBCardText,
   MDBCardTitle,
 } from "mdb-react-ui-kit";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { modalShow } from "../redux/HealthSlice";
-import ToggleModal from "./modal";
-import { db } from "../firebase/firebase";
+import { modalShow } from "../Redux/HealthSlice";
+import ToggleModal from "./Modal";
+import { db } from "../Firebase/firebase";
 import {
   collection,
-  addDoc,
   getDocs,
   getDoc,
   doc,
-  updateDoc,
   where,
   query,
 } from "firebase/firestore";
@@ -106,7 +97,6 @@ const Doctor = () => {
               where("Location", "==", Location)
             );
             const doctors = await getDocs(q);
-           
 
             const dat = [];
             doctors.forEach((doc) => {
@@ -132,11 +122,9 @@ const Doctor = () => {
           }
         }
       }
-    } catch (e) {
-     
-    }
-    if(filteredUsers){
-      callingDoctor()
+    } catch (e) {}
+    if (filteredUsers) {
+      callingDoctor();
     }
   };
   const callingDoctor = async () => {
@@ -173,8 +161,6 @@ const Doctor = () => {
   useEffect(() => {
     fetchDoctorList();
   }, []);
-
-
 
   return (
     <MDBContainer fluid className="backall">

@@ -4,19 +4,8 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import "../styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import { db } from "../firebase/firebase";
-import {
-  collection,
-  setDoc,
-  addDoc,
-  getDocs,
-  query,
-  where,
-  doc,
-  getDoc,
-  updateDoc,
-  deleteDoc,
-} from "firebase/firestore";
+import { db } from "../Firebase/firebase";
+import { collection, addDoc, getDocs, deleteDoc } from "firebase/firestore";
 const Banner = () => {
   const [state, setState] = useState();
   const navigate = useNavigate();

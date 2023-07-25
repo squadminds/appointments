@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import {
   MDBCol,
   MDBRow,
@@ -10,7 +10,7 @@ import {
   MDBCardTitle,
 } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
-import ToggleModal from "./modal";
+import ToggleModal from "./Modal";
 import {
   collection,
   doc,
@@ -18,9 +18,9 @@ import {
   updateDoc,
   getDoc,
 } from "firebase/firestore";
-import { db } from "../firebase/firebase";
+import { db } from "../Firebase/firebase";
 import { useDispatch } from "react-redux";
-import { modalShow } from "../redux/HealthSlice";
+import { modalShow } from "../Redux/HealthSlice";
 const Problem = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

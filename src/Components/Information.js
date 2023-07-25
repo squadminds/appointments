@@ -8,17 +8,11 @@ import {
 import React, { useRef, useEffect, useState } from "react";
 import "../styles.css";
 import { useNavigate } from "react-router-dom";
-import { useFormik } from "formik";
-import {
-  InfoName,
-  InfoPhone,
-  InfoEmail,
-  modalShow,
-} from "../redux/HealthSlice";
+import {modalShow} from "../Redux/HealthSlice";
 import { collection, doc, updateDoc, addDoc, setDoc } from "firebase/firestore";
-import { db } from "../firebase/firebase";
+import { db } from "../Firebase/firebase";
 import { useSelector, useDispatch } from "react-redux";
-import ToggleModal from "./modal";
+import ToggleModal from "./Modal";
 
 const Information = () => {
   const navigate = useNavigate();

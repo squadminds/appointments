@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
 import { BsPrinterFill } from "react-icons/bs";
-import { useSelector } from "react-redux";
-
-import { getDoc, doc, addDoc, collection ,setDoc,updateDoc} from "firebase/firestore";
-import { db } from "../firebase/firebase";
+import { getDoc, doc} from "firebase/firestore";
+import { db } from "../Firebase/firebase";
 
 function FormView() {
-  const [show, setShow] = useState();
+  const [show,setShow]=useState(false)
   const [doctor, setDoctor] = useState();
   const [day, setDay] = useState("");
   const [date, setDate] = useState("");

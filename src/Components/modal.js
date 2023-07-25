@@ -12,8 +12,8 @@ import {
 } from "mdb-react-ui-kit";
 import { useSelector, useDispatch } from "react-redux";
 import { ImNotification } from "react-icons/im";
-import { BsCalendarDate, BsFillMenuButtonWideFill } from "react-icons/bs";
-import { modalShow, selectedDate } from "../redux/HealthSlice";
+import { BsCalendarDate } from "react-icons/bs";
+import { modalShow, selectedDate } from "../Redux/HealthSlice";
 export default function ToggleModal() {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();

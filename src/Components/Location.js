@@ -10,16 +10,15 @@ useEffect,useState,
  } from "react";
 import "../styles.css";
 import { useFormik } from "formik";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { modalShow } from "../redux/HealthSlice";
-import data from "./contents/CountryCodes.json";
-import ToggleModal from "./modal";
+import { useNavigate} from "react-router-dom";
+import {  useDispatch } from "react-redux";
+import { modalShow } from "../Redux/HealthSlice";
+import data from "./Contents/CountryCodes.json";
+import ToggleModal from "./Modal";
 import {  matchedCountry } from "./Calls";
 const Location = () => {
   const [country, setCountry] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useDispatch();
   const greetUser = async () => {
     const isCountry = await matchedCountry(country);

@@ -1,4 +1,4 @@
-import { db } from "../firebase/firebase";
+import { db } from "../Firebase/firebase";
 import {
   collection,
   addDoc,
@@ -10,7 +10,7 @@ import {
   where,
 } from "firebase/firestore";
 
-// selected country for teatment------------------
+
 export const matchedCountry = async (country) => {
   try {
     const q = query(collection(db, "Locations"),where("name", "==", country));

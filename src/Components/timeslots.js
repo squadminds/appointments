@@ -1,37 +1,28 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBBtn,
-  MDBInput,
-} from "mdb-react-ui-kit";
+import React, { useEffect, useRef, useState } from "react";
+import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
 
-import { MDBDatePickerV5 } from "mdbreact";
 import { useSelector, useDispatch } from "react-redux";
 import {
   modalShow,
   BookAppointment,
-  selectedDate,
   SelectedDisease,
   setShowSlot,
-} from "../redux/HealthSlice";
-import ToggleModal from "./modal";
+} from "../Redux/HealthSlice";
+import ToggleModal from "./Modal";
 import { useNavigate } from "react-router-dom";
 import { BsFillForwardFill } from "react-icons/bs";
 import { ImArrowLeft } from "react-icons/im";
 import {
   getDoc,
   doc,
-  addDoc,
   updateDoc,
   getDocs,
   collection,
   where,
   query,
 } from "firebase/firestore";
-import { db } from "../firebase/firebase";
-function Timeslots() {
+import { db } from "../Firebase/firebase";
+function TimeSlots() {
   const ActiveDate = useSelector(
     (state) => state.HealthReducer.appointment.date
   );
@@ -41,7 +32,6 @@ function Timeslots() {
 
   const show = useSelector((state) => state.HealthReducer.showSlot);
   const currentDate = new Date();
-  const [array1, setArray1] = useState();
   const dispatch = useDispatch();
   const currentIndex = useRef(0);
   const lastIndex = useRef(5);
@@ -86,9 +76,9 @@ function Timeslots() {
   const greetUser = async (e) => {
     const date = e.target.id;
     const TimeSlot = e.target.innerText;
-    console.log("object",date,TimeSlot)
-  localStorage.setItem("date",date)
-  localStorage.setItem("time",TimeSlot)
+    console.log("object", date, TimeSlot);
+    localStorage.setItem("date", date);
+    localStorage.setItem("time", TimeSlot);
     if (TimeSlot !== "NOT-AVAILABLE") {
       try {
         const ref = localStorage.getItem("reference");
@@ -263,7 +253,6 @@ function Timeslots() {
                   </MDBBtn>
 
                   {val.Slots?.map((item, i) => {
-                  
                     return (
                       <MDBBtn
                         id={val.date}
@@ -324,4 +313,4 @@ function Timeslots() {
   );
 }
 
-export default Timeslots;
+export default TimeSlots;

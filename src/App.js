@@ -7,10 +7,9 @@ import Problem from "./Components/Problem";
 import Doctor from "./Components/Specialists";
 import Information from "./Components/Information";
 import Message from "./Components/Message";
-import Timeslots from "./Components/timeslots";
+import TimeSlots from "./Components/TimeSlots";
 import ErrorPage from "./Components/ErrorPage";
-import FormView from "./Components/formView";
-import FirebaseCall from "./Components/firebaseCall";
+import FormView from "./Components/FormView";
 import SubmitPage from "./Components/SubmitPage";
 
 function App() {
@@ -21,7 +20,7 @@ function App() {
         <Route path="/problem" element={<Problem />} />
         <Route path="/location" element={<Location />} />
         <Route path="/doctor" element={<Doctor />} />
-        <Route path="/slot" element={<Timeslots />} />
+        <Route path="/slot" element={<TimeSlots />} />
         <Route path="/info" element={<Information />} />
         <Route path="*" element={<ErrorPage />} />
         <Route path="/msg" element={<Message />} />

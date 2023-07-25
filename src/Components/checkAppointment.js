@@ -6,7 +6,7 @@ import {
 
   MDBBtn,
 } from "mdb-react-ui-kit";
-import { db } from "../firebase/firebase";
+import { db } from "../Firebase/firebase";
 import {
 
   doc,
