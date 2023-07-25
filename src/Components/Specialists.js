@@ -188,15 +188,15 @@ const Doctor = () => {
 
             <MDBRow className="user-list">
               {filteredUsers?.slice(currentIndex, lastIndex).map((user, i) => (
-                <MDBCol size="md-6" className="text-center mt-3 ">
-                  <MDBCard>
+                <MDBCol key={i} size="md-6" className="text-center mt-3 ">
+                  <MDBCard  >
                     <MDBRow
                       onClick={() => handleActive(user)}
                       className={
                         active === user.doctor.firstName ? "g-0 active" : "g-0"
                       }
                       tabIndex="1234"
-                      key={user.id}
+                      
                     >
                       <MDBCol md="4">
                         <MDBCardImage
@@ -207,7 +207,7 @@ const Doctor = () => {
                         />
                       </MDBCol>
                       <MDBCol md="8">
-                        <MDBCardBody>
+                        <MDBCardBody >
                           <MDBCardTitle className={"fw-bold"}>
                             {user.doctor.specilist}
                           </MDBCardTitle>

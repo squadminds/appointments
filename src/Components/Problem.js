@@ -46,7 +46,6 @@ const Problem = () => {
       dispatch(modalShow("Disease"));
     }
   };
-  const activeFunction = async () => {};
   const fetchDiseaselist = async () => {
     try {
       const DiseaseList = await getDocs(collection(db, "DiseaseList"));
@@ -100,14 +99,15 @@ const Problem = () => {
 
           <MDBRow size="lg-4" className="flex  justify-content-between">
             {disease &&
-              disease?.map((val) => {
+              disease?.map((val,i) => {
                 return (
-                  <MDBCol size="md-4" className="mt-3 text-center">
+                  <MDBCol     key={i} size="md-4" className="mt-3 text-center">
                     <MDBCard onClick={() => handleNext(val.id)}>
                       <MDBRow
                         className={
                           active === val.data.name ? `g-0 active` : "g-0"
                         }
+                     
                       >
                         <MDBCol md="4">
                           <MDBCardImage

@@ -76,7 +76,7 @@ function TimeSlots() {
   const greetUser = async (e) => {
     const date = e.target.id;
     const TimeSlot = e.target.innerText;
-    console.log("object", date, TimeSlot);
+   
     localStorage.setItem("date", date);
     localStorage.setItem("time", TimeSlot);
     if (TimeSlot !== "NOT-AVAILABLE") {
@@ -240,7 +240,7 @@ function TimeSlots() {
             ?.slice(currentIndex.current, lastIndex.current)
             ?.map((val, ind) => {
               return (
-                <MDBCol size={"md-2"} className="mt-5">
+                <MDBCol key={ind} size={"md-2"} className="mt-5">
                   <MDBBtn
                     name={val.date}
                     className={
@@ -256,6 +256,7 @@ function TimeSlots() {
                     return (
                       <MDBBtn
                         id={val.date}
+                        key={i}
                         className={
                           localStorage.getItem("date") === val.date &&
                           localStorage.getItem("time") ===
