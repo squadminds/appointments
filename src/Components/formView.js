@@ -5,7 +5,7 @@ import { getDoc, doc} from "firebase/firestore";
 import { db } from "../Firebase/firebase";
 
 function FormView() {
-  const [show,setShow]=useState(false)
+
   const [doctor, setDoctor] = useState();
   const [day, setDay] = useState("");
   const [date, setDate] = useState("");
@@ -22,6 +22,7 @@ function FormView() {
         const data = details.data();
         Object.keys(data).map(async (element) => {
           if (data[element].path) {
+          
             const result = await getDoc(doc(db, data[element].path));
             if (result.exists) {
               if (result.data().firstName) {
@@ -30,9 +31,9 @@ function FormView() {
         setUser(result.data().Patient_Name)
               }
             }
-          } else if (element === "date") {
+          } else if (element === "Date") {
             setDate(data[element]);
-          } else if (element === "Slot") {
+          } else if (element === "Time") {
             setDay(data[element]);
           }
         });
@@ -47,16 +48,16 @@ function FormView() {
  fetchAppointmentLetter();
   }, []);
 
-  useEffect(() => {
-    const handleBeforePrint = () => {
-      setShow(false);
-    };
-    const handleAfterPrint = () => {
-      setShow(true);
-    };
-    window.addEventListener("beforeprint", handleBeforePrint);
-    window.addEventListener("afterprint", handleAfterPrint);
-  }, []);
+  // useEffect(() => {
+  //   const handleBeforePrint = () => {
+  //     setShow(false);
+  //   };
+  //   const handleAfterPrint = () => {
+  //     setShow(true);
+  //   };
+  //   window.addEventListener("beforeprint", handleBeforePrint);
+  //   window.addEventListener("afterprint", handleAfterPrint);
+  // }, []);
   return (
     <>
       <MDBContainer fluid className="backall">

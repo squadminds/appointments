@@ -13,10 +13,9 @@ import { useNavigate } from "react-router-dom";
 import ToggleModal from "./Modal";
 import {
   collection,
-  doc,
+ 
   getDocs,
-  updateDoc,
-  getDoc,
+
 } from "firebase/firestore";
 import { db } from "../Firebase/firebase";
 import { useDispatch } from "react-redux";
@@ -25,22 +24,18 @@ const Problem = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [disease, setDisease] = useState();
-  const [active, setActive] = useState();
+
 
   const handleBack = () => {
     navigate("/");
   };
   const handleNext = async (e) => {
-    try {
-      const ref = localStorage.getItem("reference");
-      await updateDoc(doc(db, "Temp", ref), {
-        Disease: doc(db, "DiseaseList", e),
-      });
-    } catch (e) {}
+    
+    localStorage.setItem("DiseaseRef",e)
     navigate("/location");
   };
-  const handleNextPage = async () => {
-    if (active) {
+  const handleNextPage = () => {
+    if (localStorage.getItem("DiseaseRef")) {
       navigate("/location");
     } else {
       dispatch(modalShow("Disease"));
@@ -60,31 +55,15 @@ const Problem = () => {
       console.log("object", e);
     }
   };
-  const callingDisease = async () => {
-    const ref = localStorage.getItem("reference");
 
-    if (ref) {
-      const value = await getDoc(doc(db, "Temp", ref));
-      if (value.exists) {
-        const val = value.data()?.Disease;
-        if (val) {
-          const dat = await getDoc(doc(db, val.path));
-
-          if (!dat.empty) {
-            setActive(dat.data()?.name);
-          }
-        }
-      }
-    }
-  };
+  
+  
   useEffect(() => {
-    if (!disease) {
+
       fetchDiseaselist();
-    }
-  }, [disease]);
-  useEffect(() => {
-    callingDisease();
+    
   }, []);
+ 
   return (
     <MDBContainer fluid className="backall backall1">
       <MDBContainer>
@@ -98,14 +77,13 @@ const Problem = () => {
           <h3 className="text-center mt-5">Select Problem</h3>
 
           <MDBRow size="lg-4" className="flex  justify-content-between">
-            {disease &&
-              disease?.map((val,i) => {
+            {disease && disease?.map((val,i) => {
                 return (
                   <MDBCol     key={i} size="md-4" className="mt-3 text-center">
-                    <MDBCard onClick={() => handleNext(val.id)}>
+                    <MDBCard  className="hover" onClick={() => handleNext(val.id)}>
                       <MDBRow
                         className={
-                          active === val.data.name ? `g-0 active` : "g-0"
+                        localStorage.getItem("DiseaseRef") === val.id ? `g-0 active` : "g-0"
                         }
                      
                       >

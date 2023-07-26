@@ -41,7 +41,11 @@ export default function ToggleModal() {
       return "Please Enter Your Name";
     } else if (modalTitle === "Invalid Email Address") {
       return "The Address You Entered is Not Available";
-    } else {
+    }  else if (modalTitle === "Name Should contains Alphabets") {
+      return "Name Should Only Contains Alphabets";
+    }
+    
+    else {
       return "";
     }
   }, [modalTitle]);

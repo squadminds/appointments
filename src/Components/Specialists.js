@@ -31,26 +31,25 @@ import {
   query,
 } from "firebase/firestore";
 
-import { setSpecalist } from "./Calls";
 const Doctor = () => {
+  const [show,setShow]=useState(true)
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [active, setActive] = useState();
+ 
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [user, setUser] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState(4);
-  const today = new Date();
-  const currentDate = today.getDate();
 
-  const handleActive = async (user) => {
-    const value = await setSpecalist(user);
+
+  const handleActive =  (user) => {
+localStorage.setItem("Doctor",user.id)
     navigate("/slot");
   };
 
   const greetUser = async () => {
-    if (active) {
+    if (localStorage.getItem("Doctor")) {
       navigate("/slot");
     } else {
       dispatch(modalShow("Specilists Needed"));
@@ -58,6 +57,11 @@ const Doctor = () => {
   };
   function Back() {
     navigate("/problem");
+  }
+  const handleBack=()=>{
+    navigate("/problem");
+    setShow(true)
+
   }
   //doctor api
 
@@ -77,69 +81,45 @@ const Doctor = () => {
   };
 
   const fetchDoctorList = async () => {
-    const ref = localStorage.getItem("reference");
+
     try {
-      const value = await getDoc(doc(db, "Temp", ref));
-      if (value.exists) {
-        const disease = value.data().Disease;
-        const Location = value.data().Location;
-        const Diseasedata = await getDoc(doc(db, disease.path));
-        const Locationdata = await getDoc(doc(db, Location.path));
+
+        const Diseasedata = await getDoc(doc(db, "DiseaseList", localStorage.getItem("DiseaseRef")));
+        const Locationdata = await getDoc(doc(db,"Locations",localStorage.getItem("countryRef")));
 
         if (Diseasedata.exists && Locationdata.exists) {
+          console.log("object",Diseasedata.data(),Locationdata.data())
           const Disease = Diseasedata.data().name;
           const Location = Locationdata.data().name;
 
-          if (Disease !== "Multispecalist") {
+          if (Disease) {
+        
             const q = query(
               collection(db, "DoctorList"),
               where("specilist", "==", Disease),
               where("Location", "==", Location)
             );
             const doctors = await getDocs(q);
+          if(!doctors.empty){
 
+        
             const dat = [];
             doctors.forEach((doc) => {
               dat.push({ id: doc.id, doctor: doc.data() });
             });
-            if (dat) {
+           
               setFilteredUsers(dat);
               setUser(dat);
-            }
-          } else {
-            const doctors = await getDocs(
-              collection(db, "DoctorList"),
-              where("Location", "===", Location)
-            );
-            const dat = [];
-            if (!doctors.empty) {
-              doctors.forEach((doc) => {
-                dat.push({ id: doc.id, doctor: doc.data() });
-              });
-            }
-            setFilteredUsers(dat);
-            setUser(dat);
+            
+          } else{
+      setShow(false)
           }
-        }
-      }
+        
+        }}
     } catch (e) {}
-    if (filteredUsers) {
-      callingDoctor();
-    }
+
   };
-  const callingDoctor = async () => {
-    const ref = localStorage.getItem("reference");
-    const value = await getDoc(doc(db, "Temp", ref));
-    if (value.exists) {
-      const val = value.data().doctor;
-      if (val) {
-        const data = await getDoc(doc(db, val.path));
-        if (!data.empty) {
-          setActive(data.data().firstName);
-        }
-      }
-    }
-  };
+
   const handlePrevious = () => {
     if (currentIndex > 0) {
       const cindex = currentIndex - 4;
@@ -149,7 +129,7 @@ const Doctor = () => {
     }
   };
   const handleNext = () => {
-    console.log("u click me");
+
     if (currentIndex > 0) {
       const cindex = currentIndex + 4;
       setCurrentIndex(cindex);
@@ -164,7 +144,7 @@ const Doctor = () => {
 
   return (
     <MDBContainer fluid className="backall">
-      <MDBContainer>
+     {show? <MDBContainer>
         <MDBRow>
           <MDBRow>
             <div className="d-flex flex-row-reverse mt-5">
@@ -193,7 +173,7 @@ const Doctor = () => {
                     <MDBRow
                       onClick={() => handleActive(user)}
                       className={
-                        active === user.doctor.firstName ? "g-0 active" : "g-0"
+                      localStorage.getItem("Doctor") === user.id? "g-0 active" : "g-0"
                       }
                       tabIndex="1234"
                       
@@ -214,7 +194,7 @@ const Doctor = () => {
                           <hr className="w-50" style={{ marginLeft: "25%" }} />
                           <MDBCardText
                             className={
-                              active === user.doctor.firstName
+                         localStorage.getItem("Doctor") === user.id
                                 ? "active-text"
                                 : ""
                             }
@@ -310,7 +290,23 @@ const Doctor = () => {
             Next
           </MDBBtn>
         </div>
-      </MDBContainer>
+      </MDBContainer>:<MDBContainer>
+      <MDBRow>
+      <div className="d-flex justify-content-center  mt-5">
+      <h3 className="text-center mt-5">
+            Sorry No Doctor Available For this Disease In that area
+            </h3>
+        </div>
+      
+        </MDBRow>
+        <MDBBtn
+            type={"primary"}
+            className="buttheme mt-3 NePreBtn"
+            onClick={() => handleBack()}
+          >
+            Go Back
+          </MDBBtn>
+        </MDBContainer>}
       <ToggleModal />
     </MDBContainer>
   );

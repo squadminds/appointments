@@ -21,8 +21,8 @@ const Location = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const greetUser = async () => {
-    const isCountry = await matchedCountry(country);
-    if (isCountry) {
+  await matchedCountry(country);
+    if (localStorage.getItem("countryRef")) {
       navigate("/doctor");
     
     } else {

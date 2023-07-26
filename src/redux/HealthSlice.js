@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import Information from '../Components/Information'
+
 const initialState = {
   selectedDoctor:"",
   ModalTitle:"",

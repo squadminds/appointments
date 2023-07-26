@@ -1,15 +1,14 @@
 import { MDBBtn, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import "../styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import { db } from "../Firebase/firebase";
-import { collection, addDoc, getDocs, deleteDoc } from "firebase/firestore";
+
 const Banner = () => {
-  const [state, setState] = useState();
+
   const navigate = useNavigate();
-  const date = new Date();
+
 
   useEffect(() => {
     Aos.init({
@@ -18,39 +17,29 @@ const Banner = () => {
     });
   }, []);
   // onkeypress
-  const greetUser = async () => {
-    try {
-      const ref = await addDoc(collection(db, "Temp"), {});
-      localStorage.setItem("reference", ref.id);
-    } catch (e) {}
+  const greetUser = () => {
+    
 
     navigate("/problem");
   };
 
   const changeValue = (e) => {
     if (e.key === "Enter") {
-      setState(e.target.value);
+    
       greetUser();
     }
   };
   useEffect(() => {
     window.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
-        setState(e.target.value);
+       
         greetUser();
       }
     });
-  }, []);
-  const deleteTemp = async () => {
-    try {
-      const docRef = await getDocs(collection(db, "Temp"));
-
-      docRef.forEach(async (doc) => await deleteDoc(doc.ref));
-    } catch (e) {}
-  };
-  useEffect(() => {
-    deleteTemp();
-  }, []);
+  }, [greetUser]);
+  useEffect(()=>{
+    localStorage.clear()
+  })
   return (
     <MDBContainer fluid>
       <MDBRow onKeyPress={changeValue}>

@@ -40,46 +40,51 @@ function TimeSlots() {
   const navigate = useNavigate();
   const [previousDates, setPreviousDates] = useState([]);
   const Disease = useSelector((state) => state.HealthReducer.DiseaseType);
-  const fetchDoctor = async () => {
+  const fetchDoctor = async() => {
     try {
       let currentDoctor = await getDoc(
-        doc(db, "Temp", localStorage.getItem("reference"))
+        doc(db, "DoctorList", localStorage.getItem("Doctor"))
       );
       if (currentDoctor.exists) {
-        const q = query(
+        
+        const q = query(  
           collection(db, "Appointment"),
-          where("doctor", "==", doc(db, currentDoctor.data().doctor.path))
+          where("Doctor", "==", doc(db, "DoctorList",currentDoctor.id))
         );
-
+        
         const querySnapshot = await getDocs(q);
+     
         const data = [];
-        querySnapshot.docs.map((val) => {
-          if (data.some((item) => item["date"] === val.data().date)) {
-            const ind = data.findIndex(
-              (item) => item["date"] === val.data().date,
-              data
-            );
-
-            data[ind].Slots.push(val.data().Slot);
+    
+  querySnapshot.docs.map((val) => {
+     
+          if (data.some((item) => item["date"] === val.data().Date)) {
+           
+            const ind = data.findIndex((item) => item["date"] === val.data().Date);
+        
+            data[ind].Slots.push(val.data().Time);
+               
           } else {
-            data.push({ date: val.data().date, Slots: [val.data().Slot] });
+            data.push({ date: val.data().Date, Slots: [val.data().Time] });
           }
         });
+
         setPreviousDates(data);
       }
     } catch (e) {
       console.log("object", e);
     }
 
-    dateSlot();
+ 
+
   };
   const greetUser = async (e) => {
     const date = e.target.id;
     const TimeSlot = e.target.innerText;
-   
-    localStorage.setItem("date", date);
-    localStorage.setItem("time", TimeSlot);
+ 
     if (TimeSlot !== "NOT-AVAILABLE") {
+      localStorage.setItem("date", date);
+      localStorage.setItem("time", TimeSlot);
       try {
         const ref = localStorage.getItem("reference");
         await updateDoc(doc(db, "Temp", ref), {
@@ -131,12 +136,9 @@ function TimeSlots() {
     }
 
     if (datesSelected.length > 8) {
-      const ref = localStorage.getItem("reference");
-      const value = await getDoc(doc(db, "Temp", ref));
-      if (value.exists) {
-        const val = value.data().doctor;
+    
 
-        const dat = await getDoc(doc(db, val.path));
+        const dat = await getDoc(doc(db, "DoctorList",localStorage.getItem("Doctor")));
 
         let daySlots = [];
 
@@ -164,17 +166,17 @@ function TimeSlots() {
             });
           }
         }
-        if (daySlots.length > 2) {
+        if (daySlots.length > 2 ) {
           const value = datesSelected.map((val) => {
             return Object.assign({}, val, {
               Slots: daySlots,
             });
           });
-          if (value) {
+          if (value){
             filterSlots(value);
           }
         }
-      }
+      
     }
   };
 
@@ -190,13 +192,13 @@ function TimeSlots() {
           date: item.date,
           Slots: item.Slots.map((slot) => {
             if (
-              array2SlotsMap[item.date].every(
+              array2SlotsMap[item.date].some(
                 (slot2) => `${slot.startTime}-${slot.endTime}` === slot2
               )
             ) {
               return Object.assign({}, slot, {
-                startTime: "Not",
-                endTime: "Available",
+                startTime: "NOT",
+                endTime: "AVAILABLE",
               });
             } else {
               return slot;
@@ -216,6 +218,9 @@ function TimeSlots() {
   useEffect(() => {
     fetchDoctor();
   }, []);
+  useEffect(()=>{
+    dateSlot();
+  },[previousDates])
 
   return (
     <MDBContainer fluid className="backaslot">
@@ -263,7 +268,7 @@ function TimeSlots() {
                             `${item.startTime}-${item.endTime}`
                             ? "me-3 activeSlot mt-3 fw-bold"
                             : `${item.startTime}-${item.endTime}` ===
-                              "Not-Available"
+                              "NOT-AVAILABLE"
                             ? "me-3 notAvaialble mt-3 fw-bold"
                             : "me-3 timeSlot mt-3 fw-bold"
                         }

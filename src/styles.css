@@ -138,7 +138,7 @@ color:black !important;
 }
 .activeSlot{
     width:150px;
-background-color: white !important;
+background-color:white !important;
 color:black !important;
 }
 .notAvaialble{
@@ -154,7 +154,9 @@ color:black !important;
 }
 
 
-
+.hover{
+    cursor: pointer;
+}
   
   /* Hide the print button when printing */
   

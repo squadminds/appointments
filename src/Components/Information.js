@@ -9,9 +9,9 @@ import React, { useRef, useEffect, useState } from "react";
 import "../styles.css";
 import { useNavigate } from "react-router-dom";
 import {modalShow} from "../Redux/HealthSlice";
-import { collection, doc, updateDoc, addDoc, setDoc } from "firebase/firestore";
+import { collection,addDoc} from "firebase/firestore";
 import { db } from "../Firebase/firebase";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import ToggleModal from "./Modal";
 
 const Information = () => {
@@ -20,18 +20,22 @@ const Information = () => {
   const [error, setError] = useState("");
   const [condition, setCondition] = useState(1);
   const dispatch = useDispatch();
-  const { Name, Phone, Email } = useSelector((state) => state.HealthReducer);
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\+?\d{1,3}?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+  const letters = /^[A-Za-z]/
   const greetUser = async () => {
     if (condition === 1) {
-      if (details.name !== "") {
+      if (letters.test(details.name)) {
         setError("");
         setCondition(2);
         dispatch(modalShow(""));
       } else if (details.name === "") {
         setError("Name Is Required");
         dispatch(modalShow("Name Is Required"));
+      }else if(letters.test(details.name)===false){
+        setError("Name Should Contains Only Alphabets");
+        dispatch(modalShow("Name Should contains Alphabets"));
       }
     } else if (condition === 2) {
       if (emailRegex.test(details.email) === false) {
@@ -59,10 +63,7 @@ const Information = () => {
             Patient_Phone: details.phone,
           });
           if (user) {
-            const ref = localStorage.getItem("reference");
-            updateDoc(doc(db, "Temp", ref), {
-              user: doc(db, "users", user.id),
-            });
+          localStorage.setItem("user",user.id)
           }
         } catch (e) {
           console.log("object");
@@ -106,9 +107,9 @@ const Information = () => {
     }
   }, []);
 
-  useEffect(() => {
-    setDetails({ ...details, name: Name, phone: Phone, email: Email });
-  }, []);
+  // useEffect(() => {
+  //   setDetails({ ...details, name: Name, phone: Phone, email: Email });
+  // }, []);
   return (
     <>
       <MDBContainer fluid className="backall ">
