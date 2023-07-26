@@ -40,32 +40,33 @@ function TimeSlots() {
   const navigate = useNavigate();
   const [previousDates, setPreviousDates] = useState([]);
   const Disease = useSelector((state) => state.HealthReducer.DiseaseType);
-  const fetchDoctor = async() => {
+  const fetchDoctor = async () => {
     try {
       let currentDoctor = await getDoc(
         doc(db, "DoctorList", localStorage.getItem("Doctor"))
       );
       if (currentDoctor.exists) {
-        
-        const q = query(  
+        const q = query(
           collection(db, "Appointment"),
-          where("Doctor", "==", doc(db, "DoctorList",currentDoctor.id))
+          where("Doctor", "==", doc(db, "DoctorList", currentDoctor.id))
         );
-        
+
         const querySnapshot = await getDocs(q);
-     
+
         const data = [];
-    
-  querySnapshot.docs.map((val) => {
-     
+
+        querySnapshot.docs.map((val) => {
           if (data.some((item) => item["date"] === val.data().Date)) {
-           
-            const ind = data.findIndex((item) => item["date"] === val.data().Date);
-        
-            data[ind].Slots.push(val.data().Time);
-               
+            const ind = data.findIndex(
+              (item) => item["date"] === val.data().Date
+            );
+
+            return data[ind].Slots.push(val.data().Time);
           } else {
-            data.push({ date: val.data().Date, Slots: [val.data().Time] });
+            return data.push({
+              date: val.data().Date,
+              Slots: [val.data().Time],
+            });
           }
         });
 
@@ -74,14 +75,11 @@ function TimeSlots() {
     } catch (e) {
       console.log("object", e);
     }
-
- 
-
   };
   const greetUser = async (e) => {
     const date = e.target.id;
     const TimeSlot = e.target.innerText;
- 
+
     if (TimeSlot !== "NOT-AVAILABLE") {
       localStorage.setItem("date", date);
       localStorage.setItem("time", TimeSlot);
@@ -136,47 +134,46 @@ function TimeSlots() {
     }
 
     if (datesSelected.length > 8) {
-    
+      const dat = await getDoc(
+        doc(db, "DoctorList", localStorage.getItem("Doctor"))
+      );
 
-        const dat = await getDoc(doc(db, "DoctorList",localStorage.getItem("Doctor")));
+      let daySlots = [];
 
-        let daySlots = [];
-
-        if (!dat.empty) {
-          const start = new Date();
-          start.setHours(9, 0, 0);
-          const end = new Date();
-          end.setHours(18, 0, 0);
-          const slotDuration = dat.data().Duration * 60 * 1000;
-          let currentTime = start;
-          while (currentTime <= end) {
-            const slotStartTime = currentTime.toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            });
-            currentTime.setTime(currentTime.getTime() + slotDuration);
-            const slotEndTime = currentTime.toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            });
-
-            daySlots.push({
-              startTime: slotStartTime,
-              endTime: slotEndTime,
-            });
-          }
-        }
-        if (daySlots.length > 2 ) {
-          const value = datesSelected.map((val) => {
-            return Object.assign({}, val, {
-              Slots: daySlots,
-            });
+      if (!dat.empty) {
+        const start = new Date();
+        start.setHours(9, 0, 0);
+        const end = new Date();
+        end.setHours(18, 0, 0);
+        const slotDuration = dat.data().Duration * 60 * 1000;
+        let currentTime = start;
+        while (currentTime <= end) {
+          const slotStartTime = currentTime.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
           });
-          if (value){
-            filterSlots(value);
-          }
+          currentTime.setTime(currentTime.getTime() + slotDuration);
+          const slotEndTime = currentTime.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+
+          daySlots.push({
+            startTime: slotStartTime,
+            endTime: slotEndTime,
+          });
         }
-      
+      }
+      if (daySlots.length > 2) {
+        const value = datesSelected.map((val) => {
+          return Object.assign({}, val, {
+            Slots: daySlots,
+          });
+        });
+        if (value) {
+          filterSlots(value);
+        }
+      }
     }
   };
 
@@ -218,9 +215,9 @@ function TimeSlots() {
   useEffect(() => {
     fetchDoctor();
   }, []);
-  useEffect(()=>{
+  useEffect(() => {
     dateSlot();
-  },[previousDates])
+  });
 
   return (
     <MDBContainer fluid className="backaslot">

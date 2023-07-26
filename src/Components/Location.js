@@ -59,7 +59,7 @@ const Location = () => {
         greetUser();
       }
     });
-  }, [country]);
+  });
   return (
     <MDBContainer fluid className="backall">
       <ToggleModal />

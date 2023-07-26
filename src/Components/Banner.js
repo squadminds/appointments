@@ -36,7 +36,7 @@ const Banner = () => {
         greetUser();
       }
     });
-  }, [greetUser]);
+  });
   useEffect(()=>{
     localStorage.clear()
   })
