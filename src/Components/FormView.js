@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
 import { BsPrinterFill } from "react-icons/bs";
 import { getDoc, doc} from "firebase/firestore";
-import { db } from "../Firebase/firebase";
+import { db } from "../firebase/firebase";
 
 function FormView() {
 

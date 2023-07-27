@@ -17,9 +17,9 @@ import {
   getDocs,
 
 } from "firebase/firestore";
-import { db } from "../Firebase/firebase";
+import { db } from "../firebase/firebase";
 import { useDispatch } from "react-redux";
-import { modalShow } from "../Redux/HealthSlice";
+import { modalShow } from "../redux/HealthSlice";
 const Problem = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

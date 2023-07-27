@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBContainer, MDBBtn, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import { addDoc, doc, collection, updateDoc } from "firebase/firestore";
-import { db } from "../Firebase/firebase";
+import { db } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 function SubmitPage() {

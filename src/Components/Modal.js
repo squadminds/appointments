@@ -13,7 +13,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { ImNotification } from "react-icons/im";
 import { BsCalendarDate } from "react-icons/bs";
-import { modalShow, selectedDate } from "../Redux/HealthSlice";
+import { modalShow, selectedDate } from "../redux/HealthSlice";
 export default function ToggleModal() {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();

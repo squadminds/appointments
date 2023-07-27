@@ -19,9 +19,9 @@ import {
 } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { modalShow } from "../Redux/HealthSlice";
+import { modalShow } from "../redux/HealthSlice";
 import ToggleModal from "./Modal";
-import { db } from "../Firebase/firebase";
+import { db } from "../firebase/firebase";
 import {
   collection,
   getDocs,

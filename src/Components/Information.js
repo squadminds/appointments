@@ -8,9 +8,9 @@ import {
 import React, { useRef, useEffect, useState } from "react";
 import "../styles.css";
 import { useNavigate } from "react-router-dom";
-import {modalShow} from "../Redux/HealthSlice";
+import {modalShow} from "../redux/HealthSlice";
 import { collection,addDoc} from "firebase/firestore";
-import { db } from "../Firebase/firebase";
+import { db } from "../firebase/firebase";
 import {  useDispatch } from "react-redux";
 import ToggleModal from "./Modal";
 

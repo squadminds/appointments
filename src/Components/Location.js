@@ -12,8 +12,8 @@ import "../styles.css";
 import { useFormik } from "formik";
 import { useNavigate} from "react-router-dom";
 import {  useDispatch } from "react-redux";
-import { modalShow } from "../Redux/HealthSlice";
-import data from "./Contents/CountryCodes.json";
+import { modalShow } from "../redux/HealthSlice";
+import data from "./contents/CountryCodes.json";
 import ToggleModal from "./Modal";
 import {  matchedCountry } from "./Calls";
 const Location = () => {

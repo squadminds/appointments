@@ -7,7 +7,7 @@ import {
   BookAppointment,
   SelectedDisease,
   setShowSlot,
-} from "../Redux/HealthSlice";
+} from "../redux/HealthSlice";
 import ToggleModal from "./Modal";
 import { useNavigate } from "react-router-dom";
 import { BsFillForwardFill } from "react-icons/bs";
@@ -21,7 +21,7 @@ import {
   where,
   query,
 } from "firebase/firestore";
-import { db } from "../Firebase/firebase";
+import { db } from "../firebase/firebase";
 function TimeSlots() {
   const ActiveDate = useSelector(
     (state) => state.HealthReducer.appointment.date
