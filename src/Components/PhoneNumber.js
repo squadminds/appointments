@@ -1,74 +1,72 @@
-import { MDBCol, MDBContainer, MDBInput, MDBRow,MDBBtn } from 'mdb-react-ui-kit'
 import React,{ useRef, useEffect } from 'react'
 import "../styles.css"
-import { useFormik } from "formik";
 import { useNavigate } from 'react-router-dom'
+import { MDBCol, MDBContainer, MDBInput, MDBRow,MDBBtn } from 'mdb-react-ui-kit'
+import { useFormik } from "formik";
 
-const Location = () => {
-  const navigate = useNavigate();
+const PhoneNumber = () => {
+    
+    const navigate = useNavigate();
   function greetUser() {
-    navigate("/problem");
+    navigate("/msg");
   }
 
   function Back() {
-    navigate("/");
+    navigate("/email");
   }
 
-  //autofocus
-
-  const Input = useRef(null);
-
+  const EmailInput = useRef(null);
 
   useEffect(() => {
-    if (Input.current) {
-      Input.current.focus();
+    if (EmailInput.current) {
+      EmailInput.current.focus();
     }
   }, []);
 
-// validate
-const formik = useFormik({
-  initialValues: {
-    location: "",
-  },
-  onSubmit: (values) => {
-    console.log(values);
-  },
-  validate: (values) => {
-    let errors = {};
-    if (!values.location) errors.location = "Location is required";
-    else if (!/^[a-zA-Z\s]+$/.test(values.location))
-      errors.location = "Location should only contain alphabets and spaces";
-    return errors;
-  },
-});
 
+  // validate
+const formik = useFormik({
+    initialValues: {
+      phone: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+    validate: (values) => {
+      let errors = {};
+      if (!values.phone)
+        errors.phone = "phonenumber  is required";
+      else if (!/^(\+?\d{1,3}\s?)?(\d{10})$/.test(values.phone))
+        errors.phone =
+          "Phone number must be 10 digits with an optional country code";
+        return errors;
+    },
+  });
 
   return (
-    <MDBContainer fluid className='backall'>
+    <MDBContainer fluid className='backall '>
        <MDBRow>
        <form onSubmit={formik.handleSubmit}>
         <MDBContainer>
           <MDBRow>
             <h3 className='mt-5 text-dark d-flex justify-content-center'>The Assessment of our partner doctors relies on complete accuracy<br/> and honesty in your answers to the Questions below.</h3>
 
-            <h4 className='mt-5 text-dark d-flex justify-content-center'>Fill Your Location</h4>
             <MDBCol className='mt-5 text-dark d-flex justify-content-center'>
-            <h2>  What is the name of your country of residence?</h2>
+            <h2> Your question here. Recall information with @</h2>
             </MDBCol>
           </MDBRow>
           <MDBRow className='d-flex justify-content-center'>
             <MDBCol size="md-6" className='mt-3 text-dark'>
-              <MDBInput className='w-100 ' label="fill your location" ref={Input} name="location"
-   value={formik.values.location}
+              <MDBInput className='w-100 ' label="fill your conatct" ref={EmailInput} name="phone"
+   value={formik.values.phone}
    onChange={formik.handleChange}
    onBlur={formik.handleBlur}
  />
  <div>
-   {formik.touched.location && formik.errors.location ? (
-     <div className="text-danger">{formik.errors.location}</div>
+   {formik.touched.phone && formik.errors.phone ? (
+     <div className="text-danger">{formik.errors.phone}</div>
    ) : null}
  </div>
-
             </MDBCol>
           </MDBRow>
 <MDBRow className='d-flex justify-content-center'>
@@ -95,8 +93,6 @@ const formik = useFormik({
                   </div>
   </MDBCol>
 </MDBRow>
-
-
         </MDBContainer>
         </form>
        </MDBRow>
@@ -104,4 +100,4 @@ const formik = useFormik({
   )
 }
 
-export default Location
+export default PhoneNumber
