@@ -4,7 +4,7 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import "../styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
-
+import { statusUpdate } from "./Calls";
 const Banner = () => {
 
   const navigate = useNavigate();
@@ -38,6 +38,7 @@ const Banner = () => {
     });
   });
   useEffect(()=>{
+statusUpdate()
     localStorage.clear()
   })
   return (

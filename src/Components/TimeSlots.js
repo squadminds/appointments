@@ -62,7 +62,9 @@ function TimeSlots() {
             );
 
             return data[ind].Slots.push(val.data().Time);
-          } else {
+          }
+          
+          else {
             return data.push({
               date: val.data().Date,
               Slots: [val.data().Time],
@@ -83,15 +85,7 @@ function TimeSlots() {
     if (TimeSlot !== "NOT-AVAILABLE") {
       localStorage.setItem("date", date);
       localStorage.setItem("time", TimeSlot);
-      try {
-        const ref = localStorage.getItem("reference");
-        await updateDoc(doc(db, "Temp", ref), {
-          date: date,
-          Slot: TimeSlot,
-        });
-      } catch (e) {
-        console.log("object", e);
-      }
+     
 
       dispatch(BookAppointment({ date, TimeSlot }));
       navigate("/info");
@@ -202,14 +196,18 @@ function TimeSlots() {
             }
           }),
         });
-      } else {
+      } 
+      else {
         return Object.assign({}, item, {
           date: item.date,
           Slots: item.Slots,
         });
       }
     });
+
     setDates(filteredArray1);
+
+
   };
 
   useEffect(() => {

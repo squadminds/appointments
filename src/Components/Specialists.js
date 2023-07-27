@@ -88,7 +88,6 @@ localStorage.setItem("Doctor",user.id)
         const Locationdata = await getDoc(doc(db,"Locations",localStorage.getItem("countryRef")));
 
         if (Diseasedata.exists && Locationdata.exists) {
-          console.log("object",Diseasedata.data(),Locationdata.data())
           const Disease = Diseasedata.data().name;
           const Location = Locationdata.data().name;
 
