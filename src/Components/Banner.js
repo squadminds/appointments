@@ -3,20 +3,47 @@ import React, { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import "../styles.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { statusUpdate } from "./Calls";
 const Banner = () => {
-  // aos
+
+  const navigate = useNavigate();
+
+
   useEffect(() => {
     Aos.init({
       duration: 500,
       offset: 100,
     });
-    Aos.refresh();
   }, []);
+  // onkeypress
+  const greetUser = () => {
+    
 
+    navigate("/problem");
+  };
+
+  const changeValue = (e) => {
+    if (e.key === "Enter") {
+    
+      greetUser();
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+       
+        greetUser();
+      }
+    });
+  });
+  useEffect(()=>{
+statusUpdate()
+    localStorage.clear()
+  })
   return (
     <MDBContainer fluid>
-      <MDBRow>
+      <MDBRow onKeyPress={changeValue}>
         <MDBCol size="md-6" className="backall back">
           <h2
             className=" text-dark fw-bold texth2"
@@ -27,9 +54,8 @@ const Banner = () => {
             Complete this form to
             <br />
             <span className="text-dark fw-bold">
-              {" "}
               book an <br />
-              appointment{" "}
+              appointment
             </span>
             with one
             <br /> of our specialists.
@@ -42,20 +68,24 @@ const Banner = () => {
           >
             Description (optional)
           </p>
-          <MDBBtn
-            className="fw-bold but "
-            // data-aos="fade-up" data-aos-offset="2"   data-aos-duration="2000"
-          >
-            <NavLink to="/location" className="text-light">
+          <MDBBtn className="fw-bold but NePreBtn " onClick={() => greetUser()}>
+            <NavLink
+              to="/problem"
+              className="text-light NePreBtn"
+              onKeyPress={changeValue}
+            >
               Schedule
             </NavLink>
           </MDBBtn>
         </MDBCol>
+
         <MDBCol size="md-6">
           <img
             src="https://img.freepik.com/free-photo/interior-view-operating-room_1170-2255.jpg?w=2000"
             alt=".."
             className="bannerimgs"
+            height="69%"
+            width="100%"
           />
         </MDBCol>
       </MDBRow>

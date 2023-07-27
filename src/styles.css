@@ -1,87 +1,47 @@
 .back {
-  background: #b8ebd0;
-  height: 730px;
+    background: #B8EBD0;
+    height: 730px;
 }
+
 .bannerimgs {
-  width: 100%;
-  height: 730px;
-  /* border: 2px solid red; */
+    width: 100%;
+    height: 730px;
 }
+
 .back .texth2 {
-  margin-top: 30%;
-  margin-left: 20%;
+    margin-top: 30%;
+    margin-left: 20%;
 }
+
 .but,
 .back p {
-  margin-left: 20%;
-}
-.but {
-  background: #301a4b !important;
-}
-.buttheme1:hover {
-  background-color: #301a4b !important;
-  border: #301a4b !important;
-  color: white !important;
-}
-.buttheme1 {
-  display: inline-block;
-  padding: 24px 32px;
-  border: 0;
-  text-decoration: none;
-  border-radius: 15px;
-  background-color: white !important ;
-  border: 1px solid white !important;
-  font-size: 14px;
-  color: black !important;
-  letter-spacing: 2px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-.buttheme {
-  background-color: #493657 !important;
+    margin-left: 20%;
 }
 .backall {
-  background: #eadeda;
-  height: 730px;
+    background: #EADEDA;
+    height: 790px;
+}
+.backaslot{
+    background: #EADEDA;
+    height: auto;
 }
 .lastshow {
-  margin-top: 40%;
+    margin-top: 40%;
 }
 
 .glassbut {
-  display: inline-block;
-  padding: 24px 32px;
-  border: 0;
-  text-decoration: none;
-  border-radius: 15px;
-  background-color: #c5cbd3 !important ;
-  border: 1px solid #c5cbd3 !important;
-  font-size: 14px;
-  color: black !important;
-  letter-spacing: 2px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-.glassbut:hover {
-  background-color: white !important;
-  color: black !important;
-}
-.scrollbut {
-  background: #301a4b;
-  color: #fff;
-  border: 1px solid #301a4b;
-  border-radius: 10%;
-}
-
-.butfixed{
-    position: fixed;
-    margin-top: 20%;
-}
-/*font style */
-h1,
-h4,
-h3 {
-  font-family: "Libre Baskerville", serif;
+    display: inline-block;
+    padding: 24px 32px;
+    border: 0;
+    text-decoration: none;
+    border-radius: 15px;
+    background-color: #c5cbd3 !important;
+    border: 1px solid #c5cbd3 !important;
+    font-size: 14px;
+    color: black !important;
+    letter-spacing: 2px;
+    cursor: pointer;
+    text-transform: uppercase;
 }
 .scrollTopBottom {
   position: fixed;
@@ -97,44 +57,117 @@ h3 {
   object-fit: cover;
 }
 
-@media screen and (max-width: 750px) {
-  .back {
-    background: #b8ebd0;
-    height: 460px;
-  }
-  .bannerimgs {
-    width: 100%;
-    height: 450px;
-  }
-  .backall1 {
-    background: #eadeda;
-    height: auto;
-  }
-
-  .scrollTopBottom {
-    position: fixed;
-    top: 90%;
-  }
-  .thnkimgs {
-    height: 300px;
-    width: 250px;
-  }
+/*font style */
+h1,
+h4,
+h3 {
+    font-family: "Libre Baskerville", serif;
 }
 
-@media screen  and (min-width: 600px){
-	.back {
+.thnkimgs {
+    height: 300px;
+    width: 300px;
+}
+
+.groupimgs {
+    height: 100%;
+    width: 100%;
+}
+
+.scrollbut {
+    background: #301a4b;
+    color: white;
+}
+
+@media screen and (max-width: 750px) {
+    .back {
         background: #B8EBD0;
-        height: 410px;
+        height: 460px;
     }
-    .backall{
+
+    .bannerimgs {
+        width: 100%;
+        height: 450px;
+    }
+
+    .backall {
         background: #EADEDA;
-        height: 730px;
+        height: 2600px;
     }
-    .backall1{
-      height: 900px;
+
+    .thnkimgs {
+        height: 300px;
+        width: 250px;
     }
-    .groupimgs {
-      height: 150px;
-      width: 100%;
+}
+
+.active {
+    background-color: #F9B9A5;
+color:white;
+}
+
+.active-text {
+    background-color: #F9B9A5;
+   color:white;
+   
+}
+.activeSlot{
+    
+ 
+    background-color:red !important;
+    color:white;
+
+  }  
+
+  .NePreBtn {
+    background-color: #493657 !important;
+}
+
+.saveBtn{
+    background-color:green !important;
+
+}
+.cancelBtn{
+    background-color: darkred !important;
+    
+}
+.activeDay{
+background-color:burlywood !important;
+color:black !important;
+
+}
+.activeSlot{
+    width:150px;
+background-color:white !important;
+color:black !important;
+}
+.notAvaialble{
+    width:150px;
+    background-color:white !important;
+color:black !important;
+}
+.timeSlot
+{
+    width:150px;
+    background-color: #493657 !important;
+    color:white !important;
+}
+
+
+.hover{
+    cursor: pointer;
+}
+  
+  /* Hide the print button when printing */
+  
+  
+  @media print {
+    .printButton {
+      display:none !important;
+      
     }
+  }
+
+  .pagination:hover{
+    cursor: pointer;
   }
