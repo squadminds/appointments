@@ -18,6 +18,7 @@ export default function ToggleModal() {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const [selectedDay, setSelectedDay] = useState();
+ 
   const modalTitle = useSelector((state) => state.HealthReducer.ModalTitle);
   const content = useMemo(() => {
     if (modalTitle === "Specilists Needed") {
@@ -43,6 +44,10 @@ export default function ToggleModal() {
       return "The Address You Entered is Not Available";
     }  else if (modalTitle === "Name Should contains Alphabets") {
       return "Name Should Only Contains Alphabets";
+    }else if(modalTitle==="Next"){
+      return "You Are On The Last Page";
+    }else if(modalTitle==="Previous"){
+      return "You Are On The First Page";
     }
     
     else {
@@ -66,7 +71,8 @@ export default function ToggleModal() {
     <>
       <MDBModal show={show}>
         <MDBModalDialog>
-          <MDBModalContent>
+          <MDBModalContent 
+              >
             <MDBModalHeader>
               {modalTitle === "Select Date" ? (
                 <MDBModalTitle style={{ color: "brown" }}>
@@ -100,7 +106,9 @@ export default function ToggleModal() {
             <MDBModalFooter>
               <MDBBtn
                 className="cancelBtn"
+              
                 onClick={() => dispatch(modalShow(""))}
+                
               >
                 Cancel
               </MDBBtn>

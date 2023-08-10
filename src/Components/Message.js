@@ -1,18 +1,25 @@
-import React from "react";
+import React,{useRef,useEffect} from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
 import "../styles.css";
 import { useNavigate } from "react-router-dom";
 const Message = () => {
   const navigate = useNavigate();
 
-
-  function greetUser() {
+const mainDiv=useRef(null)
+const greetUser=() =>{
     navigate("/formReview");
   }
-
+ useEffect(()=>{
+mainDiv.current.focus()
+ },[])
 
   return (
-    <MDBContainer fluid className="backall">
+    <MDBContainer fluid 
+    ref={mainDiv}
+    tabIndex={1}
+    onKeyDown={(e)=>e.key==="Enter"?greetUser():""}
+    
+    className="backall">
       <MDBRow>
         <MDBContainer>
           <MDBRow>
@@ -42,7 +49,7 @@ const Message = () => {
                 <MDBBtn
                   type={"primary"}
                   className="buttheme mt-3"
-                  onClick={greetUser}
+                  onClick={()=>greetUser()}
                 >
                   View Recipt
                 </MDBBtn>

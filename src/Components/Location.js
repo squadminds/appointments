@@ -5,44 +5,39 @@ import {
   MDBRow,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import React, {
-useEffect,useState,
- } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import "../styles.css";
 import { useFormik } from "formik";
-import { useNavigate} from "react-router-dom";
-import {  useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { modalShow } from "../redux/HealthSlice";
 import data from "./contents/CountryCodes.json";
 import ToggleModal from "./Modal";
-import {  matchedCountry } from "./Calls";
+import { matchedCountry } from "./Calls";
 const Location = () => {
   const [country, setCountry] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const greetUser = async () => {
-  await matchedCountry(country);
+  const mainDiv=useRef(null)
+  const greetUser = async (e) => {
+    await matchedCountry(country);
     if (localStorage.getItem("countryRef")) {
       navigate("/doctor");
-    
     } else {
       dispatch(modalShow("Error Location"));
     }
   };
-  const Back = () => {
-    navigate("/problem");
-  };
-  //autofocus
+  const Back = () =>navigate("/problem");
+  
+
   const formik = useFormik({
     initialValues: {
       location: "",
-    },
-    onSubmit: (values) => {
+    },onSubmit: (values) => {
       const str =
         values.location.charAt(0).toUpperCase() + values.location.slice(1);
       setCountry(str);
-    },
-    validate: (values) => {
+    },validate: (values) => {
       let errors = {};
       if (values.location !== "") errors.location = "Location is required";
       else if (!/^[a-zA-Z\s]+$/.test(data.location))
@@ -53,15 +48,17 @@ const Location = () => {
       return errors;
     },
   });
-  useEffect(() => {
-    window.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        greetUser();
-      }
-    });
-  });
+
+useEffect(()=>{
+mainDiv.current.focus();
+},[])
+  
   return (
-    <MDBContainer fluid className="backall">
+    <MDBContainer fluid className="backall"
+    tabIndex={0}
+    onKeyPress={(e)=>e.key==="Enter"?greetUser():""}
+    ref={mainDiv}
+    >
       <ToggleModal />
       <MDBRow>
         <form onSubmit={formik.handleSubmit}>
@@ -74,7 +71,8 @@ const Location = () => {
               </h3>
 
               <h4 className="mt-5 text-dark d-flex justify-content-center">
-           Currently,We have available doctors  in India,Isreal,America,Enlgand
+                Currently,We have available doctors in
+                India,Isreal,America,Enlgand
               </h4>
               <MDBCol className="mt-5 text-dark d-flex justify-content-center">
                 <h2> What is the name of your country of residence?</h2>
@@ -111,7 +109,7 @@ const Location = () => {
                   <MDBBtn
                     type={"primary"}
                     className="buttheme mt-3 NePreBtn"
-                    onClick={() => greetUser()}
+                    onClick={(e) => greetUser(e)}
                   >
                     Next
                   </MDBBtn>

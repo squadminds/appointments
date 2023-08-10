@@ -1,49 +1,35 @@
+import React, { useEffect, useRef } from "react";
 import { MDBBtn, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
-import React, { useEffect } from "react";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import "../styles.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { statusUpdate } from "./Calls";
 const Banner = () => {
-
+  const mainDivRef = useRef();
   const navigate = useNavigate();
 
+  const greetUser = () => navigate("/problem");
 
   useEffect(() => {
     Aos.init({
       duration: 500,
       offset: 100,
     });
+    statusUpdate();
+    localStorage.clear();
   }, []);
-  // onkeypress
-  const greetUser = () => {
-    
-
-    navigate("/problem");
-  };
-
-  const changeValue = (e) => {
-    if (e.key === "Enter") {
-    
-      greetUser();
-    }
-  };
   useEffect(() => {
-    window.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-       
-        greetUser();
-      }
-    });
-  });
-  useEffect(()=>{
-statusUpdate()
-    localStorage.clear()
-  })
+    mainDivRef.current.focus();
+  }, []);
   return (
-    <MDBContainer fluid>
-      <MDBRow onKeyPress={changeValue}>
+    <MDBContainer
+      ref={mainDivRef}
+      fluid
+      tabIndex={0}
+      onKeyPress={(e) => (e.key === "Enter" ? greetUser() : "")}
+    >
+      <MDBRow>
         <MDBCol size="md-6" className="backall back">
           <h2
             className=" text-dark fw-bold texth2"
@@ -51,14 +37,8 @@ statusUpdate()
             data-aos-offset="0"
             data-aos-duration="2000"
           >
-            Complete this form to
-            <br />
-            <span className="text-dark fw-bold">
-              book an <br />
-              appointment
-            </span>
-            with one
-            <br /> of our specialists.
+            Complete this form to book an appointment with one of our
+            specialists.
           </h2>
           <p
             className="text-dark"
@@ -69,11 +49,7 @@ statusUpdate()
             Description (optional)
           </p>
           <MDBBtn className="fw-bold but NePreBtn " onClick={() => greetUser()}>
-            <NavLink
-              to="/problem"
-              className="text-light NePreBtn"
-              onKeyPress={changeValue}
-            >
+            <NavLink to="/problem" className="text-light NePreBtn">
               Schedule
             </NavLink>
           </MDBBtn>

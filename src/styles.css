@@ -171,3 +171,21 @@ color:black !important;
   .pagination:hover{
     cursor: pointer;
   }
+.errorPage{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background:black;
+    min-height: 50rem;
+ 
+}
+.innerError{
+    display:flex;
+
+    background:black;
+justify-content: center;
+    align-items:flex-end;
+}
+.errorText{
+    color:white;
+}

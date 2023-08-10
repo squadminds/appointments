@@ -1,34 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
 import { BsPrinterFill } from "react-icons/bs";
-import { getDoc, doc} from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 function FormView() {
-
   const [doctor, setDoctor] = useState();
   const [day, setDay] = useState("");
   const [date, setDate] = useState("");
-  const [user,setUser]=useState("")
+  const [user, setUser] = useState("");
+  const mainDiv=useRef(null)
   const handlePrint = (e) => {
     window.print();
   };
   const fetchAppointmentLetter = async () => {
-   const ref=localStorage.getItem("reference")
- 
+    const ref = localStorage.getItem("reference");
+
     try {
-      let details = await getDoc(doc(db, "Appointment",ref));
+      let details = await getDoc(doc(db, "Appointment", ref));
       if (details.exists) {
         const data = details.data();
         Object.keys(data).map(async (element) => {
           if (data[element].path) {
-          
             const result = await getDoc(doc(db, data[element].path));
             if (result.exists) {
-              if (result.data().firstName) {
-                setDoctor(result.data().firstName);
-              }else if(result.data().Patient_Name){
-        setUser(result.data().Patient_Name)
+              if (result.data()?.firstName) {
+                setDoctor(result.data()?.firstName);
+              } else if (result.data()?.Patient_Name) {
+                setUser(result.data()?.Patient_Name);
               }
             }
           } else if (element === "Date") {
@@ -41,37 +40,35 @@ function FormView() {
     } catch (e) {}
   };
 
- 
-
-
   useEffect(() => {
- fetchAppointmentLetter();
+    fetchAppointmentLetter();
   }, []);
+  
+  useEffect(()=>{
+mainDiv.current.focus()
 
-  // useEffect(() => {
-  //   const handleBeforePrint = () => {
-  //     setShow(false);
-  //   };
-  //   const handleAfterPrint = () => {
-  //     setShow(true);
-  //   };
-  //   window.addEventListener("beforeprint", handleBeforePrint);
-  //   window.addEventListener("afterprint", handleAfterPrint);
-  // }, []);
+  },[]) 
+
   return (
     <>
-      <MDBContainer fluid className="backall">
+      <MDBContainer fluid className="backall"
+ref={mainDiv}
+      tabIndex={1}
+      onKeyDown={(e)=>e.key==="Enter"?handlePrint(e):""}
+      
+      >
         <>
           <MDBRow>
-           
             <h1
               className="mt-5  d-flex justify-content-center"
-              style={{ color: "brown"  }}
+              style={{ color: "brown" }}
             >
               Appointment Confirmation letter
             </h1>
-          
-            <h3 className="mx-5">Patient Name:<span style={{color:"blue"}}>{user}</span></h3>
+
+            <h3 className="mx-5">
+              Patient Name:<span style={{ color: "blue" }}>{user}</span>
+            </h3>
             <h3 className="mt-5 text-dark d-flex justify-content-center">
               Your Appointment Has Been Fixed with &nbsp;
               <span style={{ color: "Red" }}>{doctor} </span> &nbsp; on &nbsp;{" "}

@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState, useRef  } from "react";
 import {
   MDBCol,
   MDBRow,
@@ -11,37 +11,31 @@ import {
 } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
 import ToggleModal from "./Modal";
-import {
-  collection,
- 
-  getDocs,
-
-} from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { useDispatch } from "react-redux";
 import { modalShow } from "../redux/HealthSlice";
 const Problem = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [disease, setDisease] = useState();
+  const [disease, setDisease] = useState([]);
+  const handleBack = () => navigate("/")
+    const mainDivRef=useRef(null)
 
-
-  const handleBack = () => {
-    navigate("/");
-  };
   const handleNext = async (e) => {
-    
-    localStorage.setItem("DiseaseRef",e)
+    localStorage.setItem("DiseaseRef", e);
     navigate("/location");
   };
   const handleNextPage = () => {
+ 
     if (localStorage.getItem("DiseaseRef")) {
       navigate("/location");
     } else {
       dispatch(modalShow("Disease"));
     }
+   
   };
-  const fetchDiseaselist = async () => {
+  const fetchDiseaselist = async() => {
     try {
       const DiseaseList = await getDocs(collection(db, "DiseaseList"));
       if (!DiseaseList.empty) {
@@ -50,22 +44,31 @@ const Problem = () => {
         });
 
         setDisease(data);
+
       }
     } catch (e) {
       console.log("object", e);
     }
   };
 
-  
-  
+
   useEffect(() => {
 
-      fetchDiseaselist();
-    
-  }, []);
+   fetchDiseaselist();
  
+ },[]);
+useEffect(()=>{
+  mainDivRef.current.focus()
+},[])
   return (
-    <MDBContainer fluid className="backall backall1">
+    <MDBContainer
+    ref={mainDivRef}
+      fluid
+      className="backall backall1"
+      tabIndex={0}
+     
+      onKeyDown={(e) => (e.key === "Enter" ? handleNextPage(e) : "")}
+   >
       <MDBContainer>
         <MDBRow
           className=" d-flex justify-content-evenly"
@@ -77,35 +80,39 @@ const Problem = () => {
           <h3 className="text-center mt-5">Select Problem</h3>
 
           <MDBRow size="lg-4" className="flex  justify-content-between">
-            {disease && disease?.map((val,i) => {
+            {
+              disease?.map((val, i) => {
                 return (
-                  <MDBCol     key={i} size="md-4" className="mt-3 text-center">
-                    <MDBCard  className="hover" onClick={() => handleNext(val.id)}>
-                      <MDBRow
-                        className={
-                        localStorage.getItem("DiseaseRef") === val.id ? `g-0 active` : "g-0"
-                        }
-                     
-                      >
-                        <MDBCol md="4">
-                          <MDBCardImage
-                            src="https://img.freepik.com/premium-vector/neurosurgeon-neurologist-examine-brain-doctor-pointing-medical-signboard-board-with-human-brain-physician-scientist-teaching-about-alzheimer-dementia-disease-mental-neurology-sickness_458444-222.jpg?w=2000"
-                            alt="..."
-                            height="100px"
-                            width="100px"
-                          />
-                        </MDBCol>
-                        <MDBCol md="8">
-                          <MDBCardBody>
-                            <MDBCardTitle className="fw-bold  mt-3">
-                              {val.data.name}
-                            </MDBCardTitle>
-                            <MDBCardTitle></MDBCardTitle>
-                          </MDBCardBody>
-                        </MDBCol>
-                      </MDBRow>
-                    </MDBCard>
-                  </MDBCol>
+         
+                    <MDBCol key={i} size="md-4" className="mt-3 text-center">
+                      <MDBCard onClick={() => handleNext(val.id)}>
+                        <MDBRow
+                          className={
+                            localStorage.getItem("DiseaseRef") === val.id
+                              ? `g-0 active`
+                              : "g-0"
+                          }
+                        >
+                          <MDBCol  md="4">
+                            <MDBCardImage
+                              src={val.data.image}
+                              alt="..."
+                              height="100px"
+                              width="100px"
+                            />
+                          </MDBCol>
+                          <MDBCol md="8">
+                            <MDBCardBody>
+                              <MDBCardTitle className="fw-bold  mt-3">
+                                {val.data.name}
+                              </MDBCardTitle>
+                              <MDBCardTitle></MDBCardTitle>
+                            </MDBCardBody>
+                          </MDBCol>
+                        </MDBRow>
+                      </MDBCard>
+                    </MDBCol>
+            
                 );
               })}
           </MDBRow>

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef,useEffect} from "react";
 import { MDBContainer, MDBBtn, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import { addDoc, doc, collection, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 function SubmitPage() {
   const timestamp = new Date();
   const navigate = useNavigate();
-
+const mainDivRef=useRef()
   const handleSubmit = async () => {
+
     try {
       const ref = await addDoc(collection(db, "Appointment"), {
         status: "Pending",
@@ -19,12 +20,11 @@ function SubmitPage() {
       if (ref) {
         updateDoc(doc(db, "Appointment", ref.id), {
           Doctor: doc(db, "DoctorList", localStorage.getItem("Doctor")),
-          Location: doc(db, "Locations", localStorage.getItem("countryRef")),
+          Location: doc(db, "Location", localStorage.getItem("countryRef")),
           Disease: doc(db, "DiseaseList", localStorage.getItem("DiseaseRef")),
           User: doc(db, "users", localStorage.getItem("user")),
         });
 
-        localStorage.clear();
         localStorage.setItem("reference", ref.id);
         navigate("/msg");
       }
@@ -39,8 +39,15 @@ function SubmitPage() {
       console.log("page already submitted");
     }
   };
+  useEffect(()=>{
+mainDivRef.current.focus()
+  },[])
   return (
-    <MDBContainer fluid className="backall justify-content-center border">
+    <MDBContainer fluid className="backall justify-content-center border"
+    ref={mainDivRef}
+    tabIndex={1}
+    onKeyDown={(e)=>(e.key==="Enter"?handleSubmit():"")}
+    >
       <MDBRow>
         <h3 className="mt-5 text-dark d-flex justify-content-center">
           Proceed With Appointment
@@ -58,7 +65,7 @@ function SubmitPage() {
                 handleBack();
               }}
             >
-              Edit Details
+              Go Back
             </MDBBtn>
             <MDBBtn
               onClick={() => {

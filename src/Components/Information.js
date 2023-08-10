@@ -8,10 +8,10 @@ import {
 import React, { useRef, useEffect, useState } from "react";
 import "../styles.css";
 import { useNavigate } from "react-router-dom";
-import {modalShow} from "../redux/HealthSlice";
-import { collection,addDoc} from "firebase/firestore";
+import { modalShow } from "../redux/HealthSlice";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-import {  useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import ToggleModal from "./Modal";
 
 const Information = () => {
@@ -23,17 +23,18 @@ const Information = () => {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^\+?\d{1,3}?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
-  const letters = /^[A-Za-z]/
+
+  const nameRegex = /^[A-Za-z\s]+$/;
   const greetUser = async () => {
     if (condition === 1) {
-      if (letters.test(details.name)) {
+      if (nameRegex.test(details.name)) {
         setError("");
         setCondition(2);
         dispatch(modalShow(""));
       } else if (details.name === "") {
         setError("Name Is Required");
         dispatch(modalShow("Name Is Required"));
-      }else if(letters.test(details.name)===false){
+      } else if (nameRegex.test(details.name) === false) {
         setError("Name Should Contains Only Alphabets");
         dispatch(modalShow("Name Should contains Alphabets"));
       }
@@ -63,7 +64,7 @@ const Information = () => {
             Patient_Phone: details.phone,
           });
           if (user) {
-          localStorage.setItem("user",user.id)
+            localStorage.setItem("user", user.id);
           }
         } catch (e) {
           console.log("object");
@@ -76,7 +77,7 @@ const Information = () => {
     }
   };
 
-  function Back() {
+  const Back = () => {
     if (condition === 3) {
       setCondition(2);
     } else if (condition === 2) {
@@ -84,7 +85,7 @@ const Information = () => {
     } else if (condition === 1) {
       navigate("/slot");
     }
-  }
+  };
   const handleChange = (e) => {
     if (e.target.name === "name") {
       setDetails({ ...details, name: e.target.value });
@@ -98,21 +99,25 @@ const Information = () => {
     }
   };
   //autofocus
-
-  const Input = useRef(null);
+  const handlePress = (e) => {
+  
+    if (e.key === "Enter") {
+      e.preventDefault()
+greetUser()
+    }
+  };
+  const Input = useRef();
 
   useEffect(() => {
-    if (Input.current) {
-      Input.current.focus();
-    }
+    Input.current.focus();
   }, []);
 
-  // useEffect(() => {
-  //   setDetails({ ...details, name: Name, phone: Phone, email: Email });
-  // }, []);
   return (
-    <>
-      <MDBContainer fluid className="backall ">
+    <div  ref={Input} 
+  
+    onKeyDown={(e) => handlePress(e)}
+>
+      <MDBContainer fluid className="backall">
         <ToggleModal />
         <MDBRow>
           <MDBContainer className="mt-5 ">
@@ -125,16 +130,15 @@ const Information = () => {
 
               <MDBCol className="mt-5 text-dark d-flex justify-content-center">
                 <h2>
-                  {" "}
                   {condition === 1
                     ? "Great, can we get your full name?"
                     : condition === 2
                     ? `Welcome  ${details.name} Please Provide Your Email`
-                    : "Your question here. Recall information with @"}
+                    : "Please Provide Your Contact Number"}
                 </h2>
               </MDBCol>
             </MDBRow>
-            <MDBRow className="d-flex justify-content-center ">
+            <MDBRow className="d-flex justify-content-center">
               <MDBCol
                 size="md-6"
                 className="mt-3 text-dark justify-content-around"
@@ -143,7 +147,6 @@ const Information = () => {
                   <MDBInput
                     className="w-100 "
                     label="fill your name"
-                    ref={Input}
                     value={details.name}
                     name={"name"}
                     onChange={(e) => handleChange(e)}
@@ -154,7 +157,6 @@ const Information = () => {
                     <MDBInput
                       className="w-100 "
                       label="fill your Email"
-                      ref={Input}
                       value={details.email}
                       name={"email"}
                       onChange={(e) => handleChange(e)}
@@ -165,7 +167,6 @@ const Information = () => {
                   <MDBInput
                     className="w-100 "
                     label="fill your contact"
-                    ref={Input}
                     value={details.phone}
                     name={"phone"}
                     onChange={(e) => handleChange(e)}
@@ -182,11 +183,7 @@ const Information = () => {
                     "form__item button__items d-flex justify-content-between"
                   }
                 >
-                  <MDBBtn
-                    type={"default"}
-                    className="buttheme me-2 mt-3"
-                    onClick={Back}
-                  >
+                  <MDBBtn className="buttheme me-2 mt-3" onClick={() => Back()}>
                     Back
                   </MDBBtn>
                   <MDBBtn
@@ -202,7 +199,7 @@ const Information = () => {
           </MDBContainer>
         </MDBRow>
       </MDBContainer>
-    </>
+    </div>
   );
 };
 

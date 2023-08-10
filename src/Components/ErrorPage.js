@@ -2,10 +2,10 @@ import React from 'react'
 
 function ErrorPage() {
   return (
-    <div className='justify-content-between flex' size="md-3">
-    <div style={{textAlign:"center",justifyContent:"center",color:"blue"}}>
-   <span style={{fontSize:"44px",color:"red"}}>OOPS!</span>  Seems like You Have entered a wrong path  
-    </div>
+    <div className='errorPage'>
+   <div className='innerError'>
+    <span style={{color:"white",fontSize:"44px",borderRight:"5px solid white",padding:"44px"}}>404</span>  <span style={{color:"white",fontSize:"44px",padding:"44px"}}> This page could not be found.</span>
+   </div>
     </div>
   )
 }

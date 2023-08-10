@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
-
 import { useSelector, useDispatch } from "react-redux";
 import {
   modalShow,
@@ -15,7 +14,6 @@ import { ImArrowLeft } from "react-icons/im";
 import {
   getDoc,
   doc,
-  updateDoc,
   getDocs,
   collection,
   where,
@@ -31,15 +29,17 @@ function TimeSlots() {
   );
 
   const show = useSelector((state) => state.HealthReducer.showSlot);
+  console.log("object", show);
   const currentDate = new Date();
   const dispatch = useDispatch();
   const currentIndex = useRef(0);
   const lastIndex = useRef(5);
-
+  const mainDiv = useRef(null);
   const [dates, setDates] = useState();
   const navigate = useNavigate();
   const [previousDates, setPreviousDates] = useState([]);
   const Disease = useSelector((state) => state.HealthReducer.DiseaseType);
+
   const fetchDoctor = async () => {
     try {
       let currentDoctor = await getDoc(
@@ -62,9 +62,7 @@ function TimeSlots() {
             );
 
             return data[ind].Slots.push(val.data().Time);
-          }
-          
-          else {
+          } else {
             return data.push({
               date: val.data().Date,
               Slots: [val.data().Time],
@@ -76,8 +74,12 @@ function TimeSlots() {
       }
     } catch (e) {
       console.log("object", e);
+      if (e === "reading 'indexOf'") {
+        console.log("error");
+      }
     }
   };
+
   const greetUser = async (e) => {
     const date = e.target.id;
     const TimeSlot = e.target.innerText;
@@ -85,7 +87,6 @@ function TimeSlots() {
     if (TimeSlot !== "NOT-AVAILABLE") {
       localStorage.setItem("date", date);
       localStorage.setItem("time", TimeSlot);
-     
 
       dispatch(BookAppointment({ date, TimeSlot }));
       navigate("/info");
@@ -103,16 +104,9 @@ function TimeSlots() {
       dispatch(modalShow("Select Slot"));
     }
   };
-  const handleOther = () => {
-    currentIndex.current = lastIndex.current;
-    lastIndex.current = 10;
-    dispatch(setShowSlot(true));
-  };
-  const handlePrevious = () => {
-    currentIndex.current = 0;
-    lastIndex.current = 5;
-    dispatch(setShowSlot(false));
-  };
+  const handleOther = () => dispatch(setShowSlot(true));
+
+  const handlePrevious = () => dispatch(setShowSlot(false));
 
   const dateSlot = async () => {
     let datesSelected = [];
@@ -196,8 +190,7 @@ function TimeSlots() {
             }
           }),
         });
-      } 
-      else {
+      } else {
         return Object.assign({}, item, {
           date: item.date,
           Slots: item.Slots,
@@ -206,19 +199,35 @@ function TimeSlots() {
     });
 
     setDates(filteredArray1);
-
-
   };
 
   useEffect(() => {
     fetchDoctor();
+
+    mainDiv.current.focus();
   }, []);
+
   useEffect(() => {
     dateSlot();
-  });
+  }, [previousDates]);
+  useEffect(() => {
+    if (show === "false") {
+      currentIndex.current = 0;
+      lastIndex.current = 5;
+    } else if (show === "true") {
+      currentIndex.current = lastIndex.current;
+      lastIndex.current = 10;
+    }
+  }, [show]);
 
   return (
-    <MDBContainer fluid className="backaslot">
+    <MDBContainer
+      fluid
+      className="backaslot"
+      ref={mainDiv}
+      tabIndex={1}
+      onKeyDown={(e) => (e.key === "Enter" ? handleNext() : "")}
+    >
       <ToggleModal />
       <MDBContainer>
         <MDBRow>
