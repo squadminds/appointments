@@ -41,7 +41,7 @@ const Doctor = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState(4);
   const [totalPage, setTotalPage] = useState([]);
- 
+
   const mainDivRef = useRef();
 
   const handleActive = (user) => {
@@ -121,8 +121,8 @@ const Doctor = () => {
       setCurrentIndex(cindex);
       const lIndex = lastIndex - 4;
       setLastIndex(lIndex);
-    }else{
-      dispatch(modalShow("Previous"))
+    } else {
+      dispatch(modalShow("Previous"));
     }
   };
   const handleNext = () => {
@@ -131,12 +131,10 @@ const Doctor = () => {
       setCurrentIndex(cindex);
       const lIndex = lastIndex + 4;
       setLastIndex(lIndex);
-    }
-    else{
-      dispatch(modalShow("Next"))
+    } else {
+      dispatch(modalShow("Next"));
     }
   };
- 
 
   useEffect(() => {
     mainDivRef.current.focus();
@@ -184,7 +182,8 @@ const Doctor = () => {
               </h3>
 
               <MDBRow className="user-list">
-                {filteredUsers?.slice(currentIndex, lastIndex)
+                {filteredUsers
+                  ?.slice(currentIndex, lastIndex)
                   .map((user, i) => (
                     <MDBCol key={i} size="md-6" className="text-center mt-3 ">
                       <MDBCard>
@@ -251,16 +250,25 @@ const Doctor = () => {
                   className="pagination"
                   onClick={handlePrevious}
                 >
-               <span style={{color:"blue"}}> PreviousPage</span>  
+                  <span style={{ color: "brown" }}> PreviousPage</span>
                 </MDBPaginationLink>
               </MDBPaginationItem>
-              {totalPage.map((x) => {
-                return( <MDBPaginationItem className="mx-3 mt-1"><span style={{color:"blue"}}>{x}</span></MDBPaginationItem>);
-              })}
-
+              <div>
+                {totalPage.map((x) => {
+                  return (
+                    <MDBPaginationItem key={x} className="mx-3 mt-1">
+                      <span
+                        className={lastIndex / 4 === x ? "activePage" : "page"}
+                      >
+                        {x}
+                      </span>
+                    </MDBPaginationItem>
+                  );
+                })}
+              </div>
               <MDBPaginationItem>
                 <MDBPaginationLink className="pagination" onClick={handleNext}>
-                <span style={{color:"blue"}}>NextPage</span>  
+                  <span style={{ color: "brown"  }}>NextPage</span>
                 </MDBPaginationLink>
               </MDBPaginationItem>
             </MDBPagination>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -29,8 +29,8 @@ function TimeSlots() {
   );
 
   const show = useSelector((state) => state.HealthReducer.showSlot);
-  console.log("object", show);
-  const currentDate = new Date();
+
+  // const currentDate = new Date();
   const dispatch = useDispatch();
   const currentIndex = useRef(0);
   const lastIndex = useRef(5);
@@ -72,12 +72,7 @@ function TimeSlots() {
 
         setPreviousDates(data);
       }
-    } catch (e) {
-      console.log("object", e);
-      if (e === "reading 'indexOf'") {
-        console.log("error");
-      }
-    }
+    } catch (e) {}
   };
 
   const greetUser = async (e) => {
@@ -104,11 +99,17 @@ function TimeSlots() {
       dispatch(modalShow("Select Slot"));
     }
   };
-  const handleOther = () => dispatch(setShowSlot(true));
+  const handleOther = () => {
+    dispatch(setShowSlot(true))
+  };
 
-  const handlePrevious = () => dispatch(setShowSlot(false));
+  const handlePrevious = () => {
+    dispatch(setShowSlot(false))
+  };
 
-  const dateSlot = async () => {
+  const dateSlot = useCallback(async () => {
+
+    const currentDate = new Date();
     let datesSelected = [];
     let i = 0;
     while (i < 10) {
@@ -159,47 +160,43 @@ function TimeSlots() {
           });
         });
         if (value) {
-          filterSlots(value);
+          const array2SlotsMap = {};
+          previousDates.forEach((item) => {
+            array2SlotsMap[item.date] = item.Slots;
+          });
+
+          const filteredArray1 = value.map((item) => {
+            if (array2SlotsMap.hasOwnProperty(item.date)) {
+              return Object.assign({}, item, {
+                date: item.date,
+                Slots: item.Slots.map((slot) => {
+                  if (
+                    array2SlotsMap[item.date].some(
+                      (slot2) => `${slot.startTime}-${slot.endTime}` === slot2
+                    )
+                  ) {
+                    return Object.assign({}, slot, {
+                      startTime: "NOT",
+                      endTime: "AVAILABLE",
+                    });
+                  } else {
+                    return slot;
+                  }
+                }),
+              });
+            } else {
+              return Object.assign({}, item, {
+                date: item.date,
+                Slots: item.Slots,
+              });
+            }
+          });
+
+          setDates(filteredArray1);
         }
       }
     }
-  };
-
-  const filterSlots = (value) => {
-    const array2SlotsMap = {};
-    previousDates.forEach((item) => {
-      array2SlotsMap[item.date] = item.Slots;
-    });
-
-    const filteredArray1 = value.map((item) => {
-      if (array2SlotsMap.hasOwnProperty(item.date)) {
-        return Object.assign({}, item, {
-          date: item.date,
-          Slots: item.Slots.map((slot) => {
-            if (
-              array2SlotsMap[item.date].some(
-                (slot2) => `${slot.startTime}-${slot.endTime}` === slot2
-              )
-            ) {
-              return Object.assign({}, slot, {
-                startTime: "NOT",
-                endTime: "AVAILABLE",
-              });
-            } else {
-              return slot;
-            }
-          }),
-        });
-      } else {
-        return Object.assign({}, item, {
-          date: item.date,
-          Slots: item.Slots,
-        });
-      }
-    });
-
-    setDates(filteredArray1);
-  };
+  }, [previousDates]);
 
   useEffect(() => {
     fetchDoctor();
@@ -209,13 +206,15 @@ function TimeSlots() {
 
   useEffect(() => {
     dateSlot();
-  }, [previousDates]);
+  }, [dateSlot]);
   useEffect(() => {
-    if (show === "false") {
+    if(show === true) {
+  
       currentIndex.current = 0;
       lastIndex.current = 5;
-    } else if (show === "true") {
-      currentIndex.current = lastIndex.current;
+    } else if (show === false) {
+
+      currentIndex.current = 5;
       lastIndex.current = 10;
     }
   }, [show]);
@@ -278,7 +277,6 @@ function TimeSlots() {
                         }
                         onClick={(e) => greetUser(e)}
                       >
-                        {" "}
                         {`${val.Slots[i].startTime}-${val.Slots[i].endTime}`}
                       </MDBBtn>
                     );

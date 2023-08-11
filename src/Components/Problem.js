@@ -21,7 +21,7 @@ const Problem = () => {
   const [disease, setDisease] = useState([]);
   const handleBack = () => navigate("/")
     const mainDivRef=useRef(null)
-
+  
   const handleNext = async (e) => {
     localStorage.setItem("DiseaseRef", e);
     navigate("/location");
@@ -66,16 +66,15 @@ useEffect(()=>{
       fluid
       className="backall backall1"
       tabIndex={0}
-     
       onKeyDown={(e) => (e.key === "Enter" ? handleNextPage(e) : "")}
    >
       <MDBContainer>
         <MDBRow
-          className=" d-flex justify-content-evenly"
+          className="d-flex justify-content-evenly"
           data-aos="fade-up"
           data-aos-offset="0"
           data-aos-duration="1000"
-          sx={{ display: "flex", flexDirection: "row" }}
+          sx={{ display:"flex", flexDirection: "row" }}
         >
           <h3 className="text-center mt-5">Select Problem</h3>
 
@@ -103,7 +102,7 @@ useEffect(()=>{
                           </MDBCol>
                           <MDBCol md="8">
                             <MDBCardBody>
-                              <MDBCardTitle className="fw-bold  mt-3">
+                              <MDBCardTitle className="fw-bold  mt-3" >
                                 {val.data.name}
                               </MDBCardTitle>
                               <MDBCardTitle></MDBCardTitle>
@@ -142,3 +141,4 @@ useEffect(()=>{
 };
 
 export default Problem;
+ 

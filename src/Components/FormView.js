@@ -67,7 +67,7 @@ ref={mainDiv}
             </h1>
 
             <h3 className="mx-5">
-              Patient Name:<span style={{ color: "blue" }}>{user}</span>
+              Patient Name:<span style={{ color: "red" }}>{user}</span>
             </h3>
             <h3 className="mt-5 text-dark d-flex justify-content-center">
               Your Appointment Has Been Fixed with &nbsp;

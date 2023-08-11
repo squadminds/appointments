@@ -1,5 +1,5 @@
 import React,{useRef,useEffect} from "react";
-import { MDBContainer, MDBBtn, MDBRow, MDBCol } from "mdb-react-ui-kit";
+import { MDBContainer, MDBBtn, MDBRow, MDBCol, MDBIcon } from "mdb-react-ui-kit";
 import { addDoc, doc, collection, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
@@ -48,6 +48,8 @@ mainDivRef.current.focus()
     tabIndex={1}
     onKeyDown={(e)=>(e.key==="Enter"?handleSubmit():"")}
     >
+      <MDBIcon />
+      <MDBRow className="appointPage">
       <MDBRow>
         <h3 className="mt-5 text-dark d-flex justify-content-center">
           Proceed With Appointment
@@ -76,6 +78,7 @@ mainDivRef.current.focus()
             </MDBBtn>
           </div>
         </MDBCol>
+      </MDBRow>
       </MDBRow>
     </MDBContainer>
   );
