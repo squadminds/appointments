@@ -30,7 +30,6 @@ function TimeSlots() {
 
   const show = useSelector((state) => state.HealthReducer.showSlot);
 
-  // const currentDate = new Date();
   const dispatch = useDispatch();
   const currentIndex = useRef(0);
   const lastIndex = useRef(5);
@@ -99,16 +98,8 @@ function TimeSlots() {
       dispatch(modalShow("Select Slot"));
     }
   };
-  const handleOther = () => {
-    dispatch(setShowSlot(true))
-  };
-
-  const handlePrevious = () => {
-    dispatch(setShowSlot(false))
-  };
 
   const dateSlot = useCallback(async () => {
-
     const currentDate = new Date();
     let datesSelected = [];
     let i = 0;
@@ -197,7 +188,16 @@ function TimeSlots() {
       }
     }
   }, [previousDates]);
-
+  const handlePrevious = () => {
+    dispatch(setShowSlot(false));
+    currentIndex.current = 0;
+    lastIndex.current = 5;
+  };
+  const handleOther = () => {
+    dispatch(setShowSlot(true));
+    currentIndex.current = 5;
+    lastIndex.current = 10;
+  };
   useEffect(() => {
     fetchDoctor();
 
@@ -208,12 +208,10 @@ function TimeSlots() {
     dateSlot();
   }, [dateSlot]);
   useEffect(() => {
-    if(show === true) {
-  
+    if (show === false) {
       currentIndex.current = 0;
       lastIndex.current = 5;
-    } else if (show === false) {
-
+    } else {
       currentIndex.current = 5;
       lastIndex.current = 10;
     }
