@@ -1,18 +1,45 @@
-import React, { useEffect, useState,useRef } from "react";
-import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBBtn,
+  MDBTable,
+  MDBTableHead,
+  MDBTableBody,
+} from "mdb-react-ui-kit";
 import { BsPrinterFill } from "react-icons/bs";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-
+import {
+  Container,
+  Grid,
+  Button,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Typography,
+  TableContainer,
+} from "@mui/material";
 function FormView() {
-  const [doctor, setDoctor] = useState();
+  const [doctor, setDoctor] = useState("");
   const [day, setDay] = useState("");
   const [date, setDate] = useState("");
   const [user, setUser] = useState("");
-  const mainDiv=useRef(null)
+  const [patientEmail, setPatientEmail] = useState("");
+  const [patientPhone, setPatientPhone] = useState({
+    dialCode: "",
+    number: "",
+  });
+  const [patientProblem, setPatientProblem] = useState("");
+  const mainDiv = useRef(null);
+
   const handlePrint = (e) => {
     window.print();
   };
+
   const fetchAppointmentLetter = async () => {
     const ref = localStorage.getItem("reference");
 
@@ -20,6 +47,13 @@ function FormView() {
       let details = await getDoc(doc(db, "Appointment", ref));
       if (details.exists) {
         const data = details.data();
+        const diseaseRef = data.Disease;
+        if (diseaseRef) {
+          const diseaseDetails = await getDoc(diseaseRef);
+          if (diseaseDetails.exists) {
+            setPatientProblem(diseaseDetails.data().name);
+          }
+        }
         Object.keys(data).map(async (element) => {
           if (data[element].path) {
             const result = await getDoc(doc(db, data[element].path));
@@ -28,6 +62,11 @@ function FormView() {
                 setDoctor(result.data()?.firstName);
               } else if (result.data()?.Patient_Name) {
                 setUser(result.data()?.Patient_Name);
+                setPatientEmail(result.data()?.Patient_Mail || "");
+                setPatientPhone({
+                  dialCode: result.data()?.Patient_Phone?.dialCode || "",
+                  number: result.data()?.Patient_Phone?.number || "",
+                });
               }
             }
           } else if (element === "Date") {
@@ -43,74 +82,137 @@ function FormView() {
   useEffect(() => {
     fetchAppointmentLetter();
   }, []);
-  
-  useEffect(()=>{
-mainDiv.current.focus()
 
-  },[]) 
+  useEffect(() => {
+    mainDiv.current.focus();
+  }, []);
 
   return (
-    <>
-      <MDBContainer fluid className="backall"
-ref={mainDiv}
+    <Container
+      fluid
+      maxWidth
+      className="backall p-0"
+      ref={mainDiv}
       tabIndex={1}
-      onKeyDown={(e)=>e.key==="Enter"?handlePrint(e):""}
-      
-      >
-        <>
-          <MDBRow>
-            <h1
-              className="mt-5  d-flex justify-content-center"
-              style={{ color: "brown" }}
-            >
-              Appointment Confirmation letter
-            </h1>
-
-            <h3 className="mx-5">
-              Patient Name:<span style={{ color: "red" }}>{user}</span>
-            </h3>
-            <h3 className="mt-5 text-dark d-flex justify-content-center">
-              Your Appointment Has Been Fixed with &nbsp;
-              <span style={{ color: "Red" }}>{doctor} </span> &nbsp; on &nbsp;{" "}
-              <span style={{ color: "Red" }}>
+      onKeyDown={(e) => (e.key === "Enter" ? handlePrint(e) : "")}
+    >
+      <Container>
+      <Grid container>
+          <Grid item xs={12} className="mt-5 d-flex justify-content-center">
+            <h1 style={{ color: "brown" }}> Appointment Confirmation letter</h1>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          className="mt-5 d-flex justify-content-center"
+          spacing={2}
+        >
+          <Grid item xs={6}>
+            <div className="text-grey-m2">
+              <div className="mt-1 mb-2 text-secondary-m1 text-600 text-125">
+                <p className="info-heading">
+                  <strong>Appointment Details</strong>
+                </p>
+                <p>
+                  <strong>Hospital Name:</strong> Care Hospitals
+                </p>
+                <p>
+                  <strong>Doctor:</strong> {doctor}
+                </p>
+                <p>
+                  <strong>Date:</strong> {date}
+                </p>
+                <p>
+                  <strong>Time:</strong> {day}
+                </p>
+              </div>
+            </div>
+          </Grid>
+          <Grid
+            item
+            xs={6}
+            className="text-95 align-self-start d-sm-flex justify-content-end"
+          >
+            <div className="text-grey-m2">
+              <div className="my-1">
                 {" "}
-                <span style={{ color: "black" }}>Date:</span>
-                {date}{" "}
-              </span>
-              &nbsp; at &nbsp;{" "}
-              <span style={{ color: "Red" }}>
+                <p className="info-heading">
+                  <strong>Patient Information</strong>
+                </p>
+              </div>
+              <div className="my-1">
                 {" "}
-                <span style={{ color: "black" }}>Time:</span>
-                {day}{" "}
-              </span>
-            </h3>
-            <h3 className="mt-5 text-dark d-flex justify-content-center">
-              Your Appointment ID is &nbsp;
-              <span style={{ color: "red" }}>
-                {localStorage.getItem("reference")}
-              </span>
-            </h3>
-          </MDBRow>
-        </>
-        <MDBRow className="d-flex justify-content-center print-button">
-          <MDBCol size={6}>
+                <p>
+                  <strong>Patient ID:</strong>{" "}
+                  {localStorage.getItem("reference")}
+                </p>
+              </div>
+              <div className="my-1">
+                {" "}
+                <p>
+                  <strong>Patient Name:</strong> {user}
+                </p>
+              </div>
+              <div className="my-1">
+                {" "}
+                <p>
+                  <strong>Patient Problem:</strong> {patientProblem}
+                </p>
+              </div>
+              <div className="my-1">
+                {" "}
+                <p>
+                  <strong>Email:</strong> {patientEmail}
+                </p>
+              </div>
+              <div className="my-1">
+                <p>
+                  <strong>Phone:</strong>{" "}
+                  {`+${patientPhone.dialCode} ${patientPhone.number}`}
+                </p>
+              </div>
+            </div>
+          </Grid>
+        </Grid>
+        <TableContainer style={{ border: "2px solid rgb(196, 70, 101)" }} stickyHeader>
+        <Table >
+          <TableHead style={{ borderBottom: "2px solid rgb(196, 70, 101)" }}>
+          <TableRow>
+              <TableCell>Sr.No</TableCell>
+              <TableCell>Problem</TableCell>
+              <TableCell>Treatment</TableCell>
+            </TableRow>
+          </TableHead>
+          
+          <TableBody >
+            <TableRow>
+              <TableCell  style={{ height: "300px" }}>
+                1
+              </TableCell>
+              <TableCell colSpan={3}></TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        </TableContainer>
+        <Grid container className="d-flex justify-content-center mt-5">
+          <Grid item xs={6}>
             <div
               className={
                 "form__item button__items d-flex justify-content-center"
               }
             >
-              <MDBBtn
+              <Button
                 type={"primary"}
-                className="printButton buttheme mt-3"
+                className="printButton buttheme mt-3 text-light"
                 onClick={(e) => handlePrint(e)}
               >
-                <BsPrinterFill color="white" size="30" /> print Recipt
-              </MDBBtn>
+                <BsPrinterFill color="white" size="30" /> Print Receipt
+              </Button>
             </div>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-    </>
+          </Grid>
+        </Grid>
+      </Container>
+    </Container>
   );
 }
 

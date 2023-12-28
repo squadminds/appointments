@@ -13,6 +13,7 @@ const initialState = {
   Email: "",
   Phone: "",
   showSlot: false,
+  selectedDoctorPage: 1, 
 };
 
 export const HealthSlice = createSlice({
@@ -51,6 +52,9 @@ export const HealthSlice = createSlice({
     setShowSlot: (state, action) => {
       state.showSlot = action.payload;
     },
+    setSelectedDoctorPage: (state, action) => {
+      state.selectedDoctorPage = action.payload;
+    },
   },
 });
 
@@ -65,6 +69,7 @@ export const {
   InfoPhone,
   InfoEmail,
   setShowSlot,
+  setSelectedDoctorPage
 } = HealthSlice.actions;
 
 export default HealthSlice.reducer;

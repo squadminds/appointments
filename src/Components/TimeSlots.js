@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
-import { MDBCol, MDBContainer, MDBRow, MDBBtn } from "mdb-react-ui-kit";
 import { useSelector, useDispatch } from "react-redux";
 import {
   modalShow,
@@ -7,7 +6,6 @@ import {
   SelectedDisease,
   setShowSlot,
 } from "../redux/HealthSlice";
-import ToggleModal from "./Modal";
 import { useNavigate } from "react-router-dom";
 import { BsFillForwardFill } from "react-icons/bs";
 import { ImArrowLeft } from "react-icons/im";
@@ -20,6 +18,9 @@ import {
   query,
 } from "firebase/firestore";
 import { db } from "../firebase/firebase";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { Grid, Button, Container, Typography } from "@mui/material";
 function TimeSlots() {
   const ActiveDate = useSelector(
     (state) => state.HealthReducer.appointment.date
@@ -29,7 +30,7 @@ function TimeSlots() {
   );
 
   const show = useSelector((state) => state.HealthReducer.showSlot);
-
+  const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
   const currentIndex = useRef(0);
   const lastIndex = useRef(5);
@@ -63,6 +64,7 @@ function TimeSlots() {
             return data[ind].Slots.push(val.data().Time);
           } else {
             return data.push({
+              id: val.id,
               date: val.data().Date,
               Slots: [val.data().Time],
             });
@@ -95,7 +97,7 @@ function TimeSlots() {
     if (ActiveDate && ActiveSlot) {
       navigate("/info");
     } else {
-      dispatch(modalShow("Select Slot"));
+      setErrorMessage("Please Select a TimeSlot first");
     }
   };
 
@@ -107,7 +109,9 @@ function TimeSlots() {
       let futureDate = new Date(currentDate);
       futureDate.setDate(currentDate.getDate() + i);
       datesSelected.push({
-        date: `${futureDate.getDate()}-${futureDate.getMonth()}-${futureDate.getFullYear()}`,
+        date: `${futureDate.getDate()}-${
+          futureDate.getMonth() + 1
+        }-${futureDate.getFullYear()}`,
         Slots: "",
       });
       i++;
@@ -216,39 +220,53 @@ function TimeSlots() {
       lastIndex.current = 10;
     }
   }, [show]);
-
+  useEffect(() => {
+    Aos.init({
+      duration: 500,
+      offset: 100,
+    });
+  }, []);
   return (
-    <MDBContainer
-      fluid
-      className="backaslot"
+    <Container
+      className="backaslot p-0"
+      maxWidth
       ref={mainDiv}
       tabIndex={1}
       onKeyDown={(e) => (e.key === "Enter" ? handleNext() : "")}
     >
-      <ToggleModal />
-      <MDBContainer>
-        <MDBRow>
-          <h3 className=" mt-3 text-center mx-auto">Select preferred Time</h3>
-        </MDBRow>
-        <MDBRow>
+      <Container
+        data-aos="fade-up"
+        data-aos-offset="0"
+        data-aos-duration="2000"
+      >
+        <Grid container>
+          <Grid item xs={12} md={12}>
+            <Typography variant="h5" className=" text-center mx-auto mt-5">
+              Select preferred Time
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid container>
           {show === true && (
-            <MDBCol size="md-2" className="mt-5">
-              <MDBBtn
-                className={"glassbut Day fw-bold me-3"}
+            <Grid item md={2} className="mt-5">
+              <Button
+                className={"glassbut Day fw-bold me-5"}
                 onClick={() => handlePrevious()}
               >
-                <ImArrowLeft color="brown" size="50" />
-                {"...Previous"}
-              </MDBBtn>
-            </MDBCol>
+                <ImArrowLeft color="brown" size="30" />
+                {"Previous Time-Slots"}
+              </Button>
+            </Grid>
+            
           )}
           {dates
             ?.slice(currentIndex.current, lastIndex.current)
             ?.map((val, ind) => {
               return (
-                <MDBCol key={ind} size={"md-2"} className="mt-5">
-                  <MDBBtn
+                <Grid key={ind} item className="mt-5">
+                  <Button
                     name={val.date}
+                    style={{width:"90%"}}
                     className={
                       localStorage.getItem("date") === val.date
                         ? "glassbut activeDay fw-bold me-3"
@@ -256,66 +274,75 @@ function TimeSlots() {
                     }
                   >
                     {val.date}
-                  </MDBBtn>
-
-                  {val.Slots?.map((item, i) => {
-                    return (
-                      <MDBBtn
-                        id={val.date}
-                        key={i}
-                        className={
-                          localStorage.getItem("date") === val.date &&
-                          localStorage.getItem("time") ===
-                            `${item.startTime}-${item.endTime}`
-                            ? "me-3 activeSlot mt-3 fw-bold"
-                            : `${item.startTime}-${item.endTime}` ===
-                              "NOT-AVAILABLE"
-                            ? "me-3 notAvaialble mt-3 fw-bold"
-                            : "me-3 timeSlot mt-3 fw-bold"
-                        }
-                        onClick={(e) => greetUser(e)}
-                      >
-                        {`${val.Slots[i].startTime}-${val.Slots[i].endTime}`}
-                      </MDBBtn>
-                    );
-                  })}
-                  <MDBRow></MDBRow>
-                </MDBCol>
+                  </Button>
+                  <Grid container direction="column" spacing={1}>
+                    {val.Slots?.map((item, i) => {
+                      return (
+                        <Grid item key={i}>
+                          <Button
+                            id={val.date}
+                            key={i}
+                            fullwidth
+                            className={
+                              localStorage.getItem("date") === val.date &&
+                              localStorage.getItem("time") ===
+                                `${item.startTime}-${item.endTime}`
+                                ? "me-3 activeSlot mt-3 fw-bold"
+                                : `${item.startTime}-${item.endTime}` ===
+                                  "NOT-AVAILABLE"
+                                ? "me-3 notAvaialble mt-3 fw-bold"
+                                : "me-3 timeSlot mt-3 fw-bold"
+                            }
+                            onClick={(e) => greetUser(e)}
+                            style={{ whiteSpace: "nowrap" }}
+                          >
+                            {`${val.Slots[i].startTime}-${val.Slots[i].endTime}`}
+                          </Button>
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
+                </Grid>
               );
             })}
 
           {show === false && (
-            <MDBCol size="md-2" className="mt-5">
-              <MDBBtn
+            <Grid item md={2} className="mt-5">
+              <Button
                 className={"glassbut Day fw-bold me-3"}
                 onClick={() => handleOther()}
               >
-                {"...Select Other"}
-                <BsFillForwardFill color="brown" size="50" />
-              </MDBBtn>
-            </MDBCol>
+                {"Next Time-Slots"}
+                <BsFillForwardFill color="brown" size="30" />
+              </Button>
+            </Grid>
           )}
-        </MDBRow>
+        </Grid>
         <div
           className={"form__item button__items d-flex justify-content-between"}
         >
-          <MDBBtn
+          <Button
             type={"default"}
-            className="NePreBtn buttheme me-2 mt-3"
+            className=" buttheme me-2 mt-3  text-light"
             onClick={handleBack}
           >
             Back
-          </MDBBtn>
-          <MDBBtn
+          </Button>
+          <Button
             type={"danger"}
-            className=" NePreBtn buttheme mt-3"
+            className="  buttheme mt-3  text-light"
             onClick={handleNext}
           >
             Next
-          </MDBBtn>
+          </Button>
         </div>
-      </MDBContainer>
-    </MDBContainer>
+        {errorMessage && (
+          <div className="alert alert-danger mt-3" role="alert">
+            {errorMessage}
+          </div>
+        )}
+      </Container>
+    </Container>
   );
 }
 

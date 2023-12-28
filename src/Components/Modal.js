@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useRef,useEffect, useState, useMemo } from "react";
 import {
   MDBBtn,
   MDBModal,
@@ -18,15 +18,17 @@ export default function ToggleModal() {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const [selectedDay, setSelectedDay] = useState();
- 
+  const mainDiv=useRef(null)
+  const buttonRef = useRef(null);
+
   const modalTitle = useSelector((state) => state.HealthReducer.ModalTitle);
   const content = useMemo(() => {
     if (modalTitle === "Specilists Needed") {
       return "Speclist Need To Be Selected";
     } else if (modalTitle === "Country Needed") {
-      return "Select a Country First";
+      return "Select A Country First";
     } else if (modalTitle === "Disease") {
-      return "Please Select a Desease First";
+      return "Please Select A disease First";
     } else if (modalTitle === "Location") {
       return "Location is required";
     } else if (modalTitle === "Error Location") {
@@ -35,22 +37,20 @@ export default function ToggleModal() {
       return "Code Doesn't Exist";
     } else if (modalTitle === "Select Date") {
       setShow(true);
-      return "select your Date";
+      return "Select your Date";
     } else if (modalTitle === "Select Slot") {
       return "Please Select a TimeSlot first";
     } else if (modalTitle === "Contact Needed") {
       return "Please Enter Your Name";
     } else if (modalTitle === "Invalid Email Address") {
       return "The Address You Entered is Not Available";
-    }  else if (modalTitle === "Name Should contains Alphabets") {
+    } else if (modalTitle === "Name Should contains Alphabets") {
       return "Name Should Only Contains Alphabets";
-    }else if(modalTitle==="Next"){
+    } else if (modalTitle === "Next") {
       return "You Are On The Last Page";
-    }else if(modalTitle==="Previous"){
+    } else if (modalTitle === "Previous") {
       return "You Are On The First Page";
-    }
-    
-    else {
+    } else {
       return "";
     }
   }, [modalTitle]);
@@ -67,12 +67,45 @@ export default function ToggleModal() {
     }
   }, [modalTitle]);
 
+
+  const handleEnterKeyPress = (e) => {
+    if (e.key === "Enter") {
+      if (show) {
+        dispatch(modalShow(""));
+      } else  {
+        setShow(true);
+     
+      }
+    }
+  };
+ 
+  useEffect(() => {
+    mainDiv.current.focus();
+  }, []);
+  useEffect(() => {
+    const currentMainDiv = mainDiv.current;
+    currentMainDiv.focus();
+
+    const handleKeyPress = (e) => handleEnterKeyPress(e);
+
+    currentMainDiv.addEventListener("keypress", handleKeyPress);
+
+    return () => {
+      currentMainDiv.removeEventListener("keypress", handleKeyPress);
+    };
+  }, [show]);
   return (
     <>
+      <div
+        tabIndex={0}
+        ref={mainDiv}
+        style={{ outline: "none" }}
+        onClick={handleEnterKeyPress}
+      >
       <MDBModal show={show}>
-        <MDBModalDialog>
-          <MDBModalContent 
-              >
+        <MDBModalDialog  
+      style={{position:"absolute",top:"60%",left:"60%",width:"100%"}}>
+          <MDBModalContent >
             <MDBModalHeader>
               {modalTitle === "Select Date" ? (
                 <MDBModalTitle style={{ color: "brown" }}>
@@ -102,13 +135,11 @@ export default function ToggleModal() {
                 </span>
               </MDBModalBody>
             )}
-
             <MDBModalFooter>
               <MDBBtn
                 className="cancelBtn"
-              
-                onClick={() => dispatch(modalShow(""))}
-                
+                onClick={()=> dispatch(modalShow(''))}
+                ref = {buttonRef}
               >
                 Cancel
               </MDBBtn>
@@ -121,6 +152,7 @@ export default function ToggleModal() {
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>
+      </div>
     </>
   );
 }
