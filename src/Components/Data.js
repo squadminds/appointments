@@ -1,848 +1,2302 @@
 export const users = [
-  {
-    id: 1,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dentist",
-    firstName: "David Downs",
-    qualification: "BDS",
-    street_address: "1234/56, 9th Cross",
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr.shweta thakur",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr.Nishant Setia",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr. Ravinder Puri",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91 98674 45786",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr. Attique Vasdev",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr.Rajinder Sharma",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Vidyadhara S",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Prathiban Vinayakam",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Seyed Behrooz Mostofi",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: " Dr BC Navadgi",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Jordan Johnson",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Alex Jones",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Alex Jones",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr.shweta thakur",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr.Nishant Setia",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr. Ravinder Puri",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91 98674 45786",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr. Attique Vasdev",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr.Rajinder Sharma",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Vidyadhara S",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Prathiban Vinayakam",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Seyed Behrooz Mostofi",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: " Dr BC Navadgi",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Jordan Johnson",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Orthopedic",
+            firstName: "Dr Alex Jones",
+            qualification: "MD,Ph.D,MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
 
-    helpline_number: " +91 95 9090 8080",
-  },
-  {
-    id: 2,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Cardiology",
-    firstName: "Dr.Marrio",
-    qualification: "BDS",
-    street_address: "J P Nagar 3 Phase",
 
-    helpline_number: "+91 95 9090 8080",
-  },
-  {
-    id: 3,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "General Surgeon",
-    firstName: "Dr.ABAS",
-    qualification: "MBBS, MCh Paediatric surgery",
-    street_address: "A P Nagar 5 Phase",
+          
 
-    helpline_number: "+91 98 4590 8180",
-  },
-  {
-    id: 4,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "SURGICAL GASTRO",
-    firstName: "Dr.Minisha",
-    qualification: "MBBS",
-    street_address: "A P Nagar 5 Phase",
+// ent
 
-    helpline_number: "+91 98 4590 8180",
-  },
-  {
-    id: 5,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Pediatrician",
-    firstName: "Dr.Satpal",
-    qualification: "MBBS,BDA",
-    street_address: "k P Nagar 67 Phase",
 
-    helpline_number: "+91 98 6390 8145",
-  },
-  {
-    id: 6,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: " Neurology",
-    firstName: "Dr.Manoj Singh",
-    qualification: "MBBS,BDA,M.ch",
-    street_address: " Mohali,Phase 5",
 
-    helpline_number: "+91 98 5689 4102",
-  },
-  {
-    id: 7,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurology",
-    firstName: "Dr.Suman Singh",
-    qualification: "MBBS,BDA,M.ch",
-    street_address: "Mohali,Phase 5",
 
-    helpline_number: "+91 98 5689 4102",
-  },
-  {
-    id: 8,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT Specialists",
-    firstName: "Dr.Bedi Sharma",
-    qualification: " MBBS,BDA,M.ch,BAMS",
-    street_address: " Mohali,Phase 5",
 
-    helpline_number: "+91 98 5689 4102",
-  },
-  {
-    id: 9,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: " Health Administration",
-    firstName: "Dr.Suman Singh",
-    qualification: " MBBS,B.V.Sc & AH",
-    street_address: "Mohali,Phase 5",
 
-    helpline_number: "+91 99 0189 4156",
-  },
-  {
-    id: 10,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Skin and Venereal diseases",
-    firstName: " Dr.Vijay kumar",
-    qualification: " MBBS,BUMS ",
-    street_address: "Mohali,Phase 5",
 
-    helpline_number: "+91 99 0189 4156",
-  },
-  {
-    id: 11,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Maternal and Child Health",
-    firstName: "Dr. Suneta Pathak",
-    qualification: "BDS,Paediatrics",
-    street_address: "1234/56, 9th Cross",
 
-    helpline_number: "+91 95 9090 8080",
-  },
-  {
-    id: 12,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Cardiology",
-    firstName: "Dr.Ravi Shah, DO",
-    qualification: "BDS",
-    street_address: "J P Nagar 3 Phase",
 
-    helpline_number: "+91 95 9090 8080",
-  },
-  {
-    id: 13,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Microbiology",
-    firstName: "Dr.Michael Rubinstein",
-    qualification: " MBBS,M.ch,BAMS",
-    street_address: " Mohali,Phase 59",
 
-    helpline_number: "+91 98 4423 4102",
-  },
-  {
-    id: 14,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: " Radio-Diagnosis",
-    firstName: "Dr.Meena Singh",
-    qualification: " MBBS",
-    street_address: "chandigarh,Phase 5",
 
-    helpline_number: "+91 99 0189 4156",
-  },
-  {
-    id: 15,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatology",
-    firstName: "Dr.Mohan",
-    qualification: "BDA",
-    street_address: "j P Nagar 67 Phase",
 
-    helpline_number: "+91 98 6390 8145",
-  },
-  {
-    id: 16,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: " Anaesthesiology",
-    firstName: "Dr.Rohan Bajaj",
-    qualification: "MBBS,BDA,M.ch",
-    street_address: " Mohali,Phase 5",
 
-    helpline_number: "+91 98 4562 4102",
-  },
+
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr.shweta thakur",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr.Nishant Setia",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr. Ravinder Puri",
+            qualification: "MBBS",
+            helpline_number: "+91 98674 45786",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr. Attique Vasdev",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr.Rajinder Sharma",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr James Smith",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr John Johnson",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr Seyed Behrooz Mostofi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: " Dr BC Navadgi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr Jordan Johnson",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr Alex Jones",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr Alex Jones",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr.shweta thakur",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr.Nishant Setia",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr. Ravinder Puri",
+            qualification: "MBBS",
+            helpline_number: "+91 98674 45786",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr. Attique Vasdev",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr.Rajinder Sharma",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr Vidyadhara S",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr Prathiban Vinayakam",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr Seyed Behrooz Mostofi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: " Dr BC Navadgi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr Jordan Johnson",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Ent",
+            firstName: "Dr Alex Jones",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// multispecilist
+
+
+
+
+
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr.shweta thakur",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr.Nishant Setia",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr. Ravinder Puri",
+            qualification: "MBBS",
+            helpline_number: "+91 98674 45786",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr. Attique Vasdev",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr.Rajinder Sharma",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "John Johnson",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr Prathiban Vinayakam",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr Seyed Behrooz Mostofi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: " Dr BC Navadgi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr Jordan Johnson",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr Alex Jones",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr Alex Jones",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr.shweta thakur",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr.Nishant Setia",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr. Ravinder Puri",
+            qualification: "MBBS",
+            helpline_number: "+91 98674 45786",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr. Attique Vasdev",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr.Rajinder Sharma",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr Vidyadhara S",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr Prathiban Vinayakam",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr Seyed Behrooz Mostofi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: " Dr BC Navadgi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr Jordan Johnson",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "MultiSpecialist",
+            firstName: "Dr Alex Jones",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Psychiatrist
+
+
+
+
+
+
+
+
+
+
+
+
+
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr.shweta thakur",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr.Nishant Setia",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr. Ravinder Puri",
+            qualification: "MBBS",
+            helpline_number: "+91 98674 45786",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr. Attique Vasdev",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr.Rajinder Sharma",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"India"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Vidyadhara S",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Prathiban Vinayakam",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Seyed Behrooz Mostofi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: " Dr BC Navadgi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Jordan Johnson",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Alex Jones",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"England"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Alex Jones",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr.shweta thakur",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr.Nishant Setia",
+            qualification: "MBBS",
+            helpline_number: "112-554-8541",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr. Ravinder Puri",
+            qualification: "MBBS",
+            helpline_number: "+91 98674 45786",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr. Attique Vasdev",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr.Rajinder Sharma",
+            qualification: "MBBS",
+            helpline_number: "+91 124 4855017",
+            Duration:50,
+            Location:"Israel"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Vidyadhara S",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Prathiban Vinayakam",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Seyed Behrooz Mostofi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: " Dr BC Navadgi",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Jordan Johnson",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+          {
+            
+            img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+            specilist: "Psychiatrist",
+            firstName: "Dr Alex Jones",
+            qualification: "MBBS",
+            helpline_number: "+91-40-6810 6525",
+            Duration:50,
+            Location:"America"
+          },
+
+
+
+
+
+
+
+
+
+
+
+
+// Dentist
+
+
+
+
+{
+            
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr.shweta thakur",
+  qualification: "BDS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr.Nishant Setia",
+  qualification: "BDS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr. Ravinder Puri",
+  qualification: "BDS",
+  helpline_number: "+91 98674 45786",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr. Attique Vasdev",
+  qualification: "BDS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr.Rajinder Sharma",
+  qualification: "BDS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Vidyadhara S",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Prathiban Vinayakam",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Seyed Behrooz Mostofi",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: " Dr BC Navadgi",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Jordan Johnson",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Alex Jones",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Alex Jones",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr.shweta thakur",
+  qualification: "BDS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr.Nishant Setia",
+  qualification: "BDS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr. Ravinder Puri",
+  qualification: "BDS",
+  helpline_number: "+91 98674 45786",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr. Attique Vasdev",
+  qualification: "BDS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr.Rajinder Sharma",
+  qualification: "BDS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Vidyadhara S",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Prathiban Vinayakam",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Seyed Behrooz Mostofi",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: " Dr BC Navadgi",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Jordan Johnson",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Odontology",
+  firstName: "Dr Alex Jones",
+  qualification: "BDS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Neurologist
+
+
+
+
+
+
+
+
+{
+            
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr.shweta thakur",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr.Nishant Setia",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr. Ravinder Puri",
+  qualification: "MBBS",
+  helpline_number: "+91 98674 45786",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr. Attique Vasdev",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr.Rajinder Sharma",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Vidyadhara S",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Prathiban Vinayakam",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Seyed Behrooz Mostofi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: " Dr BC Navadgi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Jordan Johnson",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr.shweta thakur",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr.Nishant Setia",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr. Ravinder Puri",
+  qualification: "MBBS",
+  helpline_number: "+91 98674 45786",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr. Attique Vasdev",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr.Rajinder Sharma",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Vidyadhara S",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Prathiban Vinayakam",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Seyed Behrooz Mostofi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: " Dr BC Navadgi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Jordan Johnson",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Neurologist",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Dermatologist
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+            
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr.shweta thakur",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr.Nishant Setia",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr. Ravinder Puri",
+  qualification: "MBBS",
+  helpline_number: "+91 98674 45786",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr. Attique Vasdev",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr.Rajinder Sharma",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Vidyadhara S",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Prathiban Vinayakam",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Seyed Behrooz Mostofi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: " Dr BC Navadgi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Jordan Johnson",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr.shweta thakur",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr.Nishant Setia",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr. Ravinder Puri",
+  qualification: "MBBS",
+  helpline_number: "+91 98674 45786",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr. Attique Vasdev",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr.Rajinder Sharma",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Vidyadhara S",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Prathiban Vinayakam",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Seyed Behrooz Mostofi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: " Dr BC Navadgi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Jordan Johnson",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Dermatologist",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Cardiologist
+
+
+{
+            
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr.shweta thakur",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr.Nishant Setia",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr. Ravinder Puri",
+  qualification: "MBBS",
+  helpline_number: "+91 98674 45786",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr. Attique Vasdev",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr.Rajinder Sharma",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Vidyadhara S",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Prathiban Vinayakam",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Seyed Behrooz Mostofi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: " Dr BC Navadgi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Jordan Johnson",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr.shweta thakur",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr.Nishant Setia",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr. Ravinder Puri",
+  qualification: "MBBS",
+  helpline_number: "+91 98674 45786",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr. Attique Vasdev",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr.Rajinder Sharma",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Vidyadhara S",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Prathiban Vinayakam",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Seyed Behrooz Mostofi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: " Dr BC Navadgi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Jordan Johnson",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Cardiologist",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Otolaryngologists
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+            
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr.shweta thakur",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr.Nishant Setia",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr. Ravinder Puri",
+  qualification: "MBBS",
+  helpline_number: "+91 98674 45786",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr. Attique Vasdev",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr.Rajinder Sharma",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"India"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Vidyadhara S",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Prathiban Vinayakam",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Seyed Behrooz Mostofi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: " Dr BC Navadgi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Jordan Johnson",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"England"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr.shweta thakur",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr.Nishant Setia",
+  qualification: "MBBS",
+  helpline_number: "112-554-8541",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr. Ravinder Puri",
+  qualification: "MBBS",
+  helpline_number: "+91 98674 45786",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr. Attique Vasdev",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr.Rajinder Sharma",
+  qualification: "MBBS",
+  helpline_number: "+91 124 4855017",
+  Duration:50,
+  Location:"Israel"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Vidyadhara S",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Prathiban Vinayakam",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Seyed Behrooz Mostofi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: " Dr BC Navadgi",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Jordan Johnson",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
+{
+  
+  img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
+  specilist: "Otolaryngologists",
+  firstName: "Dr Alex Jones",
+  qualification: "MBBS",
+  helpline_number: "+91-40-6810 6525",
+  Duration:50,
+  Location:"America"
+},
 ];
-export const brain = [
-  {
-    id: 1,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Vineet Saggar",
-    qualification: "MBBS,BDA,M.ch",
-    helpline_number: "+98724 23999",
-  },
-  {
-    id: 2,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Jaslovleen Sidhu",
-    qualification: "MBBS,BDA,M.ch",
-    helpline_number: "+98724 23999",
-  },
-  {
-    id: 3,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Amandeep Singh ",
-    qualification: "MBBS,BDA,M.ch",
-    helpline_number: "+98724 23999",
-  },
-  {
-    id: 4,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Rajeev Garg ",
-    qualification: "MBBS,BDA,M.ch",
-    helpline_number: "+91 98 5623 4102",
-  },
-  {
-    id: 5,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Neha Aggarwal ",
-    qualification: "MBBS,BDA,M.ch",
-    helpline_number: "+91 98 5623 4102",
-  },
-  {
-    id: 6,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Nitish Arora",
-    qualification: "MBBS,BDA,M.ch",
-    helpline_number: "+91 98 5623 4102",
-  },
-  {
-    id: 7,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Sumeet Singh",
-    qualification: "MBBS,M.ch",
-    helpline_number: "+91 98 0223 4102",
-  },
-  {
-    id: 8,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Sumeet Singh",
-    qualification: "MBBS",
-    helpline_number: "+91 98 0223 5202",
-  },
-  {
-    id: 9,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Rajeev Goel",
-    qualification: "MBBS",
-    helpline_number: "+91 98 0289 2899",
-  },
-  {
-    id: 10,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Deepak Gupta ",
-    qualification: "MBBS,BDEE",
-    helpline_number: "+91 98 0255 5561",
-  },
-  {
-    id: 11,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Jaspreet Singh Randhawa  ",
-    qualification: "MBBS,BDEE",
-    helpline_number: "+91 98 0855 5861",
-  },
-  {
-    id: 12,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr. Nitti Kapoor Kaushal",
-    qualification: ": MBBS, MD, DM",
-    helpline_number: "+91 95  1363 1594",
-  },
-  {
-    id: 13,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr. Satwant Singh Sachdeva",
-    qualification: " MBBS, MS, MCh",
-    helpline_number: "+91 98 0855 5861",
-  },
-  {
-    id: 14,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr.Louis Chang",
-    qualification: "M.D",
-    helpline_number: "+91 98 2341 5860",
-  },
-  {
-    id: 15,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr.Youssef G Comair,",
-    qualification: "M.D,Ph.D",
-    helpline_number: "+91 98 2341 5860",
-  },
-  {
-    id: 16,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr.Shih-Chun Lin",
-    qualification: "Ph.D",
-    helpline_number: "+91 98 2341 5860",
-  },
-  {
-    id: 17,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr Sushil Kumar Rahi",
-    qualification: "Ph.D",
-    helpline_number: "+91 98 2562 5260",
-  },
-  {
-    id: 18,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Neurologist",
-    firstName: "Dr. Sumeet Singh",
-    qualification: "Ph.D,M.s,M.D",
-    helpline_number: "+91 98 2562 5260",
-  },
-];
-
-export const Otolaryngologists = [
-  {
-    id: 1,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr Rajvinder ",
-    qualification: "MBBS,BDA,M.ch",
-    helpline_number: "+91 99885 39699",
-  },
-  {
-    id: 2,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.Leslie L. Baker ",
-    qualification: "MBBS,MD,M.ch",
-    helpline_number: "+91 99025 39699",
-  },
-  {
-    id: 3,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.Stewart H. Bernard ",
-    qualification: "MBBS,MD",
-    helpline_number: "+91 99025 39699",
-  },
-  {
-    id: 4,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.Elise C. Denneny",
-    qualification: "MD, FACS",
-    helpline_number: "+91 99025 39699",
-  },
-  {
-    id: 5,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.Richard J. DePersio",
-    qualification: "MD, FACS",
-    helpline_number: "+91 99056 39239",
-  },
-  {
-    id: 6,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.Quinn A. Dunlap",
-    qualification: "MD",
-    helpline_number: "+91 99016 56239",
-  },
-  {
-    id: 7,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.William D. Horton",
-    qualification: "MD, FACS  ",
-    helpline_number: "+91 99016 56239",
-  },
-  {
-    id: 8,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.Christopher J. Rathfoot",
-    qualification: "MD ",
-    helpline_number: "+91 9962 124539",
-  },
-  {
-    id: 9,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.Allan M. Rosenbaum",
-    qualification: "MD ",
-    helpline_number: "+91 9962 562339",
-  },
-  {
-    id: 10,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.Joseph White",
-    qualification: "MD ",
-    helpline_number: "+91 99621 21039",
-  },
-  {
-    id: 11,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT,Family Nurse Practitioner",
-    firstName: "Dr.Sarah A. Harvey",
-    qualification: "FNP-BC, CORLN ",
-    helpline_number: "+91 99621 21039",
-  },
-  {
-    id: 12,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT,Family Nurse Practitioner",
-    firstName: "Dr.Lauren L. Clear",
-    qualification: "PA-C",
-    helpline_number: "+91 99201 21024",
-  },
-  {
-    id: 13,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT,Family Nurse Practitioner",
-    firstName: "Dr.Anna Halberstadt",
-    qualification: "NP",
-    helpline_number: "+91 99231 21301",
-  },
-  {
-    id: 14,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT,Family Nurse Practitioner",
-    firstName: "Dr.Carrie Daniels",
-    qualification: "NP",
-    helpline_number: "574-264-9653",
-  },
-  {
-    id: 15,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.Cynthia Pascual",
-    qualification: "MD",
-    helpline_number: "264-663-8288",
-  },
-  {
-    id: 16,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "ENT",
-    firstName: "Dr.Daniel Edquist",
-    qualification: "MD",
-    helpline_number: "219-324-1700",
-  },
-];
-
-export const Dermatologist = [
-  {
-    id: 1,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Mary-margaret B. Noland",
-    qualification: "MD",
-    helpline_number: "219-324-1700",
-  },
-  {
-    id: 2,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Barrett J. Zlotoff",
-    qualification: "MD,Ph.D",
-    helpline_number: "219-324-1700",
-  },
-  {
-    id: 3,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Amy J. Mcmichael",
-    qualification: "Ph.D",
-    helpline_number: "220-325-1721",
-  },
-  {
-    id: 4,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Steven Q. Wang",
-    qualification: "Ph.D,MD,Ph.D",
-    helpline_number: "220-120-5623",
-  },
-  {
-    id: 5,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Atif U. Ahmed",
-    qualification: "Ph.D,MD",
-    helpline_number: "220-120-5412",
-  },
-  {
-    id: 6,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Lindsay C. Strowd",
-    qualification: "Ph.D,MD",
-    helpline_number: "220-120-5412",
-  },
-  {
-    id: 7,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Jennifer G. Powers",
-    qualification: "Ph.D,MD",
-    helpline_number: "220-451-4560",
-  },
-  {
-    id: 8,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Badri G. Modi",
-    qualification: "MD",
-    helpline_number: "210-521-4550",
-  },
-  {
-    id: 9,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Kord S. Honda",
-    qualification: "MD",
-    helpline_number: "210-213-4210",
-  },
-  {
-    id: 10,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Eden L. Lake",
-    qualification: "MD,Ph.D",
-    helpline_number: "212-245-4288",
-  },
-  {
-    id: 11,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Meenal K. Kheterpal",
-    qualification: "MD",
-    helpline_number: "212-521-4201",
-  },
-  {
-    id: 12,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Nishit S. Patel",
-    qualification: "MD,Ph.D",
-    helpline_number: "212-521-4101",
-  },
-  {
-    id: 13,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Farah R. Abdulla",
-    qualification: "Ph.D",
-    helpline_number: "221-201-4221",
-  },
-  {
-    id: 14,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Abhishek N. Aphale",
-    qualification: "Ph.D,MD",
-    helpline_number: "221-201-4221",
-  },
-  {
-    id: 15,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Katina C. Venetos",
-    qualification: "Ph.D,MD",
-    helpline_number: "221-201-4221",
-  },
-  {
-    id: 16,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "Dermatologist",
-    firstName: "Dr. Suman Kumar",
-    qualification: "Ph.D,MD",
-    helpline_number: "221-201-4221",
-  },
-];
-
-export const cardiologist = [
-  {
-    id: 1,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Philip J. Patel",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "521-201-2314",
-  },
-  {
-    id: 2,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Puneet K. Khanna",
-    qualification: "MD,MBBS",
-    helpline_number: "+91 98561 63521",
-  },
-  {
-    id: 3,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Eric M. Sontz",
-    qualification: "MBBS",
-    helpline_number: "521-240-2301",
-  },
-  {
-    id: 4,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Melvin A. Gonzalez",
-    qualification: "MBBS,MD",
-    helpline_number: "221-230-2541",
-  },
-  {
-    id: 5,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr.David P. Choe",
-    qualification: "MBBS,Ph.D",
-    helpline_number: "221-541-2631",
-  },
-  {
-    id: 6,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Ramon N. Torres",
-    qualification: "MBBS,Ph.D",
-    helpline_number: "+91 98674 45786",
-  },
-  {
-    id: 7,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Joshua Kerstein",
-    qualification: "MBBS,MD",
-    helpline_number: "+91 98674 45786",
-  },
-  {
-    id: 8,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. James M. Fitts",
-    qualification: "MD",
-    helpline_number: "+91 98120 45214",
-  },
-  {
-    id: 9,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Paul A. Tamburro",
-    qualification: "MD,Ph.D",
-    helpline_number: "+91 98140 56410",
-  },
-  {
-    id: 10,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. David G. Jones",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 10,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. David G. Jones",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 11,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Gerald M. Hollander",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 12,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Damon E. Kelsay",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 13,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Robert M. Kinn",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 14,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Peter Pitonak",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 15,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Michael D. Barron",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 16,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "cardiologist",
-    firstName: "Dr. Katie M. Twomley",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-];
-
-export const orthopedic = [
-  {
-    id: 1,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Mohammed Amir",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "+91 98675 78654",
-  },
-  {
-    id: 2,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr Gaurav Saini",
-    qualification: "MD,MBBS",
-    helpline_number: "+91 89561 12480",
-  },
-  {
-    id: 3,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr. Manuj Wadhwa",
-    qualification: "MBBS",
-    helpline_number: "521-240-2301",
-  },
-  {
-    id: 4,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr.Ajay Bhambri",
-    qualification: "MBBS,MD",
-    helpline_number: "221-230-2541",
-  },
-  {
-    id: 5,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr Jagandeep S. Virk",
-    qualification: "MBBS,Ph.D",
-    helpline_number: "221-541-2631",
-  },
-  {
-    id: 6,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr. Ravinder Puri",
-    qualification: "MBBS,Ph.D",
-    helpline_number: "+91 98674 45786",
-  },
-  {
-    id: 7,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr Ankur Dogra",
-    qualification: "MBBS,MD",
-    helpline_number: "+91 98674 45786",
-  },
-  {
-    id: 8,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr. James M. Fitts",
-    qualification: "MD",
-    helpline_number: "+91 98120 45214",
-  },
-  {
-    id: 9,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr. Paul A. Tamburro",
-    qualification: "MD,Ph.D",
-    helpline_number: "+91 98140 56410",
-  },
-  {
-    id: 10,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr.Jagandeep S. Virk",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 10,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr. Manu Mengi",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 11,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr.Nishant Setia",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 12,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr. Damon E. Kelsay",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 13,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr. Robert M. Kinn",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 14,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr.Umang Verma",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 15,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr. Michael D. Barron",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-  {
-    id: 16,
-    img: "https://img.freepik.com/free-vector/doctors-concept-illustration_114360-1515.jpg?w=2000",
-    specilist: "orthopedic",
-    firstName: "Dr.Rajinder Sharma",
-    qualification: "MD,Ph.D,MBBS",
-    helpline_number: "112-554-8541",
-  },
-];
+ 

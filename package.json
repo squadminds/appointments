@@ -3,29 +3,52 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
     "@fortawesome/fontawesome-free": "^6.4.0",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/material": "^5.14.20",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.7",
+    "@react-google-maps/api": "^2.19.2",
+    "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
+    "country-json": "^1.1.4",
+    "firebase": "^9.22.2",
     "formik": "^2.2.9",
     "mdb-react-ui-kit": "^6.0.0",
+    "mdbreact": "^5.2.0",
     "moment": "^2.29.4",
-    "react": "^18.2.0",
+    "ngrok": "^5.0.0-beta.2",
+    "prettier": "^3.0.1",
+    "react-axios": "^2.0.6",
+    "react-datepicker": "^4.13.0",
     "react-dom": "^18.2.0",
     "react-dropdown-select": "^4.9.3",
-    "react-hooks-helper": "^1.6.0",
-    "react-router-dom": "^6.10.0",
+    "react-icons": "^4.12.0",
+    "react-leaflet": "^4.2.1",
+    "react-phone-input-2": "^2.15.1",
+    "react-redux": "^8.0.7",
+    "react-router-dom": "^6.14.1",
     "react-schedule-meeting": "^4.2.0",
     "react-scripts": "5.0.1",
     "react-to-print": "^2.14.12",
+    "react-uuid": "^2.0.0",
+    "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^6.1.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "foramt": "prettier --write src"
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +67,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "jest": "^27.5.1",
+    "lint-staged": "^13.2.3"
   }
 }

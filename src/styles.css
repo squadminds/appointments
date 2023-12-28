@@ -1,48 +1,30 @@
 .back {
-  background: #b8ebd0;
-  height: 730px;
+  background: #e5e1da;
+  height: 100vh !important;
 }
+
 .bannerimgs {
   width: 100%;
-  height: 730px;
-  /* border: 2px solid red; */
+  height: 976px;
 }
+
 .back .texth2 {
   margin-top: 30%;
   margin-left: 20%;
 }
+
 .but,
 .back p {
   margin-left: 20%;
 }
-.but {
-  background: #301a4b !important;
-}
-.buttheme1:hover {
-  background-color: #301a4b !important;
-  border: #301a4b !important;
-  color: white !important;
-}
-.buttheme1 {
-  display: inline-block;
-  padding: 24px 32px;
-  border: 0;
-  text-decoration: none;
-  border-radius: 15px;
-  background-color: white !important ;
-  border: 1px solid white !important;
-  font-size: 14px;
-  color: black !important;
-  letter-spacing: 2px;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-.buttheme {
-  background-color: #493657 !important;
-}
 .backall {
+  background: #e5e1da;
+  height: 100vh !important;
+}
+.backaslot {
   background: #eadeda;
-  height: 730px;
+
+  height: 975px;
 }
 .lastshow {
   margin-top: 40%;
@@ -54,34 +36,13 @@
   border: 0;
   text-decoration: none;
   border-radius: 15px;
-  background-color: #c5cbd3 !important ;
+  background-color: #c5cbd3 !important;
   border: 1px solid #c5cbd3 !important;
   font-size: 14px;
   color: black !important;
   letter-spacing: 2px;
   cursor: pointer;
   text-transform: uppercase;
-}
-.glassbut:hover {
-  background-color: white !important;
-  color: black !important;
-}
-.scrollbut {
-  background: #301a4b;
-  color: #fff;
-  border: 1px solid #301a4b;
-  border-radius: 10%;
-}
-
-.butfixed{
-    position: fixed;
-    margin-top: 20%;
-}
-/*font style */
-h1,
-h4,
-h3 {
-  font-family: "Libre Baskerville", serif;
 }
 .scrollTopBottom {
   position: fixed;
@@ -97,44 +58,184 @@ h3 {
   object-fit: cover;
 }
 
+/*font style */
+h1,
+h4,
+h3 {
+  font-family: "Libre Baskerville", serif;
+}
+
+.thnkimgs {
+  height: 300px;
+  width: 300px;
+}
+
+.groupimgs {
+  height: 100%;
+  width: 100%;
+}
+.buttheme {
+  background-color: #301a4b !important;
+}
+.scrollbut {
+  background: #301a4b;
+  color: white;
+}
+
 @media screen and (max-width: 750px) {
   .back {
-    background: #b8ebd0;
+    background: #e5e1da;
     height: 460px;
   }
+
   .bannerimgs {
     width: 100%;
     height: 450px;
   }
-  .backall1 {
+
+  .backall {
     background: #eadeda;
-    height: auto;
+    height: 2600px;
   }
 
-  .scrollTopBottom {
-    position: fixed;
-    top: 90%;
-  }
   .thnkimgs {
     height: 300px;
     width: 250px;
   }
 }
 
-@media screen  and (min-width: 600px){
-	.back {
-        background: #B8EBD0;
-        height: 410px;
-    }
-    .backall{
-        background: #EADEDA;
-        height: 730px;
-    }
-    .backall1{
-      height: 900px;
-    }
-    .groupimgs {
-      height: 150px;
-      width: 100%;
-    }
+.active {
+  background-color: #f9b9a5;
+  color: white;
+}
+
+.active-text {
+  background-color: #f9b9a5;
+  color: white;
+}
+.activeSlot {
+  background-color: red !important;
+  color: white;
+}
+
+.NePreBtn {
+  background-color: #493657 !important;
+  margin-left: 20% !important;
+}
+
+.saveBtn {
+  background-color: green !important;
+}
+.cancelBtn {
+  background-color: darkred !important;
+}
+.activeDay {
+  background-color: burlywood !important;
+  color: black !important;
+}
+.activeSlot {
+  width: 150px;
+  background-color: white !important;
+  color: black !important;
+}
+.notAvaialble {
+  width: 150px;
+  background-color: white !important;
+  color: black !important;
+}
+.timeSlot {
+  width: 150px;
+  background-color: #493657 !important;
+  color: white !important;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+/* Hide the print button when printing */
+
+@media print {
+  .printButton {
+    display: none !important;
   }
+}
+
+.pagination:hover {
+  cursor: pointer;
+}
+.errorPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: black;
+  min-height: 50rem;
+}
+.innerError {
+  display: flex;
+
+  background: black;
+  justify-content: center;
+  align-items: flex-end;
+}
+.errorText {
+  color: white;
+}
+
+.activePage {
+  color: white;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 6px;
+  background-color: grey;
+  cursor: default;
+}
+.page {
+  display: none;
+}
+.appointPage {
+  margin-top: 25vh !important;
+}
+.main-headings {
+  font-family: sans-serif !important;
+}
+.react-tel-input .form-control {
+  position: relative;
+  font-size: 14px;
+  letter-spacing: 0.01rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 48px;
+  margin-left: 0;
+  background: #eadeda !important;
+  border: 1px solid gray !important;
+  border-radius: 5px;
+  line-height: 25px;
+  height: 35px;
+  width: 100% !important;
+  outline: none;
+}
+.react-tel-input .selected-flag {
+  outline: none;
+  position: relative;
+  width: 38px;
+  height: 100%;
+  padding: 0 0 0 8px;
+  border-radius: 3px 0 0 3px;
+  background: #eadeda !important;
+}
+.css-v4u5dn-MuiInputBase-root-MuiInput-root:before {
+  border-color: rgb(196, 70, 101) !important;
+}
+.css-v4u5dn-MuiInputBase-root-MuiInput-root:after {
+  border-color: rgb(196, 70, 101) !important;
+}
+.react-tel-input .form-control{
+    border-color: rgb(196, 70, 101) !important;
+}
+.form-control:focus{
+    box-shadow: inset 0px 0px 0px 1px rgb(196, 70, 101) !important;
+}
+.react-tel-input .flag-dropdown {
+    border-color: rgb(196, 70, 101) !important;
+}

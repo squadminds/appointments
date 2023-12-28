@@ -1,181 +1,230 @@
-import React, { useRef, useEffect, useState } from "react";
-import Aos from "aos";
-import "aos/dist/aos.css";
-
-import {
-  MDBCol,
-  MDBContainer,
-  MDBInput,
-  MDBRow,
-  MDBBtn,
-  MDBIcon,
-} from "mdb-react-ui-kit";
+import React, { useEffect, useState, useRef } from "react";
 import "../styles.css";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
+import data from "./contents/CountryCodes.json";
+import { matchedCountry } from "./Calls";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import {
+  Button,
+  Container,
+  Grid,
+  TextField,
+  Box,
+} from "@mui/material";
+import { styled } from "@mui/system";
 
-//value get set localstorage
+const StyledCol = styled(Grid)(({ theme }) => ({
+  padding: 0,
+  display: "flex",
+  flexDirection: "column",
+}));
 
-function useLocalStorage(key) {
-  const [state, setState] = useState(localStorage.getItem(key));
-  function setStorage(item) {
-    localStorage.setItem(key, item);
-    setState(item);
-  }
-  return [state, setStorage];
-}
+const StyledImage = styled("img")({
+  width: "100%",
+  height: "100vh",
+  objectFit: "cover",
+});
 
 const Location = () => {
-  //disable able button
-  const [isValid, setValid] = useState(false);
-  
-  
-  const [location, setLocatoin] = useState("");
-  const validate = () => {
-    return location.length ;
-  };
-  useEffect(() => {
-    const isValid = validate();
-    setValid(isValid);
-  }, [location]);
-  
-  //localstorage value
-
-  const [input, setInput] = useState("");
-  const [item, setItem] = useLocalStorage("location");
-  const [state, setState] = useState();
+  const [country, setCountry] = useState("");
+  const [val, setVal] = useState("");
   const navigate = useNavigate();
-  function greetUser() {
-    navigate("/problem");
-  }
+  const mainDiv = useRef(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  function Back() {
-    navigate("/");
-  }
-
-  //autofocus
-  const Input = useRef(null);
-  useEffect(() => {
-    if (Input.current) {
-      Input.current.focus();
+  const greetUser = async (e) => {
+    if (!country) {
+      setErrorMessage("Location Is Not  Available");
+      return;
     }
-  }, []);
+    await matchedCountry(country);
 
-  
-  // validate
+    if (localStorage.getItem("countryRef")) {
+      navigate("/doctor");
+      setErrorMessage("");
+    } else {
+      setErrorMessage("Location Is Not  Available");
+    }
+  };
+
+  const Back = () => navigate("/problem");
+
   const formik = useFormik({
     initialValues: {
-      location: "",
+      location: val ? val : "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      const str =
+        values.location.charAt(0).toUpperCase() + values.location.slice(1);
+      setCountry(str);
     },
     validate: (values) => {
       let errors = {};
-      if (!values.location) errors.location = "Location is required";
-      else if (!/^[a-zA-Z\s]+$/.test(values.location))
+      if (values.location !== "") errors.location = "Location is required";
+      else if (!/^[a-zA-Z\s]+$/.test(data.location))
         errors.location = "Location should only contain alphabets and spaces";
+      if (formik.touched.location) {
+        setErrorMessage("");
+      } else {
+        setErrorMessage("");
+      }
+      const str =
+        values.location.charAt(0).toUpperCase() + values.location.slice(1);
+      setCountry(str);
       return errors;
     },
   });
 
-  // aos
+  useEffect(() => {
+    mainDiv.current.focus();
+  }, []);
+
+  const callMe = async () => {
+    if (localStorage.getItem("countryRef") !== null) {
+      const Locationdata = await getDoc(
+        doc(db, "Locations", localStorage.getItem("countryRef"))
+      );
+      setVal(Locationdata.data().name);
+      formik.setFieldValue("location", Locationdata.data().name);
+    }
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("countryRef")) {
+      callMe();
+    }
+  }, []);
 
   useEffect(() => {
     Aos.init({
       duration: 500,
       offset: 100,
     });
-    Aos.refresh();
   }, []);
 
-  const changeValue = (e) => {
-    if (e.key === "Enter") {
-      setState(e.target.value);
-      if (e.target.value.length > 0) {
-        greetUser();
-        setItem(input);
-      }
-    }
-  };
   return (
     <>
-      <MDBContainer fluid className="backall">
-        <MDBRow>
-          <form onSubmit={formik.handleSubmit}>
-            <MDBContainer>
-              <MDBRow
-                className="mt-5 "
+      <div
+        tabIndex={0}
+        onKeyDown={(e) => (e.key === "Enter" ? greetUser() : "")}
+        ref={mainDiv}
+        style={{ outline: "none" }}
+      >
+        <Container
+          maxWidth
+          className="text-dark text-center p-0"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Grid container>
+            <StyledCol item xs={12} md={6}>
+              <StyledImage
+                src="https://img.freepik.com/free-photo/interior-view-operating-room_1170-2255.jpg?w=2000"
+                alt=".."
+              />
+            </StyledCol>
+            <StyledCol
+              item
+              xs={12}
+              md={6}
+              className="backall back text-dark  justify-content-center "
+             
+            >
+              {" "}
+              <div
+                className="m-5 text-dark  justify-content-center"
+                style={{ textAlign: "start" }}
                 data-aos="fade-up"
                 data-aos-offset="0"
                 data-aos-duration="2000"
               >
-                <MDBCol size={12} className="mt-5">
-                  <h4 className="mt-5 text-dark d-flex justify-content-center">
-                    Fill Your Location
-                  </h4>
+                 <div
+              className="m-5 text-dark  justify-content-center"
+              style={{ textAlign: "start" }}
+              
+            >
+                <h4>
+                 <span style={{color:"rgb(196, 70, 101)"}}>*</span> The Assessment of our partner doctors relies on complete
+                  accuracy and <br/> honesty in your answers to the Questions below.
+                </h4>
 
-                  <h3 className="d-flex justify-content-center">
-                    {" "}
-                    What is the name of your country of residence?
-                  </h3>
-                </MDBCol>
-                <MDBRow className="d-flex justify-content-center">
-                  <MDBCol size="md-6" className="mt-3 text-dark   ">
-                    <MDBInput
-                      className="w-200"
-                      label="fill your location"
-                      ref={Input}
-                      name="location"
-                      // value={formik.values.location}
-                      // onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      onKeyPress={changeValue}
-                      onInput={(e) => setInput(e.target.value)}
-                      value={location}
-                      onChange={(e) => setLocatoin(e.target.value)}
-                    />
-                    <br />
-                    <div>
-                      {formik.touched.location && formik.errors.location ? (
-                        <div className="text-danger">
-                          {formik.errors.location}
-                        </div>
-                      ) : null}
-                    </div>
-                  </MDBCol>
-                </MDBRow>
-              </MDBRow>
-            </MDBContainer>
-          </form>
-        </MDBRow>
-        <MDBContainer className="butfixed" fluid>
-          <MDBRow className="d-flex flex-row-reverse">
-            <MDBCol size={6}>
-              <div
-                className={"form__item button__items d-flex flex-row-reverse"}
-              >
-                <MDBBtn
-                  type={"primary"}
-                  className="buttheme mt-5"
-                  onClick={greetUser}
-                  onKeyPress={changeValue}
-                  disabled={!isValid}
-                >
-                  <MDBIcon fas icon="angle-right" className="fs-2" />
-                </MDBBtn>
-                <MDBBtn
-                  type={"default"}
-                  className="buttheme me-2 mt-5"
-                  onClick={Back}
-                >
-                  <MDBIcon fas icon="angle-left" className="fs-2" />
-                </MDBBtn>
+                <h4 className="text-primary mt-3">
+                  Currently, we have available doctors in India, Israel,
+                  America, England.
+                </h4>
+
+                <h4 className="mt-3">
+                  What is the name of your country of residence?
+                </h4>
+                
+              <form onSubmit={formik.handleSubmit}>
+                <Box sx={{ width: "600px" }} mt={5}>
+                  <TextField
+                    type="text"
+                    label="Fill your location"
+                    name="location"
+                    value={formik.values.location}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className="w-100 p-2 mb-2 "
+                    variant="standard"
+                    inputProps={{
+                      style: { borderColor: "rgb(196, 70, 101)" },
+                    }}
+                    InputLabelProps={{
+                      style: { color: "rgb(196, 70, 101)" },
+                    }}
+                  />
+                </Box>
+                
+                <Grid
+              container
+              spacing={2}
+            >
+               <Grid item xs={12} md={9} className={"form__item button__items d-flex justify-content-between mt-5"} >
+                      <Button
+                        variant="outlined"
+                        className="buttheme mt-3  text-light"
+                        onClick={Back}
+                      >
+                        Back
+                      </Button>
+
+                      <Button
+                        variant="contained"
+                        className="buttheme mt-3  text-light"
+                        onClick={(e) => greetUser(e)}
+                      >
+                        Next
+                      </Button>
+                      </Grid>
+                    </Grid>
+                      <Grid container >
+                  <Grid item xs={12} md={9}  >
+                    {errorMessage && (
+                      <div
+                        className="alert alert-danger mt-3 d-flex justify-content-start"
+                        role="alert"
+                      >
+                        {errorMessage}
+                      </div>
+                    )}
+                    </Grid>
+                    </Grid>
+              </form>
               </div>
-            </MDBCol>
-          </MDBRow>
-        </MDBContainer>
-      </MDBContainer>
+              </div>
+            </StyledCol>
+          </Grid>
+        </Container>
+      </div>
     </>
   );
 };

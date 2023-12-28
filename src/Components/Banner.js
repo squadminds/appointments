@@ -1,65 +1,92 @@
-import { MDBBtn, MDBCol, MDBContainer, MDBRow } from "mdb-react-ui-kit";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import "../styles.css";
-import { NavLink } from "react-router-dom";
+import { styled } from "@mui/system";
+import { NavLink, useNavigate } from "react-router-dom";
+import { statusUpdate } from "./Calls";
+const StyledCol = styled(Grid)(({ theme }) => ({
+  padding: 0,
+}));
+
+const StyledImage = styled("img")({
+  width: "100%",
+  height: "100vh",
+  objectFit: "cover",
+});
+const StyledButton = styled(Button)({
+  textDecoration: "none",
+});
+
 const Banner = () => {
-  // aos
+  const mainDivRef = useRef();
+  const navigate = useNavigate();
+
+  const greetUser = () => navigate("/problem");
+
   useEffect(() => {
     Aos.init({
       duration: 500,
       offset: 100,
     });
-    Aos.refresh();
+    statusUpdate();
+    localStorage.clear();
   }, []);
-
+  useEffect(() => {
+    mainDivRef.current.focus();
+  }, []);
   return (
-    <MDBContainer fluid>
-      <MDBRow>
-        <MDBCol size="md-6" className="backall back">
-          <h2
-            className=" text-dark fw-bold texth2"
-            data-aos="fade-up"
+    <Container
+      ref={mainDivRef}
+      fluid
+      tabIndex={0}
+      onKeyPress={(e) => (e.key === "Enter" ? greetUser() : "")}
+      maxWidth className="p-0"
+    >
+       <Grid container>
+        <StyledCol item xs={12} md={6}>
+          <StyledImage
+            src="https://img.freepik.com/free-photo/interior-view-operating-room_1170-2255.jpg?w=2000"
+            alt=".."
+          />
+        </StyledCol>
+        <StyledCol item xs={12} md={6} className="back ">
+          <div  data-aos="fade-up"
             data-aos-offset="0"
-            data-aos-duration="2000"
+            data-aos-duration="2000">
+          <Typography
+            variant="h4"
+            className="text-dark fw-bold texth2"
           >
             Complete this form to
-            <br />
-            <span className="text-dark fw-bold">
-              {" "}
-              book an <br />
-              appointment{" "}
-            </span>
-            with one
-            <br /> of our specialists.
-          </h2>
-          <p
+            <span className="text-dark fw-bold"> book an appointment </span>
+            with one of our specialists.
+          </Typography>
+          <Typography
+            variant="body1"
             className="text-dark"
             data-aos="fade-up"
             data-aos-offset="0"
             data-aos-duration="2000"
           >
             Description (optional)
-          </p>
-          <MDBBtn
-            className="fw-bold but "
-            // data-aos="fade-up" data-aos-offset="2"   data-aos-duration="2000"
+            
+          </Typography>
+          <StyledButton
+            variant="contained"
+            className="fw-bold NePreBtn mt-3 justify-content-center"
+            color="primary"
+            onClick={() => greetUser()}
           >
-            <NavLink to="/location" className="text-light">
-              Schedule
-            </NavLink>
-          </MDBBtn>
-        </MDBCol>
-        <MDBCol size="md-6">
-          <img
-            src="https://img.freepik.com/free-photo/interior-view-operating-room_1170-2255.jpg?w=2000"
-            alt=".."
-            className="bannerimgs"
-          />
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+            Schedule
+          </StyledButton>
+          </div>
+        </StyledCol>
+        
+      </Grid>
+     
+    </Container>
   );
 };
 export default Banner;
